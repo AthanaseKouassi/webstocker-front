@@ -1,0 +1,33 @@
+
+<div>
+    <h2><span translate="webstockerApp.ligneBonDeSortie.detail.title">LigneBonDeSortie</span> {{vm.ligneBonDeSortie.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="webstockerApp.ligneBonDeSortie.quantite">Quantite</dt></dt>
+        <dd>
+            <span>{{vm.ligneBonDeSortie.quantite}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.ligneBonDeSortie.prixVente">PrixVente</dt></dt>
+        <dd>
+            <span>{{vm.ligneBonDeSortie.prixVente}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.ligneBonDeSortie.produit">produit</span></dt>
+        <dd>
+            <a ui-sref="produit-detail({id:vm.ligneBonDeSortie.produit.id})">{{vm.ligneBonDeSortie.produit.nomProduit}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.ligneBonDeSortie.bonDeSortie">bonDeSortie</span></dt>
+        <dd>
+            <a ui-sref="bon-de-sortie-detail({id:vm.ligneBonDeSortie.bonDeSortie.id})">{{vm.ligneBonDeSortie.bonDeSortie.id}}</a>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

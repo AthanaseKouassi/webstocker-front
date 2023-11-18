@@ -1,0 +1,27 @@
+{
+    "webstockerApp": {
+        "localite" : {
+            "home": {
+                "title": "Localites",
+                "createLabel": "Localite erstellen",
+                "createOrEditLabel": "Localite erstellen oder bearbeiten",
+                "search": "Suche nach Localite"
+            },
+            "created": "Localite erstellt mit ID {{ param }}",
+            "updated": "Localite aktualisiert mit ID {{ param }}",
+            "deleted": "Localite gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Localite {{ id }} wirklich dauerhaft gejöscht werden?"
+            },
+            "detail": {
+                "title": "Localite"
+            },
+            "region": "Region",
+            "ville": "Ville",
+            "commune": "Commune",
+            "village": "Village",
+            "quartier": "Quartier",
+            "magasin": "Magasin"
+        }
+    }
+}

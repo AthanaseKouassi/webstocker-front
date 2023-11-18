@@ -1,0 +1,26 @@
+{
+    "webstockerApp": {
+        "facility" : {
+            "home": {
+                "title": "Facilities",
+                "createLabel": "Create a new Facility",
+                "createOrEditLabel": "Create or edit a Facility",
+                "search": "Search for Facility"
+            },
+            "created": "A new Facility is created with identifier {{ param }}",
+            "updated": "A Facility is updated with identifier {{ param }}",
+            "deleted": "A Facility is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Facility {{ id }}?"
+            },
+            "detail": {
+                "title": "Facility"
+            },
+            "name": "Name",
+            "code": "Code",
+            "classe": "Classe",
+            "type": "Type",
+            "phone": "Phone"
+        }
+    }
+}

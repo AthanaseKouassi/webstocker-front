@@ -1,0 +1,31 @@
+{
+    "webstockerApp": {
+        "prescriptions" : {
+            "home": {
+                "title": "Prescriptions",
+                "createLabel": "Créer un nouveau Prescriptions",
+                "createOrEditLabel": "Créer ou éditer un Prescriptions",
+                "search": "Recherche pour Prescriptions"
+            },
+            "created": "Un nouveau Prescriptions a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Prescriptions avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Prescriptions avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Prescriptions {{ id }} ?"
+            },
+            "detail": {
+                "title": "Prescriptions"
+            },
+            "startDate": "StartDate",
+            "dosage": "Dosage",
+            "quantity": "Quantity",
+            "note": "Note",
+            "period": "Period",
+            "period_amount": "Period_amount",
+            "prescriptionCode": "PrescriptionCode",
+            "encounter": "Encounter",
+            "drug": "Drug",
+            "provider": "Provider"
+        }
+    }
+}

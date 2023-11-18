@@ -1,0 +1,23 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Aperçu avant impression  </h1>
+    <br/>
+    <input class="btn btn-default btn-rounded" type="button" value="Imprimer" onclick="printIt()"/>
+<!--    <span>
+        <a href="#/app/rapport-de-vente"
+           onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+           onmouseout="this.style.color = '';this.style.textDecoration = 'none'" >  
+            Retourner au menu rapport des ventes</a>
+    </span>-->
+    <script type="text/javascript">
+        function printIt() {
+            var url = document.getElementById("pdfdoc").getAttribute("url");
+            var wnd = window.open(url);
+        }
+    </script>
+
+    <jhi-alert></jhi-alert>
+</div>
+
+<div class="wrapper-md">
+    <pdf-viewer width="850" class="img-responsive" id="pdfdoc" url="{{commandeUrl}}"></pdf-viewer>
+</div>

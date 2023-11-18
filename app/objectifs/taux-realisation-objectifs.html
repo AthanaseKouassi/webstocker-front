@@ -1,0 +1,87 @@
+<div class="bg-light lter b-b wrapper-md" >
+    <h1 class="m-n font-thin h3">Taux d'atteintes des objectifs de vente</h1>
+    <small>Un aperçu de la réalisation </small>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Les taux d'atteintes des objectifs de vente</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Mois </label>
+
+                            <div class="col-md-5">
+                                <select name="periode" required  class="form-control">
+                                    <option value=""></option>
+                                    <option value="janvier">Janvier</option>
+                                    <option value="fevrier">Février</option>
+                                    <option value="mars">Mars</option>
+                                    <option value="avril">Avril</option>
+                                    <option value="mai">Mai</option>
+                                    <option value="juin">Juin</option>
+                                    <option value="juillet">Juillet</option>
+                                    <option value="août">Août</option>
+                                    <option value="septembre">Septembre</option>
+                                    <option value="octobre">Octobre</option>
+                                    <option value="novembre">Novembre</option>
+                                    <option value="decembre">Décembre</option>
+                                </select>
+                                <!--<span ng-show="form.validateInput('produit', 'required')"class="text-danger">Ce champ est requis</span>-->
+
+                            </div>
+                            <div class="col-md-5">
+                                <button type="button" class="btn btn-info btn-rounded">
+                                    <span class="glyphicon glyphicon-search">
+                                        Afficher </span>
+                                </button>                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th><span >Produit</span></th>
+                                <th><span >Quantité attendue</span></th>
+                                <th><span >Quantité vendue</span></th>
+                                <th><span >Taux d'atteinte</span></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+
+                                <td class="text-right">
+                                    <div class="btn-group flex-btn-group-container">                                       
+                                        <button type="submit"
+                                                ui-sref="objectifs.delete({id:objectifs.id})"
+                                                class="btn btn-danger btn-sm">
+                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                            <span class="hidden-xs hidden-sm" translate="entity.action.delete">Supprimer</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-5">
+                    <button type="button" class="btn btn-default btn-rounded">
+                        <i class="glyphicon glyphicon-print"></i>Imprimer</button> 
+                        <label>     </label>
+                    <a href="#/app/menuvente" >Retourner au menu</a>
+                </div> 
+        </div>
+    </div>
+</div>

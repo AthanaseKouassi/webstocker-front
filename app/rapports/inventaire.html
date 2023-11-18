@@ -1,0 +1,185 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Inventaire</h1>
+    <small> </small>
+</div>
+
+<div class="wrapper-md">
+    <uib-tabset class="tab-container" active="steps.indexActif" ng-init="steps={percent:30, step1:true, step2:false, indexActif:0}">
+        <uib-tab index="0" heading="Inventaire"  active="steps.step1" select="steps.percent=40">
+            <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+            <form name="step1" class="form-validation form-horizontal">
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Date début </label>
+                    <div class="col-md-6">
+                        <p class="input-group">
+                           <input type="text"  id="field_dateDebut" name="dateDebutMois" uib-datepicker-popup="dd MMMM yyyy"
+                               ng-model="vm.inventaireData.dateDebut" is-open="vm.datePickerOpenStatus.dateDebutMois" class="form-control" required />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                        </p>
+                        <span ng-show="form.validateInput('dateDebutMois', 'required')" class="text-danger" translate="entity.validation.required">
+                            This field is required</span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Date fin </label>
+                    <div class="col-md-6">
+                        <p class="input-group">
+                             <input type="text"   class="form-control" id="field_dateDebut" name="dateFinMois" uib-datepicker-popup="dd MMMM yyyy"
+                                ng-model="vm.inventaireData.dateFin" is-open="vm.datePickerOpenStatus.dateFinMois" required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                        </p>
+                        <span ng-show="form.validateInput('dateFinMois', 'required')" class="text-danger" >
+                            Champ requis</span>
+
+                    </div>
+                </div>
+
+                <div class="form-group">                    
+                    <label class="col-md-2 control-label">Magasin</label>                
+                    <div class="col-md-6">
+                        <select required class="form-control" id="field_produit" name="magasin"
+                                ng-model="vm.inventaireData.magasin"
+                                ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id">
+                            <option value=""></option>
+                        </select>
+                        <span ng-show="form.validateInput('magasin', 'pattern')" class="text-danger">This field must contain only digits</span>
+                    </div>
+                    <div class="col-md-4"> 
+
+                    </div>
+                </div>
+
+<!--                <div class="form-group">
+                    <label class="col-md-2 control-label">Produit</label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="produit" required="">
+                            <option value=""></option>
+                        </select>
+                        <span ng-show="form.validateInput('produit', 'pattern')" class="text-danger">This field must contain only digits</span>
+                    </div>
+                    <div class="col-md-4"> 
+
+                    </div>
+                </div>-->
+                <div class="m-t m-b">
+                    <button type="button" class="btn btn-primary btn-rounded" ng-click=" " >
+                        <i class="glyphicon glyphicon-print"></i>
+                        <spn>  Imprimer inventaire théorique</spn></button>
+                    <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded"
+                            ng-click="steps.indexActif = 1">Suivant
+                    </button>
+                </div>
+            </form>        
+        </uib-tab> 
+        <!--disable="step1.$invalid"-->
+        <uib-tab index="1" heading="Inventaire definitif"  active="steps.step2" select="steps.percent=100">
+            <form name="step2" class="form-validation form-horizontal">
+                <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Produit</label>
+                    <div class="col-md-6">
+                        <select required class="form-control" id="field_produit" name="produit"
+                                    ng-model="vm.inventaireData.produit"
+                                    ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                                <option value=""></option>
+                            </select>
+                        <span ng-show="form.validateInput('produit', 'pattern')" class="text-danger">This field must contain only digits</span>
+                    </div>
+                    <div class="col-md-4"> 
+
+                    </div>
+                </div>
+<!--                
+                <div class="form-group">
+                    <label class="col-md-2 control-label">NumeroLot</label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="lot" required="">
+                            <option value=""></option>
+                        </select>
+                        <span ng-show="form.validateInput('lot', 'pattern')" class="text-danger">This field must contain only digits</span>
+                    </div>                        
+                    <div class="col-md-4">   </div>
+                </div>
+                <div class="form-group">                
+                    <label class="col-md-2 control-label">Quantité théorique</label>
+                    <div class="col-md-6">
+                        <input type="text" id="id" name="id" ng-model="vm.commande.id" class="form-control"/>
+                    </div>
+                    <div class="col-md-4">   </div>
+                </div>-->
+
+                <div class="form-group">                
+                    <label class="col-md-2 control-label">Quantité physique</label>
+                    <div class="col-md-6">
+                        <input type="text" id="field_quantite" name="id" ng-model="vm.inventaireData.quantite" class="form-control"/>
+                    </div>
+                    <div class="col-md-4">   </div>
+                </div>
+                <div class="panel-footer text-center">
+                    <button type="submit" ng-disabled="step2.$invalid"  class="btn btn-info btn-rounded">
+                        Ajouter une ligne</button>
+                </div>
+
+                <fieldset>
+<!--                    <legend>
+                        <small class="text-muted">Lignes d'inventaire</small>
+                    </legend>-->
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+                                    <!--<th style="display: none"><span translate="global.field.id">ID</span></th>-->
+                                    <th>Produit</th>
+                                    <!--<th>Numero de Lot</th>-->
+                                    <th>Quantite théorique</th>
+                                    <th>Quantité physique</th>
+                                    <th>Ecart</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> </td>
+                                    <!--<td> </td>-->
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td class="text-right"> 
+                                        <div class="btn-group flex-btn-group-container">
+
+                                            <button type="submit" ng-click="vm.removeLigneCommande(ligne)"
+                                                    class="btn btn-danger btn-sm">
+                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                <span class="hidden-xs hidden-sm"
+                                                      translate="entity.action.delete"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+                <div class="m-t m-b">
+                    <button type="button" class="btn btn-default btn-rounded" ng-click="steps.indexActif = 0">Préc.</button>
+                    <button type="submit" ng-disabled="(vm.ligneCommandeIndex >= 1 && maxqte < 1) ? false : true" class="btn btn-default btn-rounded"
+
+                            ng-click="steps.indexActif = 2">Valider l'inventaire
+                    </button>
+                </div>
+            </form>
+        </uib-tab>
+
+    </uib-tabset>   
+</div>

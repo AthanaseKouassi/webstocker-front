@@ -1,0 +1,114 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Transfert du stock</h1>
+    <small>Mouvement du stock par magasin et par produit à une période</small>
+</div>
+
+<div class="col-md-12 wrapper-md" >
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Monvement du stock</div>
+        <div class="panel-body">
+            <form role="form" ng-submit="vm.mouvement()" class="form-horizontal" ng-controller="QuantiteAgenceproduitController">
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label for="someCheckbox" style="font-size: 1em">
+                            <input id="someCheckbox" type="checkbox"  ng-model="checkboxValue">
+                            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            Afficher la liste par Antenne AIMAS 
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                    </div>
+                </div>
+                <div class="form-group" ng-show="checkboxValue">
+                    <label class ="col-md-2 control-label">Antenne</label>
+                    <div class="col-md-6 ">
+                        <select id="field_magasin" name="magasin" ng-model="vm.livraison.magasin" ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id" class="form-control m-b">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+                <br/>
+                <div class=" form-inline">
+                    <!--<div class="form-group">-->
+                    <label class ="col-md-2" for="field_dateLivraison ">Date debut période</label>
+                    <div class="col-sm-3 input-group">
+                        <input id="field_dateLivraison" type="text" name="dateFebut" uib-datepicker-popup="{{dateformat}}" 
+                               ng-model="vm.livraison.dateLivraison" is-open="vm.datePickerOpenStatus.dateLivraison" 
+                               class=" col-sm-3 form-control"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateLivraison')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                    <label class ="col-md-2 " for="field_dateLivraison ">Date fin période</label>
+                    <div class="col-sm-3 input-group">
+                        <input id="field_dateLivraison " type="text" name="dateFin" uib-datepicker-popup="{{dateformat }}" 
+                               ng-model="vm.livraisonf.dateLivraison" is-open="vm.datePickerOpenStatusFin.dateLivraison" class="col-sm-3 form-control"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendarFin('dateLivraison')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                    <button type="submit"   class="btn btn-primary" style="color: white;">
+                        <span><i class="glyphicon glyphicon-search"></i> Recherche </span>                       
+                    </button>
+                    <!--</div>-->
+                </div>
+            </form>
+        </div>
+        <div class="col-md-12" style="background: #2ea8e5">
+        </div>
+            
+        <div class="panel panel-default col-sm-12 table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
+                    <tr>
+                        <th>Agence</th>
+                        <th>Produit</th>
+                        <th>Date</th>
+                        <th>Bordereau de Livraison</th>                        
+                        <th>Quantité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td>Mary</td>
+                        <td>Moe</td>
+                        <td>mary@example.com</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td>July</td>
+                        <td>Dooley</td>
+                        <td>july@example.com</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+
+
+    </div>
+
+
+</div>

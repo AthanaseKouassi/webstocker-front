@@ -1,0 +1,62 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCommandeLabel" >Choisir le type de la vente pour valider la facture!</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Type de la vente </label>
+                <div class="col-md-2" >
+                    <div class="radio">
+                        <label class="i-checks ">                  
+                            <input type="radio"   name="a" ng-model="type.status" checked value="cash" />
+                            <i></i>
+                            CASH
+                        </label>
+                    </div>
+                </div>
+                <p> </p>
+                <div class="col-md-2">
+                    <div class="radio">
+                        <label class="i-checks">                  
+                            <input type="radio" name="a" ng-model="type.status" value="credit"/>
+                            <i></i>
+                            CREDIT
+                        </label>             
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group"  ng-switch="type.status" >
+                <div ng-switch-when="credit"> 
+                    <label class="col-md-2 control-label">Delai de paiement</label>
+                    <div class="col-md-6" >
+                        <input type="text" id="id" name="credit"  class="form-control"/>
+                    </div>
+
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div> 
+</form>

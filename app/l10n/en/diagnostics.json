@@ -1,0 +1,24 @@
+{
+    "webstockerApp": {
+        "diagnostics" : {
+            "home": {
+                "title": "Diagnostics",
+                "createLabel": "Create a new Diagnostics",
+                "createOrEditLabel": "Create or edit a Diagnostics",
+                "search": "Search for Diagnostics"
+            },
+            "created": "A new Diagnostics is created with identifier {{ param }}",
+            "updated": "A Diagnostics is updated with identifier {{ param }}",
+            "deleted": "A Diagnostics is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Diagnostics {{ id }}?"
+            },
+            "detail": {
+                "title": "Diagnostics"
+            },
+            "diagCode": "DiagCode",
+            "description": "Description",
+            "active": "Active"
+        }
+    }
+}

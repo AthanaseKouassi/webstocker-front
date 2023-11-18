@@ -1,0 +1,155 @@
+<div class="panel panel-body">
+    <form role="form" class="form-inline" name="editForm"  >
+        <fieldset> 
+            <legend> Retrouver une facture par son numéro!</legend> 
+            <!--<div class="form-group">-->
+            <!--<label class="sr-only" for="numeroFacture">Numéro facture </label>-->
+            <div class="input-group pull-leth" >
+                <div class="input-group">
+                    <input type="text" id="field_numeroFacture" name="numeroFacture" placeholder="Numéro facture"  
+                           ng-model="vm.rapportData.numeroFacture" class="form-control"  ng-change="vm.trouverUneFacture()" />
+                </div>
+
+                <div class="input-group">
+                    <span  class="input-group-btn width-min" >
+                        <button class="btn btn-info"  ng-click="vm.trouverUneFacture()" type="submit">  
+                            <span class="glyphicon glyphicon-search"></span>    
+                        </button>
+                    </span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="field_numeroFacture" name="numeroFacture" placeholder="Numéro facture zéro"  
+                           ng-model="vm.rapportData.numeroFactureZero" class="form-control"  ng-change="vm.trouverUneFactureZero()" />
+                </div>           
+                <div class="input-group">
+                    <span  class="input-group-btn width-min" >
+                        <button class="btn btn-info "  ng-click="vm.trouverUneFactureZero()" type="submit">  
+                            <span class="glyphicon glyphicon-search"></span>   
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+        </fieldset>
+        <br/>
+        <fieldset>  
+            
+            <legend> Imprimer la facture que vous souhaitez !</legend> 
+            <div class="form-group">
+                <label class="sr-only" for="dateDebutPeriode">Date début période </label>
+                <p class="input-group">
+                    <input type="text" id="field_dateDebut" name="dateDebutMois" uib-datepicker-popup="dd MMMM yyyy"
+                           ng-model="vm.rapportData.dateDebutPeriode" is-open="vm.datePickerOpenStatus.dateDebutMois" class="form-control" placeholder="Date début"  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutMois')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+                <div ng-show="editForm.dateDebut.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div   class="form-group" >
+                <label class="sr-only" for="dateFinPeriode">Date fin période </label>
+
+                <p class="input-group">
+                    <input type="text"  class="form-control" id="field_dateDebut" name="dateFinMois" uib-datepicker-popup="dd MMMM yyyy"
+                           ng-model="vm.rapportData.dateFinPeriode" is-open="vm.datePickerOpenStatus.dateFinMois" placeholder="Date fin"  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinMois')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+                <div ng-show="editForm.dateFin.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <p class="input-group">
+                    <button class="btn btn-info btn-rounded"  ng-click="vm.rechercherFactures()" type="submit">  
+                        <i class="glyphicon glyphicon-search"></i>
+                        Facture vente
+                    </button>
+                </p>
+                <p class="input-group">
+                    <button class="btn btn-info btn-rounded" ng-click="vm.trouverFactureZeroParPeriode()" type="submit">                     
+                       <i class="glyphicon glyphicon-search"></i>
+                        Facture zéro
+                    </button>
+
+                </p>
+            </div>
+            <div class="form-group">
+                <p class="input-group">
+                    <button class="btn btn-default btn-rounded" ng-click="vm.afficherListeDesFacturePeriode()" type="submit"> 
+                        <i class="glyphicon glyphicon-print"></i>
+                        Imprimer liste facture
+                    </button>
+                </p>
+            </div>
+        </fieldset>
+    </form>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Numéro Bon de sortie</th>
+                    <th>Client</th>
+                    <th>Numéro facture</th>
+                    <th>Date facture</th>
+                    <th>Montant facture</th>
+                    <th style="display: none">ID</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr ng-repeat="lignebon in vm.lignebons">
+                    <td ><span>{{lignebon.bonDeSortie.numero}}</span></td>
+                    <td ><span>{{lignebon.nomClient}}</span></td>
+                    <td ><span>{{lignebon.bonDeSortie.numeroFactureNormalise}}</span></td>
+                    <td ><span >{{lignebon.dateFacture| date : "dd MMMM yyyy" }}</span></td>
+                    <td ><span >{{lignebon.montantTotal}}</span></td>
+                    <td  style="display: none"><span >{{lignebon.bonDeSortie.id}}</span></td>
+                    <td >
+
+                        <div class="btn-group flex-btn-group-container">
+                            <!--ui-sref="produit-detail({id:produit.id})"-->
+                            <!--<button type="submit" ng-click="vm.imprimerFacture(lignebon.bonDeSortie.id)"-->                                  
+                            <button type="submit" ng-click="vm.impressionFactureVenteOuZero(lignebon.bonDeSortie.id)"                                    
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-print"></span>
+                                <span class="hidden-xs hidden-sm" >Imprimer</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--    <div class="text-center">
+            <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(0)">
+                << 
+            </button>
+            <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(vm.currentPage - 1)">
+                < Précedent
+            </button>
+            {{vm.currentPage + 1}}/{{vm.totalPage}}
+            <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.currentPage + 1)">
+                Suivant >
+            </button>
+            <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.totalPage - 1)">
+                >>
+            </button>
+    
+        </div>-->
+</div>

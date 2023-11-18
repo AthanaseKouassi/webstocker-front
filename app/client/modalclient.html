@@ -1,0 +1,117 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Fenetre client</h4>
+</div>
+<div class=" modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <form name="step2" class="form-validation form-horizontal">
+             <fieldset>
+                    <div  class="form-group">
+                        <label class="col-md-2 control-label">Raison sociale</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="numero" required="" disabled="true"
+                                   ng-model="client.nomClient" class="form-control"/>
+                        </div>
+                        <label class="col-md-2 control-label">Localité</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="numero" required="" disabled="true"
+                                   ng-model="client.localite.displayName" class="form-control"/>
+                        </div>
+                        
+                    </div>
+                    <div  class="form-group">
+                        <label class="col-md-2 control-label">Téléphone</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="numero" required="" disabled="true"
+                                   ng-model="client.telephoneClient" class="form-control"/>
+                        </div>
+                        
+                       <label class="col-md-2 control-label">Boite postale</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="numero" required="" disabled="true"
+                                   ng-model="client.boitepostale" class="form-control"/>
+                        </div>
+                       
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <uib-tabset>
+                <uib-tab index="0" heading="Factures non réglées"  active="true">
+                 <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <button class="btn btn-default btn-rounded"  style="color:blue" ng-click="loadFacturesNonReglees(client.id)">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                    </div>
+                </div>
+               <div class="table-responsive">
+                <table class="jh-table table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><span >Date Facture</span></th>
+                            <th><span >Numéro du bon de sortie</span></th>
+                            <th><span >Montant</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="factureNonReglee in facturesNonReglees">
+                            
+                            <td ng-repeat='(k,v) in factureNonReglee' >
+                                    <span ng-show='k!=0 && k!=1'>{{v}}</span>
+                                     <span ng-show='k==1'>{{v | date : "dd-MM-yyyy"}}</span>
+                                    <span ng-show='k==0'>#</span>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span style='font-weight:bold;color:red'>Montant Total</span></td>
+                            <td>{{totalFacturesNonReglees}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                </uib-tab>
+                <uib-tab index="1" heading="Achats"  active="true">
+                   <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <button class="btn btn-default btn-rounded"  style="color:blue" ng-click="loadAllFacturesClient(client.id)">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                    </div>
+                </div>
+               <div class="table-responsive">
+                <table class="jh-table table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><span >Date Facture</span></th>
+                            <th><span >Numéro du bon de sortie</span></th>
+                            
+                            <th><span >Montant</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <tr ng-repeat="factureClient in AllFacturesClient">
+                                <td ng-repeat='(k,v) in factureClient' >
+                                    <span ng-show='k!=0 && k!=1'>{{v}}</span>
+                                     <span ng-show='k==1'>{{v | date : "dd-MM-yyyy"}}</span>
+                                    <span ng-show='k==0'>#</span>
+                                </td>
+                            </tr>
+                            <td colspan="3"><span style='font-weight:bold;color:red'>Montant Total</span></td>
+                            <td>{{totalFacturesClient}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>
+</div>

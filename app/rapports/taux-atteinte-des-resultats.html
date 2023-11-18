@@ -1,0 +1,192 @@
+<div class="panel panel-body">
+    <form role="form" class="form-horizontal">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="field_dateDebut">Date du mois </label>
+                <div class="col-md-6" >
+                    <p class="input-group">
+                        <input type="text"  id="field_dateDebut" name="dateDebutMois" uib-datepicker-popup="dd MMMM yyyy"
+                               ng-model="vm.rapportData.dateDebutPeriode" is-open="vm.datePickerOpenStatus.dateDebutMois" class="form-control" required />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                    <div ng-show="editForm.dateDebut.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+<!--            <div   class="form-group"  >
+                <label class="col-md-2 control-label" for="field_dateFin">Date fin période </label>
+                <div class="col-md-6">
+                    <p class="input-group">
+                        <input type="text" id="field_dateFin" name="dateFinMois" uib-datepicker-popup="{{dateformat}}" 
+                               ng-model="vm.rapportData.dateFinPeriode" is-open="vm.datePickerOpenStatus.dateFinMois" class="form-control" required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                    <div ng-show="editForm.dateFin.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>-->
+            <!--            <div class="form-group">
+                            <label class="col-md-2 control-label">District </label>
+                            <div class="col-md-6">
+                                <select name="Commande" required="" ng-model="vm.livraison.commande"
+                                        ng-options="commande as commande.numeroCommande for commande in vm.commandes track by commande.id"
+                                        class="form-control" >
+                                    <option value="" default selected >choisissez le district </option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>-->
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn btn-default btn-rounded" ng-click="vm.afficherTauxAtteinteObjectif()" type="submit"> Valider</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="panel panel-body">
+    <form role="form" >
+        <div class=" col-md-4 section">
+            <div style="border-color: green">
+            <p> Taux d'atteinte des résultats </p>
+            <div class="form-group">
+                <div class="radio">
+                    <label class="i-checks">
+                        <input type="radio" name="a" value="option1" ng-model="content">
+                        <i></i>
+                        par mois
+                    </label>
+                </div>
+                <div class="radio">
+                    <label class="i-checks">
+                        <input type="radio" name="a" value="option2" ng-model="content" >
+                        <i></i>
+                        par trimestre
+                    </label>
+                </div>
+                <div class="radio">
+                    <label class="i-checks">             checked=""
+                        <input type="radio" name="a" value="option3" ng-model="content" >
+                        <i></i>
+                        par année
+                    </label>
+                </div>
+
+                                    <div class="form-group">
+                                        <label>par mois</label>
+                                        <label class="i-switch i-switch-md bg-primary m-t-xs m-r">
+                                            <input type="radio" name="switch" checked="">
+                                            <i></i>
+                                        </label>
+                                        <label>par trimestre</label>
+                                        <label class="i-switch i-switch-md bg-primary m-t-xs m-r">
+                                            <input type="radio" name="switch">
+                                            <i></i>
+                                        </label>
+                                        <label>par année</label>
+                                        <label class="i-switch i-switch-md bg-primary m-t-xs m-r">
+                                            <input type="radio" name="switch">
+                                            <i></i>
+                                        </label>
+                                    </div>
+
+            </div>
+            </div>
+        </div>
+
+        <div class=" col-md-8 section">
+            <div class="form-group">                   
+                <select name="mois" required="" class="form-control" ng-show="content === 'option1'"  >
+                    <option value="" >choisissez le mois </option>
+                    <option value="1">Janvier</option>
+                    <option value="2">Février</option>
+                    <option value="3">Mars</option>
+                    <option value="4">Avril</option>
+                    <option value="5">Mai</option>
+                    <option value="6">Juin</option>
+                    <option value="7">Juillet</option>
+                    <option value="8">Août</option>
+                    <option value="9">Septembre</option>
+                    <option value="10">Octobre</option>
+                    <option value="11">Novembre</option>
+                    <option value="12">Décembre</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+
+                <select name="trimestre" required="" class="form-control" ng-show="content === 'option2'" >
+                    <option value="" >choisissez le trimestre </option>
+                    <option value="T1">Premier trimestre (Janvier-Février-Mars)</option>
+                    <option value="T2">Deuxième trimestre (Avril-Mai-Juin)</option>
+                    <option value="T3">Troisième trimestre (Juillet-Août-Septembre)</option>
+                    <option value="T4">Quatrième trimestre (Octobre-Novembre-Décembre)</option>
+
+                </select>
+
+            </div>
+            <div class=" form-group">
+                <select name="annee" required="" class="form-control" ng-show="content === 'option3'" >
+                    <option value="" >choisissez l'année </option>
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12 section">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-default  btn-rounded" type="submit" > Valider</button>
+            </div>
+        </div>
+        </div>
+</div>
+
+</form>
+
+</div> -->
+
+<!--<div class="col-md-3 col-sm-4">
+          <i class="icon-screen-desktop"></i>
+          icon-screen-desktop
+      </div>-->

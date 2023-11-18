@@ -1,0 +1,291 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Approvisionnement</h1>
+    <small>Enregistre la reception des produits au magasin</small>
+</div>
+
+<!--<div class="wrapper-md" ng-controller="FormDemoCtrl">-->
+<!--<div class="row">-->
+<div class="col-md-12 wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Approvisionnement</div>
+        <div class="panel-body">
+            <!--<form name="editForm" role="form" ng-submit="vm.save()" novalidate show-validation class="form-horizontal">-->
+
+                <jhi-alert-error></jhi-alert-error>
+
+                <fieldset style="display: none">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="id" translate="global.field.id">ID</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="id" name="id" ng-model="vm.livraison.id"
+                                   readonly/>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <small class="text-muted">Commande</small>
+                    </legend>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Numero Commande</label>
+                        <div class="col-sm-3">
+                            <select name="Commande" required="" ng-model="vm.livraison.commande"
+                                    ng-options="commande as commande.id for commande in vm.commandes track by commande.id"
+                                    class="form-control">
+                                <option value=""></option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <small class="text-muted">*</small>
+                    </div>
+
+                    <label class="col-md-2 control-label">Fabricant</label>
+                    <div class="col-sm-3">
+                        <select name="fabricant" required="" ng-model="vm.livraison.commande.fabricant"
+                                class="form-control">
+                            <option value=""></option>
+                        </select>
+                        <span ng-show="form.validateInput('fabricant', 'required')" class="text-danger">This field is required</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <small class="text-muted">*</small>
+                    </div>
+                </fieldset>
+
+        </div>
+        <fieldset>
+            <legend>
+                <small class="text-muted">Livraison</small>
+            </legend>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Numero livraison</label>
+                <div class="col-sm-3">
+                    <input type="text" name="digits" required="" ng-pattern="/^[0-9]+$/" ng-model="digits"
+                           class="form-control"/>
+                    <span ng-show="form.validateInput('digits', 'pattern')" class="text-danger">This field must contain only digits</span>
+                </div>
+
+                <div class="col-sm-1">
+                    <small class="text-muted">*</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Date livraison</label>
+                    <div class="col-sm-3">
+                        <p class="input-group">
+                            <input id="field_dateLivraison " type="text" name="dateFin"
+                                   uib-datepicker-popup="{{dateformat}}"
+                                   ng-model="vm.livraisonf.dateLivraison"
+                                   is-open="vm.datePickerOpenStatusFin.dateLivraison" class="col-sm-3 form-control"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default"
+                                                ng-click="vm.openCalendarFin('dateLivraison')"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                            </span>
+                        </p>
+                        <span ng-show="form.validateInput('dateLivraison', 'required')" class="text-danger">This field is required</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <small class="text-muted">*</small>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Magasin</label>
+                <div class="col-md-6">
+                    <select class="form-control" id="field_magasin" name="magasin" ng-model="vm.livraison.magasin"
+                            ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id">
+                        <option value=""></option>
+                    </select>
+                    <span ng-show="form.validateInput('produit', 'required')"
+                          class="text-danger">This field is required</span>
+                </div>
+                <div class="col-md-4">*</div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <small class="text-muted">Produit</small>
+            </legend>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Produit</label>
+                <div class="col-sm-3">
+                    <select name="produit" required="" ng-model="vm.produit.nomProduit" class="form-control">
+                        <option value=""></option>
+                    </select>
+                    <span ng-show="form.validateInput('produit', 'required')"
+                          class="text-danger">This field is required</span>
+                </div>
+                <div class="col-sm-1">
+                    <small class="text-muted">*</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Quantite livree</label>
+                    <div class="col-sm-3">
+                        <input type="number" name="quantite" required="" ng-pattern="/^[0-9]+$/"
+                               ng-model="vm.livraison.quantiteLivre" class="form-control"/>
+                        <span ng-show="form.validateInput('quantite', 'number')" class="text-danger">This field must be a valid number</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <small class="text-muted">*</small>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Numero lot </label>
+                <div class="col-md-6">
+                    <input type="text" name="lot" required="" ng-pattern="/^[0-9]+$/" ng-model="vm.produit.lot"
+                           class="form-control"/>
+                    <span ng-show="form.validateInput('lot', 'number')" class="text-danger">This field must be a valid number</span>
+                </div>
+                <div class="col-md-4">
+                    <small class="text-muted">*</small>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="panel-footer text-center">
+            <button type="submit" class="btn btn-primary">Ajouter ligne approvisionnement</button>
+        </div>
+
+        <fieldset>
+
+            <div class="table-responsive">
+                <legend>
+                    <small class="text-muted">Ligne d'approvisionnement</small>
+                </legend>
+                <table class="jh-table table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="display: none"><span translate="global.field.id">ID</span></th>
+                        <th>Date Livraison</th>
+                        <th>Quantite Livree</th>
+                        <th>Magasin</th>
+                        <th>Commande</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="livraison in vm.livraisons track by livraison.id">
+                        <td style="display: none"><a ui-sref="livraison-detail({id:livraison.id})">{{livraison.id}}</a>
+                        </td>
+                        <td>{{livraison.dateLivraison| date:'mediumDate'}}</td>
+                        <td>{{livraison.quantiteLivre}}</td>
+                        <td>
+                            <!--<a ui-sref="magasin-detail({id:livraison.magasin.id})">{{livraison.magasin.nomMagasin}}</a>-->
+                            {{livraison.magasin.nomMagasin}}
+                        </td>
+                        <td>
+                            <!--<a ui-sref="commande-detail({id:livraison.commande.id})">{{livraison.commande.id}}</a>-->
+                            {{livraison.commande.id}}
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group flex-btn-group-container">
+                                <button type="submit"
+                                        ui-sref="livraison-detail({id:livraison.id})"
+                                        class="btn btn-info btn-sm">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                                </button>
+                                <button type="submit"
+                                        ui-sref="livraison.edit({id:livraison.id})"
+                                        class="btn btn-primary btn-sm">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                                </button>
+                                <button type="submit"
+                                        ui-sref="livraison.delete({id:livraison.id})"
+                                        class="btn btn-danger btn-sm">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                    <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-success" style="color: white;">Valider Approvisionnement</button>
+        </div>
+        <div class="col-sm-1"></div>
+        <p></p>
+        <!--                    </div>
+                        </div>-->
+        </form>
+    </div>
+</div>
+</div>
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div ng-controller="SweetAlertController as sweetalert" class="container-fluid">
+   <h4 class="page-header mt0">Usage examples</h4>
+   <div class="row">
+      <div class="col-sm-9 col-lg-6">
+         <p>A basic message</p>
+      </div>
+      <div class="col-sm-3 col-lg-6">
+         <p><a href="" ng-click="sweetalert.demo1();" class="btn btn-primary">Try me!</a>
+         </p>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-9 col-lg-6">
+         <p>A title with a text under</p>
+      </div>
+      <div class="col-sm-3 col-lg-6">
+         <p><a href="" ng-click="sweetalert.demo2();" class="btn btn-primary">Try me!</a>
+         </p>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-9 col-lg-6">
+         <p>A success message!</p>
+      </div>
+      <div class="col-sm-3 col-lg-6">
+         <p><a href="" ng-click="sweetalert.demo3();" class="btn btn-primary">Try me!</a>
+         </p>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-9 col-lg-6">
+         <p>A warning message, with a function attached to the &quot;Confirm&quot;-button</p>
+      </div>
+      <div class="col-sm-3 col-lg-6">
+         <p><a href="" ng-click="sweetalert.demo4();" class="btn btn-primary">Try me!</a>
+         </p>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-9 col-lg-6">
+         <p>... and by passing a parameter, you can execute something else for &quot;Cancel&quot;.</p>
+      </div>
+      <div class="col-sm-3 col-lg-6">
+         <p><a href="" ng-click="sweetalert.demo5();" class="btn btn-primary">Try me!</a>
+         </p>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-9 col-lg-6">
+         <p>A message with a custom icon</p>
+      </div>
+      <div class="col-sm-3 col-lg-6">
+         <p><a href="" ng-click="sweetalert.demo6();" class="btn btn-primary">Try me!</a>
+         </p>
+      </div>
+   </div>
+</div>-->

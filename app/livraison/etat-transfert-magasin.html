@@ -1,0 +1,102 @@
+<!--<div class="col-md-12">-->
+<div class="col-md-12 well well-sm" style="text-align: center"> 
+    <b>Rapport des transferts des produits par magasin</b></div>
+<div class="col-md-12">
+
+    <form   role="form" >
+        <div class="row">
+            <div class=" col-sm-5 form-group">
+
+                <label class=" control-label">Produit</label>
+                <div >
+                    <select class="form-control" name="produit" >
+                        <option value=""> </option>                                
+                    </select>
+                </div>        
+            </div> 
+        </div>
+        <div class="row">
+            <div class=" col-md-5 form-group">
+                <label class="control-label"  for="field_dateLivraison">Date début période</label>
+                <div class="input-group">
+                    <input id="field_dateLivraison" type="text" class="form-control" name="dateLivraison" uib-datepicker-popup="{{dateformat}}" 
+                           ng-model="vm.livraison.dateLivraison" is-open="vm.datePickerOpenStatus.dateLivraison" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateLivraison')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.dateLivraison.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.dateLivraison.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div> 
+            <div class="col-md-5 form-group">
+                <label class="control-label"  for="field_dateLivraison">Date fin période</label>
+                <div class=" input-group">
+                    <input id="field_dateLivraison" type="text" class="form-control" name="dateLivraison" uib-datepicker-popup="{{dateformat}}" 
+                           ng-model="vm.livraison.dateLivraison" is-open="vm.datePickerOpenStatus.dateLivraison" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateLivraison')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.dateLivraison.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.dateLivraison.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>            
+            </div>
+            <div class=" col-md-2 input-group">
+                <br/>
+            <button type="submit" class="btn btn-info  btn-rounded" style="color: white;">
+                <span><i class="glyphicon glyphicon-search"></i> Recherche</span>                       
+            </button> 
+            </div>   
+        </div>
+    </form>
+    <br/>
+    <div class="well well-sm"><b>La quantité totale de produit tranférée :</b></div>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    
+                    <th><span >Date</span></th>
+                    <th><span >Numero lot</span></th>
+                    <th><span >Quantité transférée</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td> </td>
+                    <td></td>
+                    <td></td>
+                    
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            
+                            <button type="submit"
+                                    ui-sref="livraison.edit({id:livraison.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="livraison.delete({id:livraison.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="#" class="btn btn-default btn-rounded "><span class="glyphicon glyphicon-print"></span> Imprimer</a>
+</div>
+
+<!--</div>-->

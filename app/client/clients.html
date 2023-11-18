@@ -1,0 +1,110 @@
+<div>
+    <h2 >Clients</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="client.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  >
+                        Creer un nouveau Client
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control"  ng-change="vm.trouverClient()" ng-model="vm.searchQuery" id="searchQuery" placeholder="Retrouver un client par nom" style="text-transform: uppercase;">
+                        <span  class="input-group-btn width-min" >
+                            <!--<button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">-->
+                            <button class="btn btn-info" ng-click="vm.trouverClient()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th style="display:none"><span translate="global.field.id">ID</span></th>
+                    <th><span >Nom</span></th>
+                    <th style="display: none"><span >Localité</span></th>
+                    <th><span >Téléphone</span></th>
+                    <th><span >Boite postale</span></th>
+                    <th><span >Catégorie</span></th>
+                    <th><span >Quartier</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="client in vm.clients track by client.id">
+                    <td style="display:none"><a ui-sref="client-detail({id:client.id})">{{client.id}}</a></td>
+                    <td>{{client.nomClient}}</td>
+                    <td style="display: none">{{client.localiteClient}}</td>
+                    <td>{{client.telephoneClient}}</td>
+                    <td>{{client.boitepostale}}</td>
+                    <td>
+                        {{client.categorieclient.libelleCategorieclient}}
+                        <!--                         <a ui-sref="categorieclient-detail({id:client.categorieclient.id})">{{client.categorieclient.libelleCategorieclient}}</a>-->
+                        <!--<a ui-sref="categorieclient-detail({id:client.categorieclient.id})">{{client.categorieclient.libelleCategorieClient}}</a>-->
+                    </td>
+                    <td>
+                        {{client.localite.displayName}}
+                        <!--<a ui-sref="localite-detail({id:client.localite.id})">{{client.localite.displayName}}</a>-->
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit" style="display:none"
+                                    ui-sref="client-detail({id:client.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" ></span>
+                                Détails
+                            </button>
+                            <button type="submit"
+                                    ui-sref="client.edit({id:client.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" ></span>
+                                Editer
+                            </button>
+                            <button type="submit" ng-disabled="true"
+                                    ui-sref="client.delete({id:client.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" ></span>
+                                Supprimer
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(0)">
+            << 
+        </button>
+        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(vm.currentPage - 1)">
+            < Précedent
+        </button>
+        {{vm.currentPage + 1}}/{{vm.totalPage}}
+        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.currentPage + 1)">
+            Suivant >
+        </button>
+        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.totalPage - 1)">
+            >>
+        </button>
+
+    </div>
+</div>

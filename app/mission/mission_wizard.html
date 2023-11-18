@@ -1,0 +1,454 @@
+<!--<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Fenetre Mission</h4>
+</div>-->
+<!--<div class="modal-body">-->
+    <!--<div class="row">-->
+        <div class="bg-light lter b-b wrapper-md">
+            <h1 class="m-n font-thin h3">Créer une mission</h1>
+            <small>Plusieurs activités peuvent se dérouler au cours d'une mission</small>
+            <jhi-alert></jhi-alert>
+        </div>
+
+        <div class="wrapper-md">
+            <uib-tabset class="tab-container" active="steps.indexActif" ng-init="steps={percent:20, step1:true, step2:false, step3:false, step4:false, indexActif:0}">
+                <uib-tab index="0" heading="Mission"  active="steps.step1" select="steps.percent=40">
+                    <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+
+                    <form name="step1" class="form-validation form-horizontal">
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Intitulé mission</label>                
+                            <div class="col-md-6">
+                                <input type="text" id="libelle" required="" name="libelle" ng-model="vm.mission.libelle" class="form-control"/>
+                                <span ng-show="form.validateInput('libelle', 'required')" class="text-danger">This field is required</span>
+
+                            </div>
+                            <div class="col-sm-1">
+                                <small class="text-muted">*</small>
+                            </div>
+                            <div class="col-md-4">  </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Date début</label>
+                            <div class="col-md-6">
+                                <p class="input-group">
+                                    <input id="field_dateLivraison" required type="text" name="dateDebut"  uib-datepicker-popup="{{dateformat}}"
+                                           ng-model="vm.mission.dateDebut"
+                                           is-open="vm.datePickerOpenStatus.dateDebut"
+                                           class="form-control"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default"
+                                                ng-click="vm.openCalendar('dateDebut')"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                                <span ng-show="form.validateInput('dateDebut', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-md-4"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Date fin</label>
+                            <div class="col-md-6">
+                                <p class="input-group">
+                                    <input id="field_dateFin" required type="text" name="dateFin"  uib-datepicker-popup="{{dateformat}}"
+                                           ng-model="vm.mission.dateFin"
+                                           is-open="vm.datePickerOpenStatus.dateFin"
+                                           class="form-control"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default"
+                                                ng-click="vm.openCalendar('dateFin')"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                                <span ng-show="form.validateInput('dateFin', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-md-4"> </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Localité</label>                
+                            <div class="col-md-6">
+                                <select class="form-control" required="" id="localite" name="localite"
+                                        ng-model="vm.mission.localite"
+                                        ng-options="localite as localite.displayName for localite in vm.localites track by localite.id">
+                                    <option value=""></option>
+                                </select>
+                                <span ng-show="form.validateInput('localite', 'required')" class="text-danger">This field must contain only digits</span>
+                            </div>
+                            <div class="col-md-4"> </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Budget </label>                
+                            <div class="col-md-6">
+                                <input type="number" required="" id="budget" name="budget" ng-model="vm.budget" class="form-control"/>
+                                <span ng-show="form.validateInput('budget', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <small class="text-muted">*</small>
+                            </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Objectif général</label>                
+                            <div class="col-md-6">
+                                <input type="text" required="" id="objectif" name="objectif" ng-model="vm.mission.objectifGeneral" class="form-control"/>
+                                <span ng-show="form.validateInput('objectif', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <small class="text-muted">*</small>
+                            </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Objectif spécifique</label>                
+                            <div class="col-md-6">
+                                <input type="text" required="" id="specifique" name="specifique" ng-model="vm.mission.objectifSpecifique" class="form-control"/>
+                                <span ng-show="form.validateInput('specifique', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <small class="text-muted">*</small>
+                            </div>
+                        </div>
+                        <div class="m-t m-b">                    
+                            <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded"
+                                    ng-click="steps.indexActif = 1">Suivant
+                            </button>
+                        </div>
+                    </form>
+                </uib-tab>
+                <uib-tab index="1" heading="Activités de la mission" disable="step1.$invalid" active="steps.step2" select="steps.percent=60">
+
+                    <form name="step2" class="form-validation form-horizontal">
+                        <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Libellé activité</label>                
+                            <div class="col-md-6">
+                                <input type="text" required="" id="libelle" name="libelle" ng-model="vm.activite.nomActivite" class="form-control"/>
+                                <span ng-show="form.validateInput('libelle', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <small class="text-muted">*</small>
+                            </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Description</label>                
+                            <div class="col-md-6">
+                                <input type="text" required="" id="description" name="description" ng-model="vm.activite.descriptionActivite" class="form-control"/>
+                                <span ng-show="form.validateInput('description', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <small class="text-muted">*</small>
+                            </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Résultats attendus</label>                
+                            <div class="col-md-6">
+                                <textarea required="" class="form-control" rows="5" id="resultat" name="resultat" ng-model="vm.activite.resultatAttendu"></textarea>
+                                <span ng-show="form.validateInput('resultat', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <small class="text-muted">*</small>
+                            </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Type d'activité</label>                
+                            <div class="col-md-6">
+                                <select class="form-control" required="" id="typeactivite" name="typeactivite"
+                                        ng-model="vm.activite.typeActivite"
+                                        ng-options="typeactivite as typeactivite.libelle for typeactivite in vm.typeactivites track by typeactivite.id">
+                                    <option value=""></option>
+                                </select>
+                                <span ng-show="form.validateInput('typeactivite', 'required')" class="text-danger">This field must contain only digits</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <small class="text-muted">*</small>
+                            </div>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <button type="submit" ng-disabled="step2.$invalid" ng-click="vm.addLigneActiviteMission()"  class="btn btn-info btn-rounded">
+                                Ajouter activité </button>
+                        </div>
+                        <fieldset>
+                            <legend>
+                                <small class="text-muted">Activités de la mission</small>
+                            </legend>
+                            <div class="table-responsive">
+                                <table class="jh-table table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Intitulé mission</th>
+                                            <th>Activité</th>
+                                            <th>Résultats attendus</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="ligne in vm.ligneActiviteMissions">                                    
+                                            <td ng-bind="ligne.activite.nomActivite"> </td>
+                                            <td ng-bind="ligne.activite.descriptionActivite"> </td>
+                                            <td ng-bind="ligne.activite.resultatAttendu"> </td>
+                                            <td class="text-right"> 
+                                                <div class="btn-group flex-btn-group-container">
+                                                    <button type="submit" ng-click="vm.removeLigneActiviteMission(ligne)"
+                                                            class="btn btn-danger btn-sm">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                                        <span class="hidden-xs hidden-sm"
+                                                              translate="entity.action.delete"></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </fieldset>
+
+
+                        <div class="m-t m-b">
+                            <button type="button" class="btn btn-default btn-rounded" ng-click="steps.indexActif = 0" style="width:100px">Préc.
+                            </button>
+                            <button type="submit" ng-disabled="(vm.ligneActiviteIndex >= 1) ? false : true"
+                                    class="btn btn-default btn-rounded" style="width:100px"
+                                    ng-click="steps.indexActif = 2" >Suivant
+                            </button>
+                        </div>
+                    </form>
+                </uib-tab>
+                <uib-tab index="2" heading="Budget de la mission" disable="step2.$invalid"  active="steps.step3" select="steps.percent=80">            
+
+                    <form name="step3" class="form-validation form-horizontal">
+                        <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+                        <!--            <div class="form-group">                    
+                                            <label class="col-md-2 control-label">Intutilé mission</label>                
+                                            <div class="col-md-6">
+                                                <input type="text" id="id" name="id" ng-model="vm.mission.libelle" class="form-control" readonly/>
+                                            </div>
+                                            <div class="col-md-4">  </div>
+                                        </div>-->
+<!--                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Budget mission {{vm.montantBudgetMax}}</label>                
+                            <div class="col-md-6">
+                                <input type="number" id="id" name="id" ng-model="vm.budget" class="form-control" readonly/>
+                            </div>
+                            <div class="col-md-4">  </div>
+                        </div>-->
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="alert alert-success">
+
+                                    <span class="glyphicon glyphicon-ok"></span> <strong>BUDGET </strong>
+                                    <hr class="message-inner-separator">
+                                    <p style='font-size:16px' ng-bind="vm.budget"></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div ng-class="{'alert alert-success' : vm.montantBudgetMax == vm.budget , 'alert alert-danger' : vm.montantBudgetMax < vm.budget}">
+
+                                    <span class="glyphicon glyphicon-ok"></span> <strong>MONTANT DES LIGNES BUDGET</strong>
+                                    <hr class="message-inner-separator">
+                                    <p style='font-size:16px' ng-bind="vm.montantBudgetMax"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <fieldset>
+                            <legend><small class="text-muted"> lignes du budget </small></legend>
+                            <div class="form-group">                    
+                                <label class="col-md-2 control-label">Libellé frais</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="id" required="" name="libelleLigneBudget" ng-model="vm.lignebudget.libelleLigneBudget" class="form-control" />
+                                    <span ng-show="form.validateInput('libelleLigneBudget', 'required')" class="text-danger">This field must contain only digits</span>
+                                </div>
+                                <div class="col-md-4">  </div>
+                            </div>
+
+                            <div class="form-group">                    
+                                <label class="col-md-2 control-label">Montant frais</label>
+                                <div class="col-md-6">
+                                    <input type="number" id="id" name="montantLigneBudget" ng-model="vm.lignebudget.montantLigneBudget" class="form-control" />
+                                    <span ng-show="form.validateInput('montantLigneBudget', 'required')" class="text-danger">This field must contain only digits</span>
+                                </div>
+                                <div class="col-md-4">  </div>
+                            </div>
+                        </fieldset>
+                        <div class="panel-footer text-center">
+                            <button type="submit" ng-disabled="step3.$invalid || (vm.montantBudgetMax == vm.budget)" ng-click="vm.addLigneBudgetMission()"  class="btn btn-info btn-rounded">
+                                Ajouter lignes budget </button>
+                        </div>
+
+                        <fieldset>
+                            <legend>
+                                <small class="text-muted">Les lignes du budget</small>                        
+                            </legend>
+                            <div class="table-responsive">
+                                <table class="jh-table table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Ligne</th>
+                                            <th>Montant</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="ligne in vm.ligneBudgetMissions">
+                                            <td ng-bind="ligne.libelleLigneBudget"> </td>
+                                            <td ng-bind="ligne.montantLigneBudget"> </td>
+                                            <td class="text-right"> 
+                                                <div class="btn-group flex-btn-group-container">
+
+                                                    <button type="submit" ng-click="removeLigneBudgetMission(ligne)"
+                                                            class="btn btn-danger btn-sm">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                                        <span class="hidden-xs hidden-sm"
+                                                              translate="entity.action.delete"></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </fieldset>
+                        <div class="m-t m-b">
+                            <button type="button" class="btn btn-default btn-rounded" ng-click="steps.indexActif = 1" style="width:100px">Préc.
+                            </button>
+                            <!-- ng-disabled="(vm.ligneCommandeIndex >= 1 && maxqte >= 0) ? false : true"     -->
+                            <button type="submit" 
+                                    class="btn btn-default btn-rounded" style="width:100px"
+                                    ng-click="steps.indexActif = 3" ng-disabled="(vm.ligneBudgetIndex >= 1) ? false : true">
+                                <span>suivant</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </uib-tab>      
+                <uib-tab index="3" heading="Détails de la mission" disable="step3.$invalid" active="steps.step4" select="steps.percent=100">            
+                    <form name="step4" class="form-validation form-horizontal">
+                        <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Intutilé mission</label>                
+                            <div class="col-md-6">
+                                <input type="text" id="id" name="id" ng-model="vm.mission.libelle" class="form-control" readonly/>
+                            </div>
+                            <div class="col-md-4">  </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Date début</label>
+                            <div class="col-md-6">
+                                <!--<p class="input-group">-->
+                                <input id="field_dateLivraison" required type="text" name="dateDebut"  
+                                       ng-model="vm.mission.dateDebut" readonly   class="form-control"/>
+                            </div>
+                            <div class="col-md-4"> </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Date fin</label>
+                            <div class="col-md-6">
+                                <!--<p class="input-group">-->
+                                <input id="field_dateLivraison" required type="text" ng-model="vm.mission.dateFin"
+                                       class="form-control" readonly/>
+                            </div>
+                            <div class="col-md-4"> </div>
+                        </div>
+
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Localité</label>                
+                            <div class="col-md-6">
+                                <select class="form-control" name="localite" ng-model="vm.mission.localite" 
+                                        ng-options="localite as localite.displayName for localite in vm.localites track by localite.id" required="" readonly>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="col-md-4"> </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Budget </label>                
+                            <div class="col-md-6">
+                                <input type="number" id="id" name="id" ng-model="vm.budget" class="form-control" readonly/>
+                            </div>
+                            <div class="col-md-4">  </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Objectif général</label>                
+                            <div class="col-md-6">
+                                <input type="text" id="id" name="id" ng-model="vm.mission.objectifGeneral" class="form-control" readonly/>
+                            </div>
+                            <div class="col-md-4">  </div>
+                        </div>
+                        <div class="form-group">                    
+                            <label class="col-md-2 control-label">Objectif spécifique</label>                
+                            <div class="col-md-6">
+                                <input type="text" id="id" name="id" ng-model="vm.mission.objectifSpecifique" class="form-control" readonly/>
+                            </div>
+                            <div class="col-md-4">  </div>
+                        </div>
+
+                        <fieldset>
+                            <legend>
+                                <small class="text-muted">Activités de la mission</small>
+                            </legend>
+                            <div class="table-responsive">
+                                <table class="jh-table table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Intitulé mission</th>
+                                            <th>Activité</th>
+                                            <th>Résultats attendus</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="ligne in vm.ligneActiviteMissions">                                    
+                                            <td ng-bind="ligne.nomActivite"> </td>
+                                            <td ng-bind="ligne.descriptionActivite"> </td>
+                                            <td ng-bind="ligne.resultatAttendu"> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>
+                                <small class="text-muted">Budget de la mission</small>
+                            </legend>
+                            <div class="table-responsive">
+                                <table class="jh-table table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <!--<th style="display: none"><span translate="global.field.id">ID</span></th>-->
+                                            <th>Ligne</th>
+                                            <th>Montant</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="ligne in vm.ligneBudgetMissions">
+                                            <td ng-bind="ligne.libelleLigneBudget"> </td>
+                                            <td ng-bind="ligne.montantLigneBudget"> </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </fieldset>
+                        <div class="m-t m-b">
+                            <button type="button" class="btn btn-default btn-rounded" ng-click="steps.indexActif = 3" style="width:100px">Préc.
+                            </button>
+                            <!-- ng-disabled="(vm.ligneCommandeIndex >= 1 && maxqte >= 0) ? false : true"     style="width:100px"-->
+                            <button type="submit" 
+                                    class="btn btn-default btn-rounded" 
+                                    ng-click="vm.saveMission()">
+                                <span>Valider mission</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </uib-tab>
+
+            </uib-tabset>
+
+        </div> 
+    <!--</div>-->
+<!--</div>-->
+
+

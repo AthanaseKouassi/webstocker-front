@@ -1,0 +1,26 @@
+{
+    "webstockerApp": {
+        "drugs" : {
+            "home": {
+                "title": "Drugs",
+                "createLabel": "Créer un nouveau Drugs",
+                "createOrEditLabel": "Créer ou éditer un Drugs",
+                "search": "Recherche pour Drugs"
+            },
+            "created": "Un nouveau Drugs a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Drugs avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Drugs avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Drugs {{ id }} ?"
+            },
+            "detail": {
+                "title": "Drugs"
+            },
+            "name": "Name",
+            "route_desc": "Route_desc",
+            "form_desc": "Form_desc",
+            "dosage": "Dosage",
+            "unit_dosage": "Unit_dosage"
+        }
+    }
+}

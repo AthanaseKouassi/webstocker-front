@@ -1,0 +1,99 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myBonDeSortieLabel" translate="webstockerApp.bonDeSortie.home.createOrEditLabel">Create or edit a BonDeSortie</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.bonDeSortie.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.bonDeSortie.numero" for="field_numero">Numero</label>
+            <input type="text" class="form-control" name="numero" id="field_numero"
+                    ng-model="vm.bonDeSortie.numero"
+                    required />
+            <div ng-show="editForm.numero.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.numero.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.bonDeSortie.daateCreation" for="field_daateCreation">DaateCreation</label>
+                <div class="input-group">
+                    <input id="field_daateCreation" type="text" class="form-control" name="daateCreation" uib-datepicker-popup="{{dateformat}}" ng-model="vm.bonDeSortie.daateCreation" is-open="vm.datePickerOpenStatus.daateCreation"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('daateCreation')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.daateCreation.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.daateCreation.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.bonDeSortie.typeSortie" for="field_typeSortie">TypeSortie</label>
+            <select class="form-control" name="typeSortie" ng-model="vm.bonDeSortie.typeSortie" id="field_typeSortie" required>
+                <option value="TRANSFERT" translate="webstockerApp.TypeSortie.TRANSFERT">TRANSFERT</option>
+                <option value="VENTE" translate="webstockerApp.TypeSortie.VENTE">VENTE</option>
+                <option value="PROMOTION" translate="webstockerApp.TypeSortie.PROMOTION">PROMOTION</option>
+            </select>
+            <div ng-show="editForm.typeSortie.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.typeSortie.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.bonDeSortie.typeVente" for="field_typeVente">TypeVente</label>
+            <select class="form-control" name="typeVente" ng-model="vm.bonDeSortie.typeVente" id="field_typeVente">
+                <option value="CASH" translate="webstockerApp.TypeVente.CASH">CASH</option>
+                <option value="CREDIT" translate="webstockerApp.TypeVente.CREDIT">CREDIT</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label translate="webstockerApp.bonDeSortie.demandeur" for="field_demandeur">demandeur</label>
+            <select class="form-control" id="field_demandeur" name="demandeur" ng-model="vm.bonDeSortie.demandeur" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="webstockerApp.bonDeSortie.client" for="field_client">client</label>
+            <select class="form-control" id="field_client" name="client" ng-model="vm.bonDeSortie.client" ng-options="client as client.id for client in vm.clients | orderBy:'id' track by client.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="webstockerApp.bonDeSortie.magasin" for="field_magasin">magasin</label>
+            <select class="form-control" id="field_magasin" name="magasin" ng-model="vm.bonDeSortie.magasin" ng-options="magasin as magasin.id for magasin in vm.magasins track by magasin.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="webstockerApp.bonDeSortie.destination" for="field_destination">destination</label>
+            <select class="form-control" id="field_destination" name="destination" ng-model="vm.bonDeSortie.destination" ng-options="magasin as magasin.id for magasin in vm.magasins track by magasin.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

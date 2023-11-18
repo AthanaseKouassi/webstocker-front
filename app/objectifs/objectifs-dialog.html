@@ -1,0 +1,77 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" class="form-horizontal">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myObjectifsLabel" translate="webstockerApp.objectifs.home.createOrEditLabel">
+            Create or edit a Objectifs</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" style="display: none">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.objectifs.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="field_produit">Produit</label>
+            <div class="col-md-6">
+            <select class="form-control" id="field_produit" name="produit" ng-model="vm.objectifs.produit" 
+                    ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                <option value=""></option>
+            </select>
+                <span ng-show="form.validateInput('produit', 'required')" class="text-danger">This field is required</span>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="field_periode">Mois</label>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input id="field_periode" type="text" class="form-control" name="periode" uib-datepicker-popup="dd MMMM yyyy" 
+                           ng-model="vm.objectifs.periode" is-open="vm.datePickerOpenStatus.periode" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('periode')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    <span ng-show="form.validateInput('periode', 'required')" class="text-danger">This field is required</span>
+                </div>
+                </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"  for="field_quantiteAttendue">Quantité prévisionnelle</label>
+            <div class="col-md-6">
+            <input type="number" class="form-control" name="quantiteAttendue" id="field_quantiteAttendue"
+                    ng-model="vm.objectifs.quantiteAttendue" required />
+            <span ng-show="form.validateInput('quantiteAttendue', 'required')" class="text-danger">This field is required</span>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="field_quantiteObtenu">Quantité vendue</label>
+            <div class="col-md-6">
+            <input type="number" class="form-control" name="quantiteObtenu" id="field_quantiteObtenu" ng-disabled="true"
+                    ng-model="vm.objectifs.quantiteObtenu" />
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"  for="field_taux">Taux (%)</label>
+            <div class="col-md-6">
+            <input type="text" class="form-control" name="taux" id="field_taux" ng-disabled="true"
+                    ng-model="vm.objectifs.taux" />
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span >Annuler</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary btn-rounded">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span >Sauvegarder</span>
+        </button>
+    </div>
+</form>

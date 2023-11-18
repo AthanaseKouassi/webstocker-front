@@ -1,0 +1,56 @@
+<div class="panel panel-body">
+    <form role="form" class="form-horizontal">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Date début période </label>
+                <div class="col-md-6" >
+                    <p class="input-group">
+                        <input type="text"  id="field_dateDebut" name="dateDebutMois" uib-datepicker-popup="dd MMMM yyyy"
+                               ng-model="vm.rapportData.dateDebutPeriode" is-open="vm.datePickerOpenStatus.dateDebutMois" class="form-control" required />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                    <div ng-show="editForm.dateDebut.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+            <div   class="form-group" >
+                <label class="col-md-2 control-label">Date fin période </label>
+                <div class="col-md-6">
+                    <p class="input-group">
+                        <input type="text"   class="form-control" id="field_dateDebut" name="dateFinMois" uib-datepicker-popup="dd MMMM yyyy"
+                                ng-model="vm.rapportData.dateFinPeriode" is-open="vm.datePickerOpenStatus.dateFinMois" required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                    <div ng-show="editForm.dateFin.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn btn-default btn-rounded" ng-click="vm.afficherChiffreAffaireParClient()" type="submit"> Valider</button>
+            </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>

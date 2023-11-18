@@ -1,0 +1,103 @@
+<!--<div class="col-md-12">-->
+<div class="col-md-12 well well-sm" style="text-align: center"> 
+    <b>Rapport des produits sortie pour des promotions par magasin</b></div>
+<div class="col-md-12">
+
+    <form   role="form" >
+        <div class="row">
+            <div class=" col-sm-5 form-group">
+
+                <label class=" control-label">Produit</label>
+                <div >
+                    <select required class="form-control" id="field_produit" name="produit"
+                            ng-model="vm.rapportData.produit"
+                            ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                        <option value=""></option>
+                    </select>
+                </div>        
+            </div> 
+        </div>
+        <div class="row">
+            <div class=" col-md-5 form-group">
+                <label class="control-label"  for="field_dateDebut">Date début période</label>
+                <div class="input-group">
+                    <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" uib-datepicker-popup="{{dateformat}}"
+                           ng-model="vm.rapportData.dateDebutPeriode" is-open="vm.datePickerOpenStatus.dateDebut" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.dateDebut.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div> 
+            <div class=" col-md-5 form-group">
+                <label class="control-label"  for="field_dateFin">Date fin période</label>
+                <div class="input-group">
+                    <input id="field_dateFin" type="text" class="form-control" name="dateFin" uib-datepicker-popup="{{dateformat}}"
+                           ng-model="vm.rapportData.dateFinPeriode" is-open="vm.datePickerOpenStatus.dateFin" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.dateFin.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div> 
+            <div class=" col-md-2 input-group">
+                <br/>
+            <button type="submit" ng-click="vm.rechercher()" class="btn btn-info  btn-rounded" style="color: white;">
+                <span><i class="glyphicon glyphicon-search"></i> Recherche</span>                       
+            </button> 
+            </div>
+        </div>
+    </form>
+    <br/>
+    <div class="well well-sm"><b>La quantité total de produit sortie en promotion : </b></div>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>                    
+                    <th><span >Date</span></th>
+                    <th><span >Numero lot</span></th>
+                    <th><span >Quantité promotion</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td> </td>
+                    <td></td>
+                    <td></td>
+                    
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            
+                            <button type="submit"
+                                    ui-sref="livraison.edit({id:livraison.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="livraison.delete({id:livraison.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="#" class="btn btn-default btn-rounded "><span class="glyphicon glyphicon-print"></span> Imprimer</a>
+</div>
+
+<!--</div>-->

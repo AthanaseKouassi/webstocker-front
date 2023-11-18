@@ -1,0 +1,68 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Réglément des factures clients</h1>
+    <small> </small>
+</div>
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Réglément des factures</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" name="editForm" role="form" novalidate  show-validation>                       
+                        <div class="form-group">
+                            <div class="col-md-6">
+                            <p> <span> Liste des factures à régler </span> </p>
+                            <p> <span> Régler une factures en cliquant sur Effectuer réglement </span></p>
+                            </div>
+<!--                            <label class="col-md-2 control-label">Client</label>
+                            <div class="col-md-6">
+                                <input class="form-control" list="clients" type="" ng-model="selectedClient" ng-change="vm.loadFacturesClient(selectedClient)"/>
+                                <datalist id="clients">
+                                    <option ng-repeat="client in vm.clients" value="{{client.nomClient}}">
+
+                                </datalist>                                
+                            </div>-->
+                            
+                        </div>
+                    </form>                    
+                    <!--<div class="well well-sm"> Total des sommes dues par xxxx est : </div>-->
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+                                    <th ><span >Date </span></th>
+                                    <th><span >N° facture</span></th>
+                                    <th><span >Client</span></th>
+                                    <th><span >Montant Total</span></th>
+                                    <th><span >Montant payé</span></th>
+                                    <th><span >Reste à payer</span></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="facture in vm.factures track by facture.factureID">
+                                    <td >{{facture.date | date:"dd MMMM yyyy"}} </td>
+                                    <td>{{facture.normalise}}  </td>
+                                    <td> {{facture.client.nomClient}} </td>
+                                    <td> {{facture.montantTotal}}</td>
+                                    <td> {{facture.montantPaye}} </td>
+                                    <td>{{facture.reste}} </td>
+                                    <td class="text-right">
+                                        <div class="btn-group flex-btn-group-container">                                            
+                                            <button type="submit"  ui-sref="paiement({numero:facture.factureID, reste: facture.reste})" class="btn btn-info btn-sm">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                <span class="hidden-xs hidden-sm">Effectuer réglement</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <!--<a href="#" class="btn btn-info "><span class="glyphicon glyphicon-print"></span> Imprimer</a>-->
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>

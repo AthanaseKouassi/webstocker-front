@@ -1,0 +1,17 @@
+
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Aperçu avant impression : Bon de sortie</h1>    <br/>
+<!--         <input ng-show="promotionUrl!=''" class="btn btn-default btn-rounded  " type="button" value="Imprimer" ng-click="getPdf(promotionUrl)"/>-->
+    <input class="btn btn-default btn-rounded" type="button" value="Imprimer" onclick="printIt()"/>
+    <script type="text/javascript">       
+        function printIt(){
+            var url = document.getElementById("pdfdoc").getAttribute("url");
+            var wnd = window.open(url);
+        }   
+    </script>
+    <jhi-alert></jhi-alert>
+</div>
+
+<div class="wrapper-md">
+    <pdf-viewer width="850" id="pdfdoc" url="{{factureZeroUrl}}"></pdf-viewer>
+</div>

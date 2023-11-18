@@ -1,0 +1,36 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Sortie de produit pour promotion</h1>
+    <small>Saisir le destinataire des produits pour la promotion</small>
+</div>
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Saisir le destinataire</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" name="editForm" role="form" novalidate  show-validation>                       
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Destinataire</label>
+                            <div class="col-md-6">
+                                <input class="form-control" list="clients" type="text" />
+                                <datalist id="clients"> 
+                                    <!--<option ng-repeat="" value="{{ }}"></option>-->
+                                    <option value="alain yao"></option>
+                                    <option value="ong stop"></option>
+                                    <option value="tout distribution"></option>
+                                    <option value="boutik ali"></option>
+                                    <option value="pf"></option>
+                                </datalist>                                
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <button type="button" class="btn btn-primary" ui-sref="facture-zero" > Continuer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>

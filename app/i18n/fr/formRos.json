@@ -1,0 +1,52 @@
+{
+    "webstockerApp": {
+        "formRos" : {
+            "home": {
+                "title": "FormRos",
+                "createLabel": "Créer un nouveau FormRos",
+                "createOrEditLabel": "Créer ou éditer un FormRos",
+                "search": "Recherche pour FormRos"
+            },
+            "created": "Un nouveau FormRos a été créé avec l'identifiant {{ param }}",
+            "updated": "Le FormRos avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le FormRos avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le FormRos {{ id }} ?"
+            },
+            "detail": {
+                "title": "FormRos"
+            },
+            "date": "Date",
+            "weightChange": "WeightChange",
+            "weakness": "Weakness",
+            "fatigue": "Fatigue",
+            "anorexia": "Anorexia",
+            "fever": "Fever",
+            "chills": "Chills",
+            "nightSweats": "NightSweats",
+            "insomnia": "Insomnia",
+            "irritability": "Irritability",
+            "heatOrCold": "HeatOrCold",
+            "intolerance": "Intolerance",
+            "changeInVision": "ChangeInVision",
+            "glaucomaHistory": "GlaucomaHistory",
+            "eyePain": "EyePain",
+            "irritation": "Irritation",
+            "redness": "Redness",
+            "excessiveTearing": "ExcessiveTearing",
+            "doubleVision": "DoubleVision",
+            "blindSpot": "BlindSpot",
+            "photophobia": "Photophobia",
+            "hearingLoss": "HearingLoss",
+            "discharge": "Discharge",
+            "pain": "Pain",
+            "vertigo": "Vertigo",
+            "tinnitus": "Tinnitus",
+            "frequentColds": "FrequentColds",
+            "soreThroat": "SoreThroat",
+            "sinusProblems": "SinusProblems",
+            "postNasalDrip": "PostNasalDrip",
+            "encounter": "Encounter"
+        }
+    }
+}

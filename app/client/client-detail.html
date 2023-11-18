@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span translate="webstockerApp.client.detail.title">Client</span> {{vm.client.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="webstockerApp.client.nomClient">Nom</dt></dt>
+        <dd>
+            <span>{{vm.client.nomClient}}<span>
+        </dd>
+        <hr>
+        <dt style="display:none"><span translate="webstockerApp.client.localiteClient">Quartier</dt></dt>
+        <dd>
+            <span>{{vm.client.localiteClient}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.client.telephoneClient">Telephone</span></dt>
+        <dd>
+            <span>{{vm.client.telephoneClient}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.client.boitepostale">Boite postale</dt></dt>
+        <dd>
+            <span>{{vm.client.boitepostale}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.client.categorieclient">Catégorie client</span></dt>
+        <dd>
+            <a ui-sref="categorieclient-detail({id:vm.client.categorieclient.id})">{{vm.client.categorieclient.libelleCategorieClient}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.client.localite">Quartier client</span></dt>
+        <dd>
+            <a ui-sref="localite-detail({id:vm.client.localite.id})">{{vm.client.localite.ville}}</a>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

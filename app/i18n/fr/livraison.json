@@ -1,0 +1,27 @@
+{
+    "webstockerApp": {
+        "livraison" : {
+            "home": {
+                "title": "Livraisons",
+                "createLabel": "Créer une nouvelle Livraison",
+                "createOrEditLabel": "Créer ou éditer un Livraison",
+                "search": "Recherche pour Livraison"
+            },
+            "created": "Une nouvelle Livraison a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Livraison avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Livraison avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Livraison {{ id }} ?"
+            },
+            "detail": {
+                "title": "Livraison"
+            },
+            "dateLivraison": "Date Livraison",
+            "quantiteLivre": "Quantite Livrée",
+            "descriptionLivraison": "Description",
+            "magasin": "Magasin",
+            "lot": "Lot",
+            "commande": "Commande"
+        }
+    }
+}

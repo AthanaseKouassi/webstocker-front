@@ -1,0 +1,188 @@
+<div class="bg-light lter b-b wrapper-md" >
+    <h1 class="m-n font-thin h3">Factures "zéro"</h1>
+    <small>Facture zéro pour les produits destinés à la promotion</small>
+</div>
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Facture zéro</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+                        <jhi-alert-error></jhi-alert-error>
+                        <div class="form-group" style="display: none">
+                            <label class="col-md-2 control-label">ID</label>
+                            <div class="col-md-6">
+                                <input type="text" id="id" name="id" readonly class="form-control"/>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Auteur de la vente</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="magasin"  >
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Date facture </label>
+                            <div class="col-md-6">
+                                <p class="input-group">
+                                    <input id="field_dateFacture" type="text" class="form-control" name="dateCommande" 
+                                             required/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFacture')">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                                <span  class="text-danger">This field is required</span>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Produit</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="produit"   >
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Numero Lot</label>
+                            <div class="col-md-6">
+                                <input type="text" id="id" name="lot" class="form-control"/>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Quantité</label>
+                            <div class="col-md-6">
+                                <input type="number" id="id" name="quantite"  class="form-control"/>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Prix Unitaire</label>
+                            <div class="col-md-6">
+                                <input type="number" id="id" name="prixUnitaire"  class="form-control"/>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-primary">Ajouter une ligne facture</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <!--<div class="panel-heading font-bold">Facture</div>-->
+
+                <div class="panel-body">
+                    <div> Ligne Facture</div>
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="display: none"><span >ID</span></th>
+                                    <th><span >Produit</span></th>
+                                    <th><span >Numero Lot</span></th>
+                                    <th><span >Quantité</span></th>
+                                    <th><span >Prix Unitaire</span></th>
+                                    <th><span >Montant</span></th>                                
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td class="text-right">
+                                        <div class="btn-group flex-btn-group-container">
+
+                                            <button type="submit"  class="btn btn-info btn-md">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                <span class="hidden-xs hidden-md" translate="entity.action.edit">Modifier</span>
+                                            </button>
+                                            <button type="submit"  class="btn btn-danger btn-md">
+                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                <span class="hidden-xs hidden-md" translate="entity.action.delete">Supprimer</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div>
+                        <div class="col-md-4">
+
+                        </div> 
+                        <div class="col-md-8 " >
+                            <form class="form-horizontal" role="form" >
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Montant Total</label>
+                                    <div class="col-md-4">
+                                        <input type="text" id="id" name="lot"  class="form-control"/>
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Remise</label>
+                                    <div class="col-md-4">
+                                        <input type="text" id="id" name="lot"  class="form-control"/>
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Net à payer </label>
+                                    <div class="col-md-4">
+                                        <input type="text" id="id" name="lot"  class="form-control"/>
+                                    </div>
+                                </div> 
+                                <div class="form-group ">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-default" >
+                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                            Annuler la facture</button>
+
+                                        <button class="btn btn-success" ui-sref="valide-vente"><span class="glyphicon glyphicon-ok-sign"></span> Valider la facture</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

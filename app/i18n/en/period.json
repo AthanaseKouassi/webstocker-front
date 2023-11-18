@@ -1,0 +1,9 @@
+{
+    "webstockerApp": {
+        "Period" : {
+            "null": "",
+            "JOUR": "JOUR",
+            "MOIS": "MOIS"
+        }
+    }
+}

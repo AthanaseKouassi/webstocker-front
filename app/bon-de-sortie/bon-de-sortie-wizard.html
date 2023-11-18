@@ -1,0 +1,21 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Editer un bon de sortie</h1>
+    <small>Le bon de sortie précède la sortie de produit soit pour la vente , la promotion ou le transfert</small>
+</div>
+<div class="wrapper-md">
+    <div class="wrapper-md">
+        <uib-tabset class="tab-container" active="steps.indexActif"
+                    ng-init="steps={percent:20, step1:true, step2:false, step3:false, indexActif:0}">
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <uib-tab index="0" heading="Livraison" active="steps.step1" select="steps.percent=10">
+                <form name="step1" class="form-validation form-horizontal">
+
+
+                </form>
+            </uib-tab>
+
+        </uib-tabset>
+    </div>
+</div>

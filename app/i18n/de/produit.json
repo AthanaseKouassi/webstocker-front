@@ -1,0 +1,29 @@
+{
+    "webstockerApp": {
+        "produit" : {
+            "home": {
+                "title": "Produits",
+                "createLabel": "Produit erstellen",
+                "createOrEditLabel": "Produit erstellen oder bearbeiten",
+                "search": "Suche nach Produit"
+            },
+            "created": "Produit erstellt mit ID {{ param }}",
+            "updated": "Produit aktualisiert mit ID {{ param }}",
+            "deleted": "Produit gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Produit {{ id }} wirklich dauerhaft gejöscht werden?"
+            },
+            "detail": {
+                "title": "Produit"
+            },
+            "nomProduit": "NomProduit",
+            "prixVente": "PrixVente",
+            "prixVenteGros": "PrixVenteGros",
+            "categorie": "Categorie",
+            "lot": "Lot",
+            "fabricant": "Fabricant",
+            "lignecommande": "Lignecommande",
+            "conditionnement": "Conditionnement"
+        }
+    }
+}

@@ -1,0 +1,98 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Liste des Bordereaux de Livraison</h1>
+    <small>Liste des bordereaux de livraison à effectuer</small>
+</div>
+<div class="wrapper-md col-md-12">
+
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Bordereaux de livraison</div>
+        <div class="panel-body">
+            <div class="col-md-12" >
+
+                <div class="form-group">
+                    <label for="cboclient_ID" class="col-md-2 control-label">Numéro bon de sortie</label>
+                    <div class="col-md-4" >
+                        <input class="form-control input-xs" type="text" placeholder="Numéro du bon de sortie"  
+                               ng-model="vm.criteria.noBonDeSortie" ng-change="vm.loadData()"/> 
+                    </div>
+                    <!--                  </div>-->
+                    <div class="btn-group">
+                        <button class="btn btn-default btn-rounded"   ng-click="vm.loadData()">
+                            <span class="glyphicon glyphicon-refresh"> Rechercher</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12" >
+                <div class="table-responsive">
+
+                    <table class="jh-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th><span >Date Bon de sortie</span></th>
+                                <th><span >N° Bon de sortie</span></th>
+                                <th><span >Magasin</span></th>
+                                <th><span >Destinataire</span></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody> <!--ng-repeat="livraison in vm.livraisons track by livraison.id"-->
+                            <tr ng-repeat="livraison in bonDeLivraisons">
+                                <td >{{livraison.daateCreation| date : "dd MMMM yyyy"}}</td><!--{{livraison.dateLivraison | date:'mediumDate'}}-->
+                                <td>{{livraison.numero}}</td><!--<a ui-sref="livraison-detail({id:livraison.id})">{{livraison.id}} </a>-->
+                                <td>{{livraison.magasin.nomMagasin}}</td>
+                                <td>
+                                    <span ng-show="livraison.destination != null">{{livraison.destination.nomMagasin}}</span>
+                                    <span ng-show="livraison.client != null">{{livraison.client.nomClient}}</span>
+                                </td><!-- {{livraison.quantiteLivre}}-->
+                                <!--{{livraison.descriptionLivraison}} -->
+
+                                <td class="text-right">
+                                    <div class="btn-group flex-btn-group-container">
+
+                                        <a type="submit" ng-click="vm.afficherBordereauLivraison(livraison.id)" class="btn btn-primary btn-md">
+                                            <span class="glyphicon glyphicon-print"></span>
+                                            <span class="hidden-sm hidden-md" >Bordereau livraison</span>
+
+                                        </a>
+                                        <!--                                        <a type="submit" href="http://localhost:8080/api/report/lignelivraisons/bordereaulivraison/{{livraison.id}}" class="btn btn-primary btn-md">
+                                                                                    <span class="glyphicon glyphicon-print"></span>
+                                                                                    <span class="hidden-sm hidden-md" >Bordereau livraison</span>
+                                                                                   
+                                                                                </a>-->
+                                        <a type="submit" ng-click="vm.afficherBonDeSortie(livraison.id)" class="btn btn-info btn-md">
+                                            <span class="glyphicon glyphicon-print"></span>
+                                            <span class="hidden-xs hidden-sm" >Bon de sortie</span>
+                                        </a>
+                                        <!--                                        <a type="submit" href="http://localhost:8080/api/report/bondesorties/toutbondesortie/{{livraison.id}}" class="btn btn-info btn-md">
+                                                                                    <span class="glyphicon glyphicon-print"></span>
+                                                                                    <span class="hidden-xs hidden-sm" >Bon de sortie</span>
+                                                                                </a>-->
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(0)">
+                        << 
+                    </button>
+                    <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(vm.currentPage - 1)">
+                        < Précedent
+                    </button>
+                    {{vm.currentPage + 1}}/{{vm.totalPage}}
+                    <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.currentPage + 1)">
+                        Suivant >
+                    </button>
+                    <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.totalPage - 1)">
+                        >>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

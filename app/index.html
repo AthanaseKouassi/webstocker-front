@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="fr" data-ng-app="app">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Webstocker | AIMAS</title>
+        <meta name="description" content="Angularjs, Html5, Music, Landing, 4 in 1 ui kits package"/>
+        <meta name="keywords"
+              content="AngularJS, angular, bootstrap, admin, dashboard, panel, app, charts, components,flat, responsive, layout, kit, ui, route, web, app, widgets"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <link rel="stylesheet" href="libs/assets/animate.css/animate.css" type="text/css"/>
+        <link rel="stylesheet" href="libs/assets/font-awesome/css/font-awesome.min.css" type="text/css"/>
+        <link rel="stylesheet" href="libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css"/>
+        <link rel="stylesheet" href="libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css"/>
+        <link rel="stylesheet" href="libs/angular/angularjs-toaster/toaster.css" type="text/css"/>
+        <!--<base href="/novusMedicalsrc/" />-->
+        <!-- build:css css/app.min.css -->
+        <link rel="stylesheet" href="css/font.css" type="text/css"/>
+        <link rel="stylesheet" href="css/app.css" type="text/css"/>
+        <link rel="stylesheet" href="css/messtyle.css" type="text/css"/>
+        <!-- endbuild -->
+        <!--mon favicon-->
+        <link rel="icon" type="image/ico" href="img/favicon.ico" />
+        <!--<link rel="icon" href="img/animated_favicon1.gif" type="image/gif">-->
+
+        <!--sweet alert modal-->
+        <!--<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">-->
+        <link rel="stylesheet" type="text/css" href="bower_components/sweetalert/dist/sweetalert.css">
+
+
+    </head>
+
+    <body ng-controller="AppCtrl">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <div class="app" id="app"
+         ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}"
+         ui-view></div>
+
+
+    <!--    <script src="bower_components/chart.js/dist/Chart.min.js"></script>
+        <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>-->
+
+    <!-- build:js js/app.angular.js -->
+    <!-- jQuery -->
+    <script src="libs/jquery/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>    
+    <!--<script src="node_modules/sweetalert/lib/sweet-alert.min.js"></script>-->
+
+
+    <!-- Chartjs -->  
+    <!--    <script src="libs/chart.js/dist/Chart.min.js"></script>   
+        <script src="libs/angular-chart.js/dist/angular-chart.min.js"></script>-->
+
+
+
+    <!-- Angular -->
+    <script src="libs/angular/angular/angular.js"></script>
+    <!-- Chartjs -->  
+    <script src="libs/chart.js/dist/Chart.min.js"></script>   
+    <script src="libs/angular-chart.js/dist/angular-chart.min.js"></script>    
+    <!--end Chartjs-->
+    <!--SweetAlert-->
+    <script src="libs/ngSweetAlert/SweetAlert.js"></script>
+    <script src="libs/ngSweetAlert/SweetAlert.min.js"></script>
+    <script src="libs/ng-sweet-alert/ng-sweet-alert.js"></script>
+    <!--end sweetAlert-->
+    <script src="libs/angular/angular-check/check-model.js"></script>
+    <script src="libs/angular/angular-animate/angular-animate.js"></script>
+    <script src="libs/angular/angular-aria/angular-aria.js"></script>
+    <script src="libs/angular/angular-cookies/angular-cookies.js"></script>
+    <script src="libs/angular/angular-messages/angular-messages.js"></script>
+    <script src="libs/angular/angular-resource/angular-resource.js"></script>
+    <!--<script src="libs/angular/angular-sanitize/angular-sanitize.js"></script>-->
+    <script src="libs/angular/angular-touch/angular-touch.js"></script>
+    <!--<script src="libs/angular/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>-->
+
+    <!--<script src="libs/angular/angular-ui-router/release/angular-ui-router.js"></script>-->
+    <script src="libs/angular/ngstorage/ngStorage.js"></script>
+    <script src="libs/angular/angular-ui-utils/ui-utils.js"></script>
+
+    <!--from jhipster-->
+    <script src="libs/angular/angular-aria/angular-aria.js"></script>
+    <script src="libs/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="libs/angular/angular-cache-buster/angular-cache-buster.js"></script>
+    <script src="libs/angular/angular-cookies/angular-cookies.js"></script>
+    <script src="libs/angular/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="libs/angular/ngstorage/ngStorage.js"></script>
+    <script src="libs/angular/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="libs/angular/angular-resource/angular-resource.js"></script>
+    <script src="libs/angular/angular-sanitize/angular-sanitize.js"></script>
+    <script src="libs/angular/angular-translate/angular-translate.js"></script>
+    <script src="libs/angular/messageformat/messageformat.js"></script>
+    <script src="libs/angular/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+    <script src="libs/angular/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+    <script src="libs/angular/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="libs/angular/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="libs/assets/pdfjs/build/pdf.js"></script>
+    <script src="libs/angular/angular-pdf/dist/angular-pdf.js"></script>
+    <script src="libs/angular/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+    <script src="libs/angular/json3/lib/json3.js"></script>
+    <script src="libs/angular/ng-file-upload/ng-file-upload.js"></script>
+    <script src="libs/angular/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="libs/angular/sockjs-client/dist/sockjs.js"></script>
+    <script src="libs/angular/stomp-websocket/lib/stomp.min.js"></script>
+
+
+    <!--end from jhipster-->
+
+
+
+    <!-- bootstrap -->
+    <script src="libs/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!-- lazyload -->
+    <script src="libs/angular/oclazyload/dist/ocLazyLoad.js"></script>
+    <!-- translate -->
+    <!--<script src="libs/angular/angular-translate/angular-translate.js"></script>-->
+    <!--<script src="libs/angular/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>-->
+    <!--<script src="libs/angular/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>-->
+    <!--<script src="libs/angular/angular-translate-storage-local/angular-translate-storage-local.js"></script>-->
+
+    <!-- App -->
+    <!--<script src="js/affiche.heure.js"></script>-->
+    <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/config.lazyload.js"></script>
+    <!--<script src="js/config.router.js"></script>-->
+
+    <script src="libs/angular/angularjs-toaster/toaster.js"></script>
+    <script src="js/app.controller.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/language/language.service.js"></script>
+    <script src="js/language/language.filter.js"></script>
+    <script src="js/language/language.controller.js"></script>
+    <script src="js/language/language.constants.js"></script>
+    <script src="js/translation.config.js"></script>
+    <script src="js/translation-storage.provider.js"></script>
+    <script src="js/services/user/user.service.js"></script>
+    <script src="js/services/rest/fetchData.service.js"></script>
+    <script src="js/services/auth/register.service.js"></script>
+    <script src="js/services/auth/principal.service.js"></script>
+    <script src="js/services/auth/password.service.js"></script>
+    <script src="js/services/auth/password-reset-init.service.js"></script>
+    <script src="js/services/auth/password-reset-finish.service.js"></script>
+    <script src="js/services/auth/has-authority.directive.js"></script>
+    <script src="js/services/auth/has-any-authority.directive.js"></script>
+    <script src="js/services/auth/auth.service.js"></script>
+    <script src="js/services/auth/auth.jwt.service.js"></script>
+    <script src="js/services/auth/activate.service.js"></script>
+    <script src="js/services/auth/account.service.js"></script>
+    <script src="menuachat/menuachat.controller.js"></script>
+    <script src="menuachat/menuachat.service.js"></script>
+    <script src="menuachat/tooltip.directive.js"></script>
+    <script src="menuvente/menuvente.controller.js"></script>
+    <script src="menuactivite/menuactivite.controller.js"></script>
+    <script src="menuactivite/menuactivite.service.js"></script>
+    
+    <!--ajout des fichiers js liés à inventaire-->
+    <script src="inventaire/inventaire-delete-dialog.controller.js"></script>
+    <script src="inventaire/inventaire-detail.controller.js"></script>
+    <script src="inventaire/inventaire-dialog.controller.js"></script>
+    <script src="inventaire/inventaire.controller.js"></script>
+    <script src="inventaire/inventaire.search.service.js"></script>
+    <script src="inventaire/inventaire.service.js"></script>
+    <script src="inventaire/inventaire.state.js"></script>
+    <!--fin dossier inventaie-->
+    
+    <!--ajout des fichiers js liés à cellule-->
+    <script src="cellule/cellule.state.js"></script>
+    <script src="cellule/cellule.service.js"></script>
+    <script src="cellule/cellule.search.service.js"></script>
+    <script src="cellule/cellule.controller.js"></script>
+    <script src="cellule/cellule-dialog.controller.js"></script>
+    <script src="cellule/cellule-detail.controller.js"></script>
+    <script src="cellule/cellule-delete-dialog.controller.js"></script>
+    <!--fin dossier cellule-->
+    <script src="activite/activite.state.js"></script>
+    <script src="activite/activite.service.js"></script>
+    <script src="activite/activite.search.service.js"></script>
+    <script src="activite/activite.controller.js"></script>
+    <script src="activite/activite-dialog.controller.js"></script>
+    <script src="activite/activite-detail.controller.js"></script>
+    <script src="activite/activite-delete-dialog.controller.js"></script>
+    <script src="activite/choix-activite.controller.js"></script>
+    <script src="activite/rapport-delegues.controller.js"></script>
+    <script src="activite/rapport-delegues.service.js"></script>
+    <script src="mission/mission.state.js"></script>
+    <script src="mission/modal-mission.controller.js"></script>
+    <script src="mission/mission.service.js"></script>
+    <script src="mission/modal.mission.service.js"></script>
+    <script src="mission/mission.search.service.js"></script>
+    <script src="mission/mission.controller.js"></script>
+    <script src="mission/mission.controller.list.js"></script>
+    <script src="mission/mission-dialog.controller.js"></script>
+    <script src="mission/mission-detail.controller.js"></script>
+    <script src="mission/mission-delete-dialog.controller.js"></script>
+    <script src="mission/mission_wizard.controller.js"></script>
+    <script src="mission/rapport-mission.controller.js"></script>
+    <script src="mission/resultat-obtenu.controller.js"></script>
+    <script src="budget/budget.state.js"></script>
+    <script src="budget/budget.service.js"></script>
+    <script src="budget/budget.search.service.js"></script>
+    <script src="budget/budget.controller.js"></script>
+    <script src="budget/budget-dialog.controller.js"></script>
+    <script src="budget/budget-detail.controller.js"></script>
+    <script src="budget/budget-delete-dialog.controller.js"></script>
+    <script src="ligne-budget/ligne-budget.state.js"></script>
+    <script src="ligne-budget/ligne-budget.service.js"></script>
+    <script src="ligne-budget/ligne-budget.search.service.js"></script>
+    <script src="ligne-budget/ligne-budget.controller.js"></script>
+    <script src="ligne-budget/ligne-budget-dialog.controller.js"></script>
+    <script src="ligne-budget/ligne-budget-detail.controller.js"></script>
+    <script src="ligne-budget/ligne-budget-delete-dialog.controller.js"></script>
+    <script src="ligne-mission-activite/ligne-mission-activite.state.js"></script>
+    <script src="ligne-mission-activite/ligne-mission-activite.service.js"></script>
+    <script src="ligne-mission-activite/ligne-mission-activite.search.service.js"></script>
+    <script src="ligne-mission-activite/ligne-mission-activite.controller.js"></script>
+    <script src="ligne-mission-activite/ligne-mission-activite-dialog.controller.js"></script>
+    <script src="ligne-mission-activite/ligne-mission-activite-detail.controller.js"></script>
+    <script src="ligne-mission-activite/ligne-mission-activite-delete-dialog.controller.js"></script>
+    <script src="type-activite/type-activite.state.js"></script>
+    <script src="type-activite/type-activite.service.js"></script>
+    <script src="type-activite/type-activite.search.service.js"></script>
+    <script src="type-activite/type-activite.controller.js"></script>
+    <script src="type-activite/type-activite-dialog.controller.js"></script>
+    <script src="type-activite/type-activite-detail.controller.js"></script>
+    <script src="type-activite/type-activite-delete-dialog.controller.js"></script>
+    <script src="client/client.state.js"></script>
+    <script src="client/client.service.js"></script>
+    <script src="client/client.search.service.js"></script>
+    <script src="client/client.controller.js"></script>
+    <script src="client/modal-client.controller.js"></script>
+    <script src="client/modal.client.service.js"></script>
+    <script src="client/client-dialog.controller.js"></script>
+    <script src="client/client-detail.controller.js"></script>
+    <script src="client/client-delete-dialog.controller.js"></script>
+    <script src="client/chiffre-affaire-un-client.controller.js"></script>
+    <script src="client/gestion-clientele.controller.js"></script>
+    <script src="client/frequence-achat.controller.js"></script>
+    <script src="client/frequence-achat.service.js"></script>
+    <script src="client/chiffre-affaire-typeclient.controller.js"></script>
+    <script src="client/chiffre-affaire-typeclient.service.js"></script>
+    <script src="client/fiche-client.controller.js"></script>
+    <script src="client/creance-client.controller.js"></script>
+    <script src="stockoperations/stockoperation.service.js"></script>
+    <script src="facture/facture-delete-dialog.controller.js"></script>
+    <script src="facture/facture-detail.controller.js"></script>
+    <script src="facture/facture-dialog.controller.js"></script>
+    <script src="facture/facture.search.service.js"></script>
+    <script src="facture/facture.service.js"></script>
+    <script src="facture/facture.controller.js"></script>
+    <script src="facture/facture.state.js"></script>
+    <script src="facture/bondesortie-vente.controller.js"></script>
+    <script src="facture/client_vente.controller.js"></script>
+    <script src="facture/client_vente.service.js"></script>
+    <script src="facture/valide-vente.controller.js"></script>
+    <script src="facture/destinataire-promotion.controller.js"></script>
+    <script src="facture/facture-zero.controller.js"></script>
+    <script src="transfert/transfert_produit.service.js"></script>
+    <script src="transfert/transfert_produit.controller.js"></script>
+    <script src="transfert/reception_transfert.controller.js"></script>    
+    <script src="transfert/bondesortie-transfert.controller.js"></script>
+    <script src="transfert/confirmation-transfert-dialog.controller.js"></script>
+    <script src="transfert/transfert.state.js"></script>
+    <script src="promotion/bondesortie-promotion.controller.js"></script>
+    <script src="promotion/promotion_produit.service.js"></script>
+    <script src="promotion/promotion_produit.controller.js"></script>
+    <script src="promotion/promotion.state.js"></script>
+    <script src="perte/perte_produit.service.js"></script>
+    <script src="perte/perte_produit.controller.js"></script>
+    <script src="perte/perte.state.js"></script>
+    <script src="produit/produit.state.js"></script>
+    <script src="produit/produit.service.js"></script>
+    <script src="produit/produit.search.service.js"></script>
+    <script src="produit/produit.controller.js"></script>
+    <script src="produit/produit-dialog.controller.js"></script>
+    <script src="produit/produit-abime-perime.controller.js"></script>
+    <script src="produit/produit-detail.controller.js"></script>
+    <script src="produit/rapport-global-stock.controller.js"></script>
+    <script src="produit/rapport-global-stock.service.js"></script>
+    <script src="produit/rapport-global-stock-bailleur.service.js"></script>
+    <script src="produit/rapport-global-stock-bailleur.controller.js"></script>
+    <script src="produit/produit-delete-dialog.controller.js"></script>
+    <script src="magasin/magasin.state.js"></script>
+    <script src="magasin/magasin.service.js"></script>
+    <script src="magasin/magasin.search.service.js"></script>
+    <script src="magasin/magasin.controller.js"></script>
+    <script src="magasin/rapport-promotion-magasin.controller.js"></script>
+    <script src="magasin/magasin-dialog.controller.js"></script>
+    <script src="magasin/magasin-detail.controller.js"></script>
+    <script src="magasin/magasin-delete-dialog.controller.js"></script>
+    <script src="magasin/etat-vente-magasin.controller.js"></script>
+    <script src="downloader/print_promotion.controller.js"></script>
+    <script src="rapport-stock/rapport_magasin.state.js"></script>
+    <script src="rapport-stock/rapport.stock.service.js"></script>
+    <script src="rapport-stock/rapport.stock.controller.js"></script>
+    <script src="commune/commune.state.js"></script>
+    <script src="commune/commune.service.js"></script>
+    <script src="commune/commune.search.service.js"></script>
+    <script src="commune/commune.controller.js"></script>
+    <script src="commune/commune-dialog.controller.js"></script>
+    <script src="commune/commune-detail.controller.js"></script>
+    <script src="commune/commune-delete-dialog.controller.js"></script>
+    <script src="region/region.state.js"></script>
+    <script src="region/region.service.js"></script>
+    <script src="region/region.search.service.js"></script>
+    <script src="region/region.controller.js"></script>
+    <script src="region/region-dialog.controller.js"></script>
+    <script src="region/region-detail.controller.js"></script>
+    <script src="region/region-delete-dialog.controller.js"></script>
+    <script src="ville/ville.state.js"></script>
+    <script src="ville/ville.service.js"></script>
+    <script src="ville/ville.search.service.js"></script>
+    <script src="ville/ville.controller.js"></script>
+    <script src="ville/ville-dialog.controller.js"></script>
+    <script src="ville/ville-detail.controller.js"></script>
+    <script src="ville/ville-delete-dialog.controller.js"></script>
+
+    <script src="rapports/rapport.state.js"></script>
+    <script src="rapports/rapport-de-vente.controller.js"></script>
+    <!--<script src="rapports/inventaire.controller.js"></script>-->
+    <script src="rapports/rapport-chiffre-affraire-produit.controller.js"></script>
+    <script src="rapports/liste-des-factures.controller.js"></script>
+    <script src="rapports/rapport-chiffre-affaire-client.controller.js"></script>
+    <script src="rapports/rapport-chiffre-affaire-magasin.controller.js"></script>
+    <script src="rapports/etat-de-reconcialliation.controller.js"></script>
+    <script src="rapports/rapport-quantite-vendu-produit-district.controller.js"></script>
+    <script src="rapports/liste-factures-a-imprimer.service.js"></script>
+    <script src="rapports/taux-atteinte-des-resultats.controller.js"></script>
+    <script src="rapports/rapport-de-vente.service.js"></script>
+    <script src="rapports/rapport-quantite-vendue-district.service.js"></script>
+    <script src="rapports/rapport-chiffre-affaire-produit.service.js"></script>
+    <script src="rapports/rapport-chiffre-affaire-client.service.js"></script>
+    <script src="rapports/rapport-chiffre-affaire-magasin.service.js"></script>
+    <script src="rapports/liste-des-factures.service.js"></script>
+    <script src="rapports/liste-des-factures-search.service.js"></script>
+    <script src="rapports/etat-de-reconciliation.service.js"></script>
+    <script src="rapports/bondesortie-par-magasin.controller.js"></script>
+    <script src="rapports/bordereau-livraison-par-magasin.controller.js"></script>
+    <script src="rapports/etat-stock-par-magasin-de-produit.controller.js"></script>
+    <script src="rapports/etat-produits-par-magasin.controller.js"></script>
+    <script src="rapports/vente-par-produit-magasin.controller.js"></script>
+    <script src="rapports/transfert-par-produit-magasin.controller.js"></script>
+    <script src="rapports/promotion-par-produit-magasin.controller.js"></script>
+    <script src="rapports/perte-par-produit-magasin.controller.js"></script>
+    <script src="rapports/chiffre-affaire-par-client-nouveau.controller.js"></script>
+    <script src="rapports/quantite-vendue-par-agent.controller.js"></script>
+    <script src="prix/prix.state.js"></script>
+    <script src="prix/prix.service.js"></script>
+    <script src="prix/prix.search.service.js"></script>
+    <script src="prix/prix.controller.js"></script>
+    <script src="prix/prix-dialog.controller.js"></script>
+    <script src="prix/prix-detail.controller.js"></script>
+    <script src="prix/prix-delete-dialog.controller.js"></script>
+    <script src="reglement/reglement.state.js"></script>
+    <script src="reglement/reglement.service.js"></script>
+    <script src="reglement/reglement-credit.controller.js"></script>
+    <script src="reglement/paiement.controller.js"></script>
+
+    <script src="lot/lot.state.js"></script>
+    <script src="lot/lot.service.js"></script>
+    <script src="lot/lot.search.service.js"></script>   
+    <script src="lot/lot.controller.js"></script>
+    <script src="lot/lot-dialog.controller.js"></script>
+    <script src="lot/lot-detail.controller.js"></script>
+    <script src="lot/lot-delete-dialog.controller.js"></script>
+    <script src="localite/localite.state.js"></script>
+    <script src="localite/localite.service.js"></script>
+    <script src="localite/localite.search.service.js"></script>
+    <script src="localite/localite.controller.js"></script>
+    <script src="localite/localite-dialog.controller.js"></script>
+    <script src="localite/localite-detail.controller.js"></script>
+    <script src="localite/localite-delete-dialog.controller.js"></script>
+    <script src="bon-de-sortie/bon-de-sortie.state.js"></script>
+    <script src="bon-de-sortie/bon-de-sortie.service.js"></script>
+    <script src="bon-de-sortie/bon-de-sortie.search.service.js"></script>
+    <script src="bon-de-sortie/bon-de-sortie.controller.js"></script>
+    <script src="bon-de-sortie/bon-de-sortie-wizard.controller.js"></script>
+    <script src="bon-de-sortie/bon-de-sortie-dialog.controller.js"></script>
+    <script src="bon-de-sortie/bon-de-sortie-detail.controller.js"></script>
+    <script src="bon-de-sortie/bon-de-sortie-delete-dialog.controller.js"></script>
+    <script src="objectifs/objectifs.state.js"></script>
+    <script src="objectifs/objectifs.service.js"></script>
+    <script src="objectifs/objectifs.controller.js"></script>
+    <script src="objectifs/objectifs.search.service.js"></script>
+    <script src="objectifs/objectif_maj_dialog.controller.js"></script>
+    <script src="objectifs/objectifs-dialog.controller.js"></script>
+    <script src="objectifs/objectifs-dialog.controller.js"></script>
+    <script src="objectifs/objectifs-detail.controller.js"></script>
+    <script src="objectifs/objectifs-delete-dialog.controller.js"></script>
+    <script src="objectifs/objectifs-vente-journal.controller.js"></script>
+    <script src="objectifs/objectifs_mise_a_jour.controller.js"></script>
+    <script src="objectifs/objectifs-quantite-produit-vendue.service.js"></script>
+    <script src="objectifs/objectifs_mettre_a_jour.service.js"></script>
+    <script src="objectifs/objectifs_chart.controller.js"></script>
+    <script src="objectifs/objectif-mettre-taux-a-jour.service.js"></script>
+    <script src="objectifs/objectifs-quantiteobtenue-ajour.service.js"></script>
+    <script src="objectifs/objectif-quantite-taux-ajour.service.js"></script>
+
+<!--    <script src="modification/modification.state.js"></script>  
+    <script src="modification/bondesortie-vente.controller.js"></script>
+
+    <script src="modification-promotion/bondesortie-promotion.controller.js"></script>
+    <script src="modification-promotion/modification-promotion.state.js"></script>-->
+
+    
+    <!--<script src="modification-transfert/modification-transfert.state.js"></script>-->
+
+    <script src="ligneobjectifvente/ligneobjectifvente.state.js"></script>
+    <script src="ligneobjectifvente/ligneobjectifvente.service.js"></script>
+    <script src="ligneobjectifvente/ligneobjectifvente.search.service.js"></script>
+    <script src="ligneobjectifvente/ligneobjectifvente.controller.js"></script>
+    <script src="ligneobjectifvente/ligneobjectifvente-dialog.controller.js"></script>
+    <script src="ligneobjectifvente/ligneobjectifvente-detail.controller.js"></script>
+    <script src="ligneobjectifvente/ligneobjectifvente-delete-dialog.controller.js"></script>
+    <script src="ligne-bon-de-sortie/ligne-bon-de-sortie.state.js"></script>
+    <script src="ligne-bon-de-sortie/ligne-bon-de-sortie.service.js"></script>
+    <script src="ligne-bon-de-sortie/ligne-bon-de-sortie.search.service.js"></script>
+    <script src="ligne-bon-de-sortie/ligne-bon-de-sortie.controller.js"></script>
+    <script src="ligne-bon-de-sortie/ligne-bon-de-sortie-dialog.controller.js"></script>
+    <script src="ligne-bon-de-sortie/ligne-bon-de-sortie-detail.controller.js"></script>
+    <script src="ligne-bon-de-sortie/ligne-bon-de-sortie-delete-dialog.controller.js"></script>
+    <script src="lignefacture/lignefacture.state.js"></script>
+    <script src="lignefacture/lignefacture.service.js"></script>
+    <script src="lignefacture/lignefacture.search.service.js"></script>
+    <script src="lignefacture/lignefacture.controller.js"></script>
+    <script src="lignefacture/lignefacture-dialog.controller.js"></script>
+    <script src="lignefacture/lignefacture-detail.controller.js"></script>
+    <script src="lignefacture/lignefacture-delete-dialog.controller.js"></script>
+
+    <script src="categorieclient/categorieclient.state.js"></script>
+    <script src="categorieclient/categorieclient.service.js"></script>
+    <script src="categorieclient/categorieclient.search.service.js"></script>
+    <script src="categorieclient/categorieclient.controller.js"></script>
+    <script src="categorieclient/categorieclient-dialog.controller.js"></script>
+    <script src="categorieclient/categorieclient-detail.controller.js"></script>
+    <script src="categorieclient/categorieclient-delete-dialog.controller.js"></script>
+
+    <script src="lignelivraison/lignelivraison.state.js"></script>
+    <script src="lignelivraison/lignelivraison.service.js"></script>
+    <script src="lignelivraison/lignelivraison.search.service.js"></script>
+    <script src="lignelivraison/lignelivraison.controller.js"></script>
+
+    <script src="livraison/livraison.state.js"></script>
+    <script src="livraison/livraison.service.js"></script>
+    <script src="livraison/livraison.search.service.js"></script>
+    <script src="livraison/quantite-agence-produit.service.js"></script>
+    <script src="livraison/livraison.controller.js"></script>
+    <script src="livraison/livraison-dialog.controller.js"></script>
+    <script src="livraison/livraison-detail.controller.js"></script>
+    <script src="livraison/livraison-delete-dialog.controller.js"></script>
+    <script src="livraison/liste-bon-de-sortie.service.js"></script>
+    <script src="livraison/liste-bordereau.service.js"></script>
+    <script src="livraison/commande.livraison.service.js"></script>
+    <script src="livraison/commandeLivraison.controller.js"></script>
+
+    <script src="livraison/quantite-agence-produit.controller.js"></script>
+    <script src="livraison/liste-bordereau-livraison.controller.js"></script>
+    <script src="livraison/etat-transfert-magasin.controller.js"></script>
+    <script src="lignecommande/lignecommande.state.js"></script>
+    <script src="lignecommande/lignecommande.service.js"></script>
+    <script src="lignecommande/lignecommande.search.service.js"></script>
+    <script src="lignecommande/lignecommande.controller.js"></script>
+    <script src="lignecommande/lignecommande-dialog.controller.js"></script>
+    <script src="lignecommande/lignecommande-detail.controller.js"></script>
+    <script src="lignecommande/lignecommande-delete-dialog.controller.js"></script>
+    <script src="commande/commande.fournisseur.service.js"></script>
+    <script src="fabricant/fabricant.state.js"></script>
+    <script src="fabricant/fabricant.service.js"></script>
+    <script src="fabricant/fabricant.search.service.js"></script>
+    <script src="fabricant/fabricant.controller.js"></script>
+    <script src="fabricant/fabricant-dialog.controller.js"></script>
+    <script src="fabricant/fabricant-detail.controller.js"></script>
+    <script src="fabricant/fabricant-delete-dialog.controller.js"></script>
+    <script src="conditionnement/conditionnement.state.js"></script>
+    <script src="conditionnement/conditionnement.service.js"></script>
+    <script src="conditionnement/conditionnement.search.service.js"></script>
+    <script src="conditionnement/conditionnement.controller.js"></script>
+    <script src="conditionnement/conditionnement-dialog.controller.js"></script>
+    <script src="conditionnement/conditionnement-detail.controller.js"></script>
+    <script src="conditionnement/conditionnement-delete-dialog.controller.js"></script>
+    <script src="commande/commande.state.js"></script>
+    <script src="commande/commande.service.js"></script>
+    <script src="commande/commande.search.service.js"></script>
+    <script src="commande/commande.fournisseur.service.js"></script>
+    <script src="commande/commande.controller.js"></script>
+    <script src="commande/commande-dialog.controller.js"></script>
+    <script src="commande/commande-detail.controller.js"></script>
+    <script src="commande/commande-delete-dialog.controller.js"></script>
+    <script src="commande/commandeFournisseur.controller.js"></script>
+
+    <script src="admin/user-management/user-management.state.js"></script>
+    <script src="admin/user-management/user-management.controller.js"></script>
+    <script src="admin/user-management/user-management-dialog.controller.js"></script>
+    <script src="admin/user-management/user-management-detail.controller.js"></script>
+    <script src="admin/user-management/user-management-delete-dialog.controller.js"></script>
+    <script src="admin/tracker/tracker.state.js"></script>
+    <script src="admin/tracker/tracker.service.js"></script>
+    <script src="admin/tracker/tracker.controller.js"></script>
+    <script src="admin/metrics/metrics.state.js"></script>
+    <script src="admin/metrics/metrics.service.js"></script>
+    <script src="admin/metrics/metrics.modal.controller.js"></script>
+    <script src="admin/metrics/metrics.controller.js"></script>
+    <script src="admin/logs/logs.state.js"></script>
+    <script src="admin/logs/logs.service.js"></script>
+    <script src="admin/logs/logs.controller.js"></script>
+    <script src="admin/health/health.state.js"></script>
+    <script src="admin/health/health.service.js"></script>
+    <script src="admin/health/health.modal.controller.js"></script>
+    <script src="admin/health/health.controller.js"></script>
+    <script src="admin/docs/docs.state.js"></script>
+    <script src="admin/configuration/configuration.state.js"></script>
+    <script src="admin/configuration/configuration.service.js"></script>
+    <script src="admin/configuration/configuration.controller.js"></script>
+    <script src="admin/audits/audits.state.js"></script>
+    <script src="admin/audits/audits.service.js"></script>
+    <script src="admin/audits/audits.controller.js"></script>
+
+    <script src="account/settings/settings.state.js"></script>
+    <script src="account/settings/settings.controller.js"></script>
+    <script src="account/register/register.state.js"></script>
+    <script src="account/register/register.controller.js"></script>
+    <script src="account/password/password.state.js"></script>
+    <script src="account/password/password.controller.js"></script>
+    <script src="account/password/password-strength-bar.directive.js"></script>
+    <script src="account/activate/activate.state.js"></script>
+    <script src="account/activate/activate.controller.js"></script>
+
+
+    <script src="categorie/categorie.state.js"></script>
+    <script src="categorie/categorie.service.js"></script>
+    <script src="categorie/categorie.search.service.js"></script>
+    <script src="categorie/categorie.controller.js"></script>
+    <script src="categorie/categorie-dialog.controller.js"></script>
+    <script src="categorie/categorie-detail.controller.js"></script>
+    <script src="categorie/categorie-delete-dialog.controller.js"></script>
+    <script src="categorie/categorie-par-nom.service.js"></script>
+    <script src="bailleur/bailleur.state.js"></script>
+    <script src="bailleur/bailleur.service.js"></script>
+    <script src="bailleur/bailleur.search.service.js"></script>
+    <script src="bailleur/bailleur.controller.js"></script>
+    <script src="bailleur/bailleur-dialog.controller.js"></script>
+    <script src="bailleur/bailleur-detail.controller.js"></script>
+    <script src="bailleur/bailleur-delete-dialog.controller.js"></script>
+    <script src="notifications/notification.service.js"></script>
+    <script src="notifications/notification.controller.js"></script>
+
+    <script src="bower_components/ng-sweet-alert/ng-sweet-alert.js"></script>  
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>  
+    <script src="bower_components/sweetalert/dist/sweetalert-dev.js"></script>
+    <!--<script src="bower_components/sweetalert/dist/sweetalert.js"></script>-->
+
+    <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
+
+
+
+    <script src="components/language/language.service.js"></script>
+    <script src="components/language/language.filter.js"></script>
+    <script src="components/language/language.controller.js"></script>
+    <script src="components/language/language.constants.js"></script>
+    <script src="components/form/uib-pagination.config.js"></script>
+    <script src="components/form/uib-pager.config.js"></script>
+    <script src="components/form/show-validation.directive.js"></script>
+    <script src="components/form/pagination.constants.js"></script>
+    <script src="components/form/minbytes.directive.js"></script>
+    <script src="components/form/maxbytes.directive.js"></script>
+    <script src="components/alert/alert.service.js"></script>
+    <script src="components/alert/alert.directive.js"></script>
+    <script src="components/alert/alert-error.directive.js"></script>
+    <script src="components/util/truncate-words.filter.js"></script>
+    <script src="components/util/truncate-characters.filter.js"></script>
+    <script src="components/util/sort.directive.js"></script>
+    <script src="components/util/sort-by.directive.js"></script>
+    <script src="components/util/parse-links.service.js"></script>
+    <script src="components/util/pagination-util.service.js"></script>
+    <script src="components/util/jhi-item-count.directive.js"></script>
+    <script src="components/util/date-util.service.js"></script>
+    <script src="components/util/data-util.service.js"></script>
+    <script src="components/util/capitalize.filter.js"></script>
+    <script src="components/util/base64.service.js"></script>
+    <script src="components/util/date-util.service.js"></script>
+    <script src="components/util/data-util.service.js"></script>
+    <script src="bower_components/pdfjs-dist/build/pdf.js"></script>
+    <script src="bower_components/ng-pdf-viewer/src/ng-pdf-viewer.min.js"></script>
+    <!--<script src="bower_components/json-stringify-safe/stringify.js"></script>-->
+    <script src="js/services/interceptor/notification.interceptor.js"></script>
+    <script src="js/services/interceptor/errorhandler.interceptor.js"></script>
+    <script src="js/services/config/http.config.js"></script>
+    <script src="js/services/interceptor/auth.interceptor.js"></script>
+    <script src="js/services/interceptor/auth-expired.interceptor.js"></script>
+    <script src="js/services/handlers/translation.handler.js"></script>
+    <script src="js/services/handlers/state.handler.js"></script>
+    <script src="login/login.service.js"></script>
+    <script src="login/login.controller.js"></script>
+    <script src="js/services/ui-load.js"></script>
+    <script src="js/filters/fromNow.js"></script>
+    <script src="js/filters/startFrom.js"></script>
+    <script src="js/directives/setnganimate.js"></script>
+    <script src="js/directives/ui-butterbar.js"></script>
+    <script src="js/directives/ui-focus.js"></script>
+    <script src="js/directives/format-datepicker.js"></script>
+    <!--<script src="js/directives/ui-fullscreen.js"></script>-->
+    <script src="js/directives/ui-jq.js"></script>
+    <script src="js/directives/ui-module.js"></script>
+    <script src="js/directives/ui-nav.js"></script>
+    <script src="js/directives/ui-scroll.js"></script>
+    <script src="js/directives/ui-shift.js"></script>
+    <script src="js/directives/ui-toggleclass.js"></script>
+    <script src="js/controllers/bootstrap.js"></script>
+    <script src="js/config.router.js"></script>
+    <script src="js/app.constants.js"></script>
+    
+    <script src="js/underscore-min.js"></script>
+    
+    <script src="js/services/pagination/pagination.provider.js"></script>
+    <script src="js/services/pagination/pagination.service.js"></script>
+    <!-- endbuild -->
+    <!-- Lazy loading -->
+
+
+</body>
+
+
+</html>
+
+
+<!--<!DOCTYPE html>
+<html lang="fr" data-ng-app="app">
+<head>
+    <meta charset="utf-8"/>
+    <title>Webstocker | AIMAS</title>
+    <meta name="description" content="Angularjs, Html5, Music, Landing, 4 in 1 ui kits package"/>
+    <meta name="keywords"
+          content="AngularJS, angular, bootstrap, admin, dashboard, panel, app, charts, components,flat, responsive, layout, kit, ui, route, web, app, widgets"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="libs/assets/animate.css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="libs/assets/font-awesome/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="libs/angular/angularjs-toaster/toaster.css" type="text/css"/>
+    <base href="/novusMedicalsrc/" />
+     build:css css/app.min.css 
+    <link rel="stylesheet" href="css/font.css" type="text/css"/>
+    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="css/messtyle.css" type="text/css"/>
+     endbuild 
+    mon favicon
+    <link rel="icon" type="image/ico" href="img/favicon.ico" />
+
+    <link rel="icon" href="img/animated_favicon1.gif" type="image/gif">
+
+
+</head>
+
+<body ng-controller="AppCtrl">
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<div class="app" id="app"
+     ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}"
+     ui-view></div>
+
+ build:js js/app.angular.js 
+ jQuery 
+<script src="libs/jquery/jquery/dist/jquery.js"></script>
+ Bootstrap 
+<script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+
+
+ Angular 
+<script src="libs/angular/angular/angular.js"></script>
+
+<script src="libs/angular/angular-animate/angular-animate.js"></script>
+<script src="libs/angular/angular-aria/angular-aria.js"></script>
+<script src="libs/angular/angular-cookies/angular-cookies.js"></script>
+<script src="libs/angular/angular-messages/angular-messages.js"></script>
+<script src="libs/angular/angular-resource/angular-resource.js"></script>
+<script src="libs/angular/angular-sanitize/angular-sanitize.js"></script>
+<script src="libs/angular/angular-touch/angular-touch.js"></script>
+<script src="libs/angular/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+
+<script src="libs/angular/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="libs/angular/ngstorage/ngStorage.js"></script>
+<script src="libs/angular/angular-ui-utils/ui-utils.js"></script>
+
+from jhipster
+<script src="libs/angular/angular-aria/angular-aria.js"></script>
+<script src="libs/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="libs/angular/angular-cache-buster/angular-cache-buster.js"></script>
+<script src="libs/angular/angular-cookies/angular-cookies.js"></script>
+<script src="libs/angular/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+<script src="libs/angular/ngstorage/ngStorage.js"></script>
+<script src="libs/angular/angular-loading-bar/build/loading-bar.js"></script>
+<script src="libs/angular/angular-resource/angular-resource.js"></script>
+<script src="libs/angular/angular-sanitize/angular-sanitize.js"></script>
+<script src="libs/angular/angular-translate/angular-translate.js"></script>
+<script src="libs/angular/messageformat/messageformat.js"></script>
+<script src="libs/angular/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+<script src="libs/angular/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+<script src="libs/angular/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="libs/angular/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="libs/assets/pdfjs/build/pdf.js"></script>
+<script src="libs/angular/angular-pdf/dist/angular-pdf.js"></script>
+<script src="libs/angular/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+<script src="libs/angular/json3/lib/json3.js"></script>
+<script src="libs/angular/ng-file-upload/ng-file-upload.js"></script>
+<script src="libs/angular/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+<script src="libs/angular/sockjs-client/dist/sockjs.js"></script>
+<script src="libs/angular/stomp-websocket/lib/stomp.min.js"></script>
+
+
+end from jhipster
+
+ bootstrap 
+<script src="libs/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+ lazyload 
+<script src="libs/angular/oclazyload/dist/ocLazyLoad.js"></script>
+ translate 
+<script src="libs/angular/angular-translate/angular-translate.js"></script>
+<script src="libs/angular/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="libs/angular/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="libs/angular/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+
+ App 
+<script src="js/affiche.heure.js"></script>
+<script src="js/app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/config.lazyload.js"></script>
+<script src="js/config.router.js"></script>
+
+<script src="libs/angular/angularjs-toaster/toaster.js"></script>
+<script src="js/app.controller.js"></script>
+<script src="js/main.js"></script>
+<script src="js/language/language.service.js"></script>
+<script src="js/language/language.filter.js"></script>
+<script src="js/language/language.controller.js"></script>
+<script src="js/language/language.constants.js"></script>
+<script src="js/translation.config.js"></script>
+<script src="js/translation-storage.provider.js"></script>
+<script src="js/services/user/user.service.js"></script>
+<script src="js/services/rest/fetchData.service.js"></script>
+<script src="js/services/auth/register.service.js"></script>
+<script src="js/services/auth/principal.service.js"></script>
+<script src="js/services/auth/password.service.js"></script>
+<script src="js/services/auth/password-reset-init.service.js"></script>
+<script src="js/services/auth/password-reset-finish.service.js"></script>
+<script src="js/services/auth/has-authority.directive.js"></script>
+<script src="js/services/auth/has-any-authority.directive.js"></script>
+<script src="js/services/auth/auth.service.js"></script>
+<script src="js/services/auth/auth.jwt.service.js"></script>
+<script src="js/services/auth/activate.service.js"></script>
+<script src="js/services/auth/account.service.js"></script>
+<script src="menuachat/menuachat.controller.js"></script>
+<script src="menuachat/menuachat.service.js"></script>
+<script src="menuachat/tooltip.directive.js"></script>
+<script src="menuvente/menuvente.controller.js"></script>
+<script src="menuactivite/menuactivite.controller.js"></script>
+<script src="menuactivite/menuactivite.service.js"></script>
+
+<script src="cellule/cellule.state.js"></script>
+<script src="cellule/cellule.service.js"></script>
+<script src="cellule/cellule.search.service.js"></script>
+<script src="cellule/cellule.controller.js"></script>
+<script src="cellule/cellule-dialog.controller.js"></script>
+<script src="cellule/cellule-detail.controller.js"></script>
+<script src="cellule/cellule-delete-dialog.controller.js"></script>
+<script src="activite/activite.state.js"></script>
+<script src="activite/activite.service.js"></script>
+<script src="activite/activite.search.service.js"></script>
+<script src="activite/activite.controller.js"></script>
+<script src="activite/activite-dialog.controller.js"></script>
+<script src="activite/activite-detail.controller.js"></script>
+<script src="activite/activite-delete-dialog.controller.js"></script>
+<script src="activite/choix-activite.controller.js"></script>
+<script src="mission/mission.state.js"></script>
+<script src="mission/mission.service.js"></script>
+<script src="mission/mission.search.service.js"></script>
+<script src="mission/mission.controller.js"></script>
+<script src="mission/mission-dialog.controller.js"></script>
+<script src="mission/mission-detail.controller.js"></script>
+<script src="mission/mission-delete-dialog.controller.js"></script>
+<script src="mission/mission_wizard.controller.js"></script>
+<script src="mission/rapport-mission.controller.js"></script>
+<script src="mission/resultat-obtenu.controller.js"></script>
+<script src="budget/budget.state.js"></script>
+<script src="budget/budget.service.js"></script>
+<script src="budget/budget.search.service.js"></script>
+<script src="budget/budget.controller.js"></script>
+<script src="budget/budget-dialog.controller.js"></script>
+<script src="budget/budget-detail.controller.js"></script>
+<script src="budget/budget-delete-dialog.controller.js"></script>
+<script src="ligne-budget/ligne-budget.state.js"></script>
+<script src="ligne-budget/ligne-budget.service.js"></script>
+<script src="ligne-budget/ligne-budget.search.service.js"></script>
+<script src="ligne-budget/ligne-budget.controller.js"></script>
+<script src="ligne-budget/ligne-budget-dialog.controller.js"></script>
+<script src="ligne-budget/ligne-budget-detail.controller.js"></script>
+<script src="ligne-budget/ligne-budget-delete-dialog.controller.js"></script>
+<script src="ligne-mission-activite/ligne-mission-activite.state.js"></script>
+<script src="ligne-mission-activite/ligne-mission-activite.service.js"></script>
+<script src="ligne-mission-activite/ligne-mission-activite.search.service.js"></script>
+<script src="ligne-mission-activite/ligne-mission-activite.controller.js"></script>
+<script src="ligne-mission-activite/ligne-mission-activite-dialog.controller.js"></script>
+<script src="ligne-mission-activite/ligne-mission-activite-detail.controller.js"></script>
+<script src="ligne-mission-activite/ligne-mission-activite-delete-dialog.controller.js"></script>
+<script src="type-activite/type-activite.state.js"></script>
+<script src="type-activite/type-activite.service.js"></script>
+<script src="type-activite/type-activite.search.service.js"></script>
+<script src="type-activite/type-activite.controller.js"></script>
+<script src="type-activite/type-activite-dialog.controller.js"></script>
+<script src="type-activite/type-activite-detail.controller.js"></script>
+<script src="type-activite/type-activite-delete-dialog.controller.js"></script>
+<script src="client/client.state.js"></script>
+<script src="client/client.service.js"></script>
+<script src="client/client.search.service.js"></script>
+<script src="client/client.controller.js"></script>
+<script src="client/client-dialog.controller.js"></script>
+<script src="client/client-detail.controller.js"></script>
+<script src="client/client-delete-dialog.controller.js"></script>
+<script src="client/chiffre-affaire-un-client.controller.js"></script>
+<script src="client/gestion-clientele.controller.js"></script>
+<script src="client/frequence-achat.controller.js"></script>
+<script src="client/fiche-client.controller.js"></script>
+<script src="client/creance-client.controller.js"></script>
+<script src="stockoperations/stockoperation.service.js"></script>
+<script src="facture/facture-delete-dialog.controller.js"></script>
+<script src="facture/facture-detail.controller.js"></script>
+<script src="facture/facture-dialog.controller.js"></script>
+<script src="facture/facture.search.service.js"></script>
+<script src="facture/facture.service.js"></script>
+<script src="facture/facture.controller.js"></script>
+<script src="facture/facture.state.js"></script>
+<script src="facture/client-vente.controller.js"></script>
+<script src="facture/client_vente.controller.js"></script>
+<script src="facture/client_vente.service.js"></script>
+<script src="facture/valide-vente.controller.js"></script>
+<script src="facture/destinataire-promotion.controller.js"></script>
+<script src="facture/facture-zero.controller.js"></script>
+<script src="transfert/transfert_produit.service.js"></script>
+<script src="transfert/transfert_produit.controller.js"></script>
+<script src="transfert/reception_transfert.controller.js"></script>
+<script src="transfert/transfert.state.js"></script>
+<script src="promotion/promotion_produit.service.js"></script>
+<script src="promotion/promotion_produit.controller.js"></script>
+<script src="promotion/promotion.state.js"></script>
+<script src="produit/produit.state.js"></script>
+<script src="produit/produit.service.js"></script>
+<script src="produit/produit.search.service.js"></script>
+<script src="produit/produit.controller.js"></script>
+<script src="produit/produit-dialog.controller.js"></script>
+<script src="produit/produit-abime-perime.controller.js"></script>
+<script src="produit/produit-detail.controller.js"></script>
+<script src="produit/rapport-global-stock.controller.js"></script>
+<script src="produit/rapport-global-stock-bailleur.controller.js"></script>
+<script src="produit/produit-delete-dialog.controller.js"></script>
+<script src="magasin/magasin.state.js"></script>
+<script src="magasin/magasin.service.js"></script>
+<script src="magasin/magasin.search.service.js"></script>
+<script src="magasin/magasin.controller.js"></script>
+<script src="magasin/rapport-promotion-magasin.controller.js"></script>
+<script src="magasin/magasin-dialog.controller.js"></script>
+<script src="magasin/magasin-detail.controller.js"></script>
+<script src="magasin/magasin-delete-dialog.controller.js"></script>
+<script src="magasin/etat-vente-magasin.controller.js"></script>
+<script src="downloader/print_promotion.controller.js"></script>
+<script src="rapport-stock/rapport_magasin.state.js"></script>
+<script src="rapport-stock/rapport.stock.service.js"></script>
+<script src="rapport-stock/rapport.stock.controller.js"></script>
+<script src="commune/commune.state.js"></script>
+<script src="commune/commune.service.js"></script>
+<script src="commune/commune.search.service.js"></script>
+<script src="commune/commune.controller.js"></script>
+<script src="commune/commune-dialog.controller.js"></script>
+<script src="commune/commune-detail.controller.js"></script>
+<script src="commune/commune-delete-dialog.controller.js"></script>
+<script src="region/region.state.js"></script>
+<script src="region/region.service.js"></script>
+<script src="region/region.search.service.js"></script>
+<script src="region/region.controller.js"></script>
+<script src="region/region-dialog.controller.js"></script>
+<script src="region/region-detail.controller.js"></script>
+<script src="region/region-delete-dialog.controller.js"></script>
+<script src="ville/ville.state.js"></script>
+<script src="ville/ville.service.js"></script>
+<script src="ville/ville.search.service.js"></script>
+<script src="ville/ville.controller.js"></script>
+<script src="ville/ville-dialog.controller.js"></script>
+<script src="ville/ville-detail.controller.js"></script>
+<script src="ville/ville-delete-dialog.controller.js"></script>
+
+<script src="rapports/rapport.state.js"></script>
+<script src="rapports/rapport-de-vente.controller.js"></script>
+<script src="rapports/inventaire.controller.js"></script>
+<script src="rapports/rapport-chiffre-affraire-produit.controller.js"></script>
+<script src="rapports/liste-des-factures.controller.js"></script>
+<script src="rapports/rapport-chiffre-affaire-client.controller.js"></script>
+<script src="rapports/rapport-chiffre-affaire-magasin.controller.js"></script>
+<script src="rapports/etat-de-reconcialliation.controller.js"></script>
+<script src="rapports/rapport-quantite-vendu-produit-district.controller.js"></script>
+<script src="rapports/rapport-delegues.controller.js"></script>
+<script src="rapports/taux-atteinte-des-resultats.controller.js"></script>
+<script src="rapports/rapport-de-vente.service.js"></script>
+<script src="rapports/rapport-quantite-vendue-district.service.js"></script>
+<script src="rapports/rapport-chiffre-affaire-produit.service.js"></script>
+<script src="rapports/rapport-chiffre-affaire-client.service.js"></script>
+<script src="rapports/rapport-chiffre-affaire-magasin.service.js"></script>
+<script src="rapports/taux-atteinte-objectif.service.js"></script>
+<script src="prix/prix.state.js"></script>
+<script src="prix/prix.service.js"></script>
+<script src="prix/prix.search.service.js"></script>
+<script src="prix/prix.controller.js"></script>
+<script src="prix/prix-dialog.controller.js"></script>
+<script src="prix/prix-detail.controller.js"></script>
+<script src="prix/prix-delete-dialog.controller.js"></script>
+<script src="reglement/reglement-credit.controller.js"></script>
+<script src="reglement/reglement.state.js"></script>
+<script src="reglement/paiement.controller.js"></script>
+
+<script src="lot/lot.state.js"></script>
+<script src="lot/lot.service.js"></script>
+<script src="lot/lot.search.service.js"></script>
+<script src="lot/lot.controller.js"></script>
+<script src="lot/lot-dialog.controller.js"></script>
+<script src="lot/lot-detail.controller.js"></script>
+<script src="lot/lot-delete-dialog.controller.js"></script>
+<script src="localite/localite.state.js"></script>
+<script src="localite/localite.service.js"></script>
+<script src="localite/localite.search.service.js"></script>
+<script src="localite/localite.controller.js"></script>
+<script src="localite/localite-dialog.controller.js"></script>
+<script src="localite/localite-detail.controller.js"></script>
+<script src="localite/localite-delete-dialog.controller.js"></script>
+<script src="bon-de-sortie/bon-de-sortie.state.js"></script>
+<script src="bon-de-sortie/bon-de-sortie.service.js"></script>
+<script src="bon-de-sortie/bon-de-sortie.search.service.js"></script>
+<script src="bon-de-sortie/bon-de-sortie.controller.js"></script>
+<script src="bon-de-sortie/bon-de-sortie-wizard.controller.js"></script>
+<script src="bon-de-sortie/bon-de-sortie-dialog.controller.js"></script>
+<script src="bon-de-sortie/bon-de-sortie-detail.controller.js"></script>
+<script src="bon-de-sortie/bon-de-sortie-delete-dialog.controller.js"></script>
+<script src="objectifs/objectifs.state.js"></script>
+<script src="objectifs/objectifs.service.js"></script>
+<script src="objectifs/objectifs.controller.js"></script>
+<script src="objectifs/objectifs.search.service.js"></script>
+<script src="objectifs/objectif_maj_dialog.controller.js"></script>
+<script src="objectifs/objectifs-dialog.controller.js"></script>
+<script src="objectifs/objectifs-dialog.controller.js"></script>
+<script src="objectifs/objectifs-detail.controller.js"></script>
+<script src="objectifs/objectifs-delete-dialog.controller.js"></script>
+<script src="objectifs/objectifs-vente-journal.controller.js"></script>
+<script src="objectifs/objectifs_mise_a_jour.controller.js"></script>
+<script src="objectifs/objectifs-quantite-produit-vendue.service.js"></script>
+<script src="objectifs/objectifs_mettre_a_jour.service.js"></script>
+<script src="objectifs/objectifs_chart.controller.js"></script>
+
+<script src="ligneobjectifvente/ligneobjectifvente.state.js"></script>
+<script src="ligneobjectifvente/ligneobjectifvente.service.js"></script>
+<script src="ligneobjectifvente/ligneobjectifvente.search.service.js"></script>
+<script src="ligneobjectifvente/ligneobjectifvente.controller.js"></script>
+<script src="ligneobjectifvente/ligneobjectifvente-dialog.controller.js"></script>
+<script src="ligneobjectifvente/ligneobjectifvente-detail.controller.js"></script>
+<script src="ligneobjectifvente/ligneobjectifvente-delete-dialog.controller.js"></script>
+<script src="ligne-bon-de-sortie/ligne-bon-de-sortie.state.js"></script>
+<script src="ligne-bon-de-sortie/ligne-bon-de-sortie.service.js"></script>
+<script src="ligne-bon-de-sortie/ligne-bon-de-sortie.search.service.js"></script>
+<script src="ligne-bon-de-sortie/ligne-bon-de-sortie.controller.js"></script>
+<script src="ligne-bon-de-sortie/ligne-bon-de-sortie-dialog.controller.js"></script>
+<script src="ligne-bon-de-sortie/ligne-bon-de-sortie-detail.controller.js"></script>
+<script src="ligne-bon-de-sortie/ligne-bon-de-sortie-delete-dialog.controller.js"></script>
+<script src="lignefacture/lignefacture.state.js"></script>
+<script src="lignefacture/lignefacture.service.js"></script>
+<script src="lignefacture/lignefacture.search.service.js"></script>
+<script src="lignefacture/lignefacture.controller.js"></script>
+<script src="lignefacture/lignefacture-dialog.controller.js"></script>
+<script src="lignefacture/lignefacture-detail.controller.js"></script>
+<script src="lignefacture/lignefacture-delete-dialog.controller.js"></script>
+
+<script src="categorieclient/categorieclient.state.js"></script>
+<script src="categorieclient/categorieclient.service.js"></script>
+<script src="categorieclient/categorieclient.search.service.js"></script>
+<script src="categorieclient/categorieclient.controller.js"></script>
+<script src="categorieclient/categorieclient-dialog.controller.js"></script>
+<script src="categorieclient/categorieclient-detail.controller.js"></script>
+<script src="categorieclient/categorieclient-delete-dialog.controller.js"></script>
+
+<script src="lignelivraison/lignelivraison.state.js"></script>
+<script src="lignelivraison/lignelivraison.service.js"></script>
+<script src="lignelivraison/lignelivraison.search.service.js"></script>
+<script src="lignelivraison/lignelivraison.controller.js"></script>
+
+<script src="livraison/livraison.state.js"></script>
+<script src="livraison/livraison.service.js"></script>
+<script src="livraison/livraison.search.service.js"></script>
+<script src="livraison/quantite-agence-produit.service.js"></script>
+<script src="livraison/livraison.controller.js"></script>
+<script src="livraison/livraison-dialog.controller.js"></script>
+<script src="livraison/livraison-detail.controller.js"></script>
+<script src="livraison/livraison-delete-dialog.controller.js"></script>
+
+<script src="livraison/commande.livraison.service.js"></script>
+<script src="livraison/commandeLivraison.controller.js"></script>
+
+<script src="livraison/quantite-agence-produit.controller.js"></script>
+<script src="livraison/liste-bordereau-livraison.controller.js"></script>
+<script src="livraison/etat-transfert-magasin.controller.js"></script>
+<script src="lignecommande/lignecommande.state.js"></script>
+<script src="lignecommande/lignecommande.service.js"></script>
+<script src="lignecommande/lignecommande.search.service.js"></script>
+<script src="lignecommande/lignecommande.controller.js"></script>
+<script src="lignecommande/lignecommande-dialog.controller.js"></script>
+<script src="lignecommande/lignecommande-detail.controller.js"></script>
+<script src="lignecommande/lignecommande-delete-dialog.controller.js"></script>
+<script src="commande/commande.fournisseur.service.js"></script>
+<script src="fabricant/fabricant.state.js"></script>
+<script src="fabricant/fabricant.service.js"></script>
+<script src="fabricant/fabricant.search.service.js"></script>
+<script src="fabricant/fabricant.controller.js"></script>
+<script src="fabricant/fabricant-dialog.controller.js"></script>
+<script src="fabricant/fabricant-detail.controller.js"></script>
+<script src="fabricant/fabricant-delete-dialog.controller.js"></script>
+<script src="conditionnement/conditionnement.state.js"></script>
+<script src="conditionnement/conditionnement.service.js"></script>
+<script src="conditionnement/conditionnement.search.service.js"></script>
+<script src="conditionnement/conditionnement.controller.js"></script>
+<script src="conditionnement/conditionnement-dialog.controller.js"></script>
+<script src="conditionnement/conditionnement-detail.controller.js"></script>
+<script src="conditionnement/conditionnement-delete-dialog.controller.js"></script>
+<script src="commande/commande.state.js"></script>
+<script src="commande/commande.service.js"></script>
+<script src="commande/commande.search.service.js"></script>
+<script src="commande/commande.fournisseur.service.js"></script>
+<script src="commande/commande.controller.js"></script>
+<script src="commande/commande-dialog.controller.js"></script>
+<script src="commande/commande-detail.controller.js"></script>
+<script src="commande/commande-delete-dialog.controller.js"></script>
+<script src="commande/commandeFournisseur.controller.js"></script>
+<script src="commande/rapport-commande.service.js"></script>
+
+<script src="admin/user-management/user-management.state.js"></script>
+<script src="admin/user-management/user-management.controller.js"></script>
+<script src="admin/user-management/user-management-dialog.controller.js"></script>
+<script src="admin/user-management/user-management-detail.controller.js"></script>
+<script src="admin/user-management/user-management-delete-dialog.controller.js"></script>
+<script src="admin/tracker/tracker.state.js"></script>
+<script src="admin/tracker/tracker.service.js"></script>
+<script src="admin/tracker/tracker.controller.js"></script>
+<script src="admin/metrics/metrics.state.js"></script>
+<script src="admin/metrics/metrics.service.js"></script>
+<script src="admin/metrics/metrics.modal.controller.js"></script>
+<script src="admin/metrics/metrics.controller.js"></script>
+<script src="admin/logs/logs.state.js"></script>
+<script src="admin/logs/logs.service.js"></script>
+<script src="admin/logs/logs.controller.js"></script>
+<script src="admin/health/health.state.js"></script>
+<script src="admin/health/health.service.js"></script>
+<script src="admin/health/health.modal.controller.js"></script>
+<script src="admin/health/health.controller.js"></script>
+<script src="admin/docs/docs.state.js"></script>
+<script src="admin/configuration/configuration.state.js"></script>
+<script src="admin/configuration/configuration.service.js"></script>
+<script src="admin/configuration/configuration.controller.js"></script>
+<script src="admin/audits/audits.state.js"></script>
+<script src="admin/audits/audits.service.js"></script>
+<script src="admin/audits/audits.controller.js"></script>
+
+<script src="account/settings/settings.state.js"></script>
+<script src="account/settings/settings.controller.js"></script>
+<script src="account/register/register.state.js"></script>
+<script src="account/register/register.controller.js"></script>
+<script src="account/password/password.state.js"></script>
+<script src="account/password/password.controller.js"></script>
+<script src="account/password/password-strength-bar.directive.js"></script>
+<script src="account/activate/activate.state.js"></script>
+<script src="account/activate/activate.controller.js"></script>
+
+
+<script src="categorie/categorie.state.js"></script>
+<script src="categorie/categorie.service.js"></script>
+<script src="categorie/categorie.search.service.js"></script>
+<script src="categorie/categorie.controller.js"></script>
+<script src="categorie/categorie-dialog.controller.js"></script>
+<script src="categorie/categorie-detail.controller.js"></script>
+<script src="categorie/categorie-delete-dialog.controller.js"></script>
+<script src="bailleur/bailleur.state.js"></script>
+<script src="bailleur/bailleur.service.js"></script>
+<script src="bailleur/bailleur.search.service.js"></script>
+<script src="bailleur/bailleur.controller.js"></script>
+<script src="bailleur/bailleur-dialog.controller.js"></script>
+<script src="bailleur/bailleur-detail.controller.js"></script>
+<script src="bailleur/bailleur-delete-dialog.controller.js"></script>
+<script src="notifications/notification.service.js"></script>
+<script src="notifications/notification.controller.js"></script>
+<script src="components/language/language.service.js"></script>
+<script src="components/language/language.filter.js"></script>
+<script src="components/language/language.controller.js"></script>
+<script src="components/language/language.constants.js"></script>
+<script src="components/form/uib-pagination.config.js"></script>
+<script src="components/form/uib-pager.config.js"></script>
+<script src="components/form/show-validation.directive.js"></script>
+<script src="components/form/pagination.constants.js"></script>
+<script src="components/form/minbytes.directive.js"></script>
+<script src="components/form/maxbytes.directive.js"></script>
+<script src="components/alert/alert.service.js"></script>
+<script src="components/alert/alert.directive.js"></script>
+<script src="components/alert/alert-error.directive.js"></script>
+<script src="components/util/truncate-words.filter.js"></script>
+<script src="components/util/truncate-characters.filter.js"></script>
+<script src="components/util/sort.directive.js"></script>
+<script src="components/util/sort-by.directive.js"></script>
+<script src="components/util/parse-links.service.js"></script>
+<script src="components/util/pagination-util.service.js"></script>
+<script src="components/util/jhi-item-count.directive.js"></script>
+<script src="components/util/date-util.service.js"></script>
+<script src="components/util/data-util.service.js"></script>
+<script src="components/util/capitalize.filter.js"></script>
+<script src="components/util/base64.service.js"></script>
+<script src="components/util/date-util.service.js"></script>
+<script src="components/util/data-util.service.js"></script>
+<script src="bower_components/pdfjs-dist/build/pdf.js"></script>
+<script src="bower_components/ng-pdf-viewer/src/ng-pdf-viewer.min.js"></script>
+<script src="bower_components/json-stringify-safe/stringify.js"></script>
+<script src="js/services/interceptor/notification.interceptor.js"></script>
+<script src="js/services/interceptor/errorhandler.interceptor.js"></script>
+<script src="js/services/config/http.config.js"></script>
+<script src="js/services/interceptor/auth.interceptor.js"></script>
+<script src="js/services/interceptor/auth-expired.interceptor.js"></script>
+<script src="js/services/handlers/translation.handler.js"></script>
+<script src="js/services/handlers/state.handler.js"></script>
+<script src="login/login.service.js"></script>
+<script src="login/login.controller.js"></script>
+<script src="js/services/ui-load.js"></script>
+<script src="js/filters/fromNow.js"></script>
+<script src="js/directives/setnganimate.js"></script>
+<script src="js/directives/ui-butterbar.js"></script>
+<script src="js/directives/ui-focus.js"></script>
+<script src="js/directives/ui-fullscreen.js"></script>
+<script src="js/directives/ui-jq.js"></script>
+<script src="js/directives/ui-module.js"></script>
+<script src="js/directives/ui-nav.js"></script>
+<script src="js/directives/ui-scroll.js"></script>
+<script src="js/directives/ui-shift.js"></script>
+<script src="js/directives/ui-toggleclass.js"></script>
+<script src="js/controllers/bootstrap.js"></script>
+<script src="js/config.router.js"></script>
+<script src="js/app.constants.js"></script>
+ endbuild 
+ Lazy loading 
+</body>
+</html>-->

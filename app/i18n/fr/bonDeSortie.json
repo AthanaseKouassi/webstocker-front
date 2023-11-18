@@ -1,0 +1,29 @@
+{
+    "webstockerApp": {
+        "bonDeSortie" : {
+            "home": {
+                "title": "BonDeSorties",
+                "createLabel": "Créer un nouveau BonDeSortie",
+                "createOrEditLabel": "Créer ou éditer un BonDeSortie",
+                "search": "Recherche pour BonDeSortie"
+            },
+            "created": "Un nouveau BonDeSortie a été créé avec l'identifiant {{ param }}",
+            "updated": "Le BonDeSortie avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le BonDeSortie avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le BonDeSortie {{ id }} ?"
+            },
+            "detail": {
+                "title": "BonDeSortie"
+            },
+            "numero": "Numero",  
+            "daateCreation": "DaateCreation",
+            "typeSortie": "TypeSortie",
+            "typeVente": "TypeVente",
+            "demandeur": "Demandeur",
+            "client": "Client",
+            "magasin": "Magasin",
+            "destination": "Destination"
+        }
+    }
+}

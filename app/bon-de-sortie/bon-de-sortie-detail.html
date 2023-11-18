@@ -1,0 +1,53 @@
+
+<div>
+    <h2><span translate="webstockerApp.bonDeSortie.detail.title">BonDeSortie</span> {{vm.bonDeSortie.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="webstockerApp.bonDeSortie.numero">Numero</dt></dt>
+        <dd>
+            <span>{{vm.bonDeSortie.numero}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.bonDeSortie.daateCreation">DaateCreation</dt></dt>
+        <dd>
+            <span>{{vm.bonDeSortie.daateCreation | date:'mediumDate'}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.bonDeSortie.typeSortie">TypeSortie</dt></dt>
+        <dd>
+            <span translate="{{'webstockerApp.TypeSortie.' + vm.bonDeSortie.typeSortie}}">{{vm.bonDeSortie.typeSortie}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.bonDeSortie.typeVente">TypeVente</dt></dt>
+        <dd>
+            <span translate="{{'webstockerApp.TypeVente.' + vm.bonDeSortie.typeVente}}">{{vm.bonDeSortie.typeVente}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.bonDeSortie.demandeur">demandeur</span></dt>
+        <dd>
+            {{vm.bonDeSortie.demandeur.id}}
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.bonDeSortie.client">client</span></dt>
+        <dd>
+            <a ui-sref="client-detail({id:vm.bonDeSortie.client.id})">{{vm.bonDeSortie.client.id}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.bonDeSortie.magasin">magasin</span></dt>
+        <dd>
+            <a ui-sref="magasin-detail({id:vm.bonDeSortie.magasin.id})">{{vm.bonDeSortie.magasin.id}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="webstockerApp.bonDeSortie.destination">destination</span></dt>
+        <dd>
+            <a ui-sref="magasin-detail({id:vm.bonDeSortie.destination.id})">{{vm.bonDeSortie.destination.id}}</a>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

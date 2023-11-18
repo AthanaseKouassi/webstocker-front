@@ -1,0 +1,378 @@
+<!-- list -->
+<ul class="nav" ng-controller="NavbarController as navctl" ng-switch="menuElement">
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <!--<span translate="aside.nav.HEADER">Navigation</span>-->
+    </li>
+    <li ui-sref-active="active">
+        <!--<a ui-sref="dashboard_v1">-->
+        <a href="#/">
+            <!--<b class="badge bg-info pull-right">9</b>-->
+            <i class="glyphicon glyphicon-home icon text-info-lter"></i>
+            <span class="font-bold" >Accueil</span>
+        </a>
+    </li>
+
+    <li ui-sref-active="active" ng-switch-when="stock">
+        <a ui-sref="menuachat" class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-gift text-success-dker"></i>
+            <span class="font-bold" >Achats</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href="">
+                    <span >Achats</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+    <li ui-sref-active="active" ng-switch-when="facturation">
+        <a ui-sref="menuvente" class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-th-large icon text-success"></i>
+            <span class="font-bold">Ventes</span>
+        </a>
+        <ul class="nav nav-sub dk" has-authority="ROLE_SVP">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>Ventes</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active">
+                <a ui-sref="client">
+                    <span>Clients</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="reception_transfert">
+                    <span>Validation des transferts</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a href class="auto">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                    </span>
+                    <span>Modifications</span>                    
+                </a >
+                <ul class="nav nav-sub dk">
+                    <li ui-sref-active="active">
+                        <a ui-sref="bondesortie-vente">
+                            <span>Modifier une vente</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="bondesortie-promotion">
+                            <span>Modifier une promotion</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="bondesortie-transfert">
+                            <span>Modifier un transfert</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li ui-sref-active="active" ng-switch-when="activite">
+        <a ui-sref="menuactivite" class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+            <span class="font-bold" >Activités</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span >Activités</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="type-activite">
+                    <span>Type d'activité</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="activite">
+                    <span>Activité</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </li>
+
+    <li ng-switch-when="stock" has-authority="ROLE_PARAMETRE">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-cog icon text-warning-dker"></i>
+            <span class="font-bold" >Paramètres</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span >Paramètres</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a href class="auto">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                    </span>
+                    <span>Créer un nouveau produit</span>                    
+                </a >
+                <ul class="nav nav-sub dk">
+                    <li ui-sref-active="active">
+                        <a ui-sref="categorie">
+                            <!--<b class="label bg-info pull-right">N</b>-->
+                            <span>Catégories de produit</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="conditionnement">
+                            <!--<b class="label bg-info pull-right">N</b>-->
+                            <span>Conditionnement des produits</span>
+                        </a>
+                    </li>
+
+                    <li ui-sref-active="active">
+                        <a ui-sref="produit">
+                            <!--<b class="label bg-info pull-right">N</b>-->
+                            <span>Produits</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="categorieclient">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Créer un type client</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a href class="auto">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                    </span>
+                    <span>Créer une nouvelle localité</span>                    
+                </a >
+                <ul class="nav nav-sub dk">
+                    <li ui-sref-active="active">
+                        <a ui-sref="region">
+                            <span>Région</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="ville">
+                            <span>Ville</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="commune">
+                            <span>Commune</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="localite">
+                            <span>Quartier</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="magasin">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Magasins</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="fabricant">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Fabricants</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="bailleur">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Bailleurs</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="commande">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Passer une Commande au fabricant</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="livraison">
+                    <span>Livraisons effectuées</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="prix">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Fixer un nouveau prix</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active">
+                <a ui-sref="objectifs">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Définir les objectifs de vente</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="objectifs_mise_a_jour">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Mise à jour des objectifs de vente</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a href class="auto">
+                    <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                    </span>
+                    <span>Modifications</span>                    
+                </a >
+                <ul class="nav nav-sub dk">
+
+                    <li ui-sref-active="active">
+                        <a ui-sref="bondesortie-transfert">
+                            <span>Modifier une commande</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="bondesortie-transfert">
+                            <span>Modifier un approvisionnement</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="lot">
+                            <!--<b class="label bg-info pull-right">N</b>-->
+                            <span> Modifier lot</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li  has-authority="ROLE_ADMIN">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-tasks icon "></i>            
+            <span class="font-bold" >Administration</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span >Administration</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active">
+                <a ui-sref="user-management">
+                    <!--<b class="label bg-info pull-right">N</b>-->                   
+                    <span>Gestion des utilisateurs</span>
+                </a>
+            </li>
+<!--            <li ui-sref-active="active">
+                <a ui-sref="jhi-tracker">
+                    <b class="label bg-info pull-right">N</b>
+                    <span>Suivi des actions utilisateur</span>
+                </a>
+            </li>-->
+            <li ui-sref-active="active">
+                <a ui-sref="audits">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Audit des connexions utilisateur</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+    <li has-authority="ROLE_USER">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <!--<i class="glyphicon glyphicon-cog icon text-warning-dker"></i>-->
+            <i class="icon-user icon text-success-lter"></i>
+            <span class="font-bold" >Profil utilisateur</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span >Profil utilisateur</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="settings">
+                    <span>Informations personnelles</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="password">
+                    <!--<b class="label bg-info pull-right">N</b>-->
+                    <span>Modifier le mot de passe</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+
+    <li ui-sref-active="active" >
+        <a ui-sref="app.dashboard-v1" ng-click="navctl.logout()">
+            <i class="glyphicon glyphicon-log-out text-danger-dker"></i>
+            <span class="font-bold" >Déconnexion</span>
+        </a>
+    </li>
+<!--    <li ui-sref-active="active" >
+        <a href="">
+            <fieldset>
+                <legend class="font-bold" ><small style="color: white">Détails </small></legend>
+                <span class="font-bold" >Date : {{date| date:'dd-MMMM-yyyy' }}</span><br/>
+                <span class="font-bold" >Heure de connexion : {{date| date:'HH:mm:ss'}}</span><br/>
+                <span class="font-bold" >Heure : <span id="afficherheure" > </span></span>
+                <script type="text/javascript">
+                            setInterval(function () {
+                                document.getElementById('afficherheure').innerHTML = new Date().toLocaleTimeString();
+                            }, 1000);
+                </script>
+            </fieldset>
+        </a>
+    </li>-->
+    <li class="line dk"></li>
+
+</ul>
+
+<!-- / list -->

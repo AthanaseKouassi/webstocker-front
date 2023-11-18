@@ -1,0 +1,26 @@
+{
+    "webstockerApp": {
+        "formDiag" : {
+            "home": {
+                "title": "FormDiags",
+                "createLabel": "Create a new FormDiag",
+                "createOrEditLabel": "Create or edit a FormDiag",
+                "search": "Search for FormDiag"
+            },
+            "created": "A new FormDiag is created with identifier {{ param }}",
+            "updated": "A FormDiag is updated with identifier {{ param }}",
+            "deleted": "A FormDiag is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete FormDiag {{ id }}?"
+            },
+            "detail": {
+                "title": "FormDiag"
+            },
+            "notes": "Notes",
+            "dateDiag": "DateDiag",
+            "diagnostic": "Diagnostic",
+            "encounter": "Encounter",
+            "provider": "Provider"
+        }
+    }
+}

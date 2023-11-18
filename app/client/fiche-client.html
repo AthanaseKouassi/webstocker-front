@@ -1,0 +1,97 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Etat d'un client</h1>
+    <small>Toutes les activités du client</small>
+</div>
+<div class="wrapper-md" >  
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Liste des clients</div>
+        <div class="panel-body" >
+            <div class="col-md-12" >
+                <form class=" form-horizontal" role="form">
+                    <div class="form-group col-md-12">
+                        <label for="cboclient_ID" class="col-md-2 control-label">Client</label>
+                        <div class="col-md-4" >
+                            <input class="form-control input-xs" type="text" placeholder="Nom ou Numéro"  ng-model="criteria.noClient"/> 
+                        </div>
+                        <div class="col-md-6" > </div>
+                    </div>
+                    
+                    <div class="form-group col-md-12">
+                        <label for="dtpdatedebut" class="col-md-2 control-label">Date début</label>
+                         <div class="col-md-4" >
+                             <p class="input-group">
+                           <input id="field_dateFabrication " type="text" name="dateDebut"
+                                   uib-datepicker-popup="{{dateformat}}"
+                                   date-format="yyyy-MM-dd" date-type="string"
+                                   ng-model="criteria.dateDebut"
+                                   is-open="datePickerOpenStatus.dateDebut"
+                                   class="form-control" />
+                           <!--style="width:80% !important"-->
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="openCalendar('dateDebut')"><i
+                                        class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                              </span> 
+                             </p>
+                          </div>
+                          <label for="dtpdatefin" class="col-md-2 control-label">Date fin</label>
+                        <div class="col-md-4" >
+                            <p class="input-group">
+                           <input id="field_dateFabrication " type="text" name="dateFin"
+                                   uib-datepicker-popup="{{dateformat}}"
+                                   date-format="yyyy-MM-dd" date-type="string"
+                                   ng-model="criteria.dateFin"
+                                   is-open="datePickerOpenStatus.dateFin"
+                                   class="col-md-2 form-control" />
+                           <!--style="width:80% !important"-->
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="openCalendar('dateFin')"><i
+                                        class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span> 
+                            </p>
+                        </div>
+                     </div>
+                       
+                </form>          
+            </div>
+            <div class="col-md-12">
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <button class="btn btn-default btn-rounded"  style="color:blue" ng-click="loadData()"><span class="glyphicon glyphicon-refresh"></span></button>
+                    </div>
+                </div>
+               <div class="table-responsive">
+                <table class="jh-table table table-striped">
+                    <thead>
+                        <tr>
+                            <th><span >Raison sociale</span></th>
+                            <th><span >Localité</span></th>
+                            <th><span >Téléphone</span></th>
+                            <th><span >Adresse Postale</span></th>
+                            <th><span >Frequence d'achats</span></th>
+                            <th><span >Actions</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="clientFacture in clientsFacture">
+                            <td ng-show="clientFacture.id!=null">{{clientFacture.nomClient}}</td>
+                            <td ng-show="clientFacture.id!=null">{{clientFacture.localiteClient}}</td>
+                            <td ng-show="clientFacture.id!=null">{{clientFacture.telephoneClient}}</td>
+                            <td ng-show="clientFacture.id!=null">{{clientFacture.boitePostale}}</td>
+                            <td ng-show="clientFacture.id!=null">{{clientFacture.frequenceAchat}}</td>
+                            <td ng-show="clientFacture.id!=null">
+                                <button class="btn btn-default btn-xs zzzclsbtnaction btnficheclient" title="Fiche client" style="color:blue" ng-click="open(clientFacture.id)"><span class="glyphicon glyphicon-user"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+

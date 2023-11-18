@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLocaliteLabel" translate="webstockerApp.localite.home.createOrEditLabel">Create or edit a Localite</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.localite.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.localite.region" for="field_region">Region</label>
+            <input type="text" class="form-control" name="region" id="field_region"
+                    ng-model="vm.localite.region"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.localite.commune" for="field_commune">Commune</label>
+            <input type="text" class="form-control" name="commune" id="field_commune"
+                    ng-model="vm.localite.commune"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.localite.village" for="field_village">Village</label>
+            <input type="text" class="form-control" name="village" id="field_village"
+                    ng-model="vm.localite.village"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.localite.quartier" for="field_quartier">Quartier</label>
+            <input type="text" class="form-control" name="quartier" id="field_quartier"
+                    ng-model="vm.localite.quartier"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="webstockerApp.localite.ville" for="field_ville">Ville</label>
+            <input type="text" class="form-control" name="ville" id="field_ville"
+                    ng-model="vm.localite.ville"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="webstockerApp.localite.communes" for="field_communes">communes</label>
+            <select class="form-control" id="field_communes" name="communes" ng-model="vm.localite.communes" ng-options="commune as commune.libelle for commune in vm.communes track by commune.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

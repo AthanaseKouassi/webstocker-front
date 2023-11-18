@@ -1,0 +1,123 @@
+<div class="panel panel-body">
+    <!--<form role="form" class="form-horizontal">-->
+    <form role="form" class="form-inline">
+         <fieldset>
+        <div class="form-group">
+                <label class="control-label" for="magasin">Magasin</label>
+                <!--<div class="col-md-6" >-->
+                    <p class="input-group">
+                    <div >
+                        <select required class="form-control" id="field_produit" name="magasin"
+                                ng-model="vm.rapportData.magasin"
+                                ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id">
+                            <option value=""></option>
+                        </select>
+                    </div> 
+                    </p>
+                    
+                <!--</div>-->
+                <!--<div class="col-md-4"></div>-->
+            </div>
+         </fieldset>
+        <fieldset> 
+            <!--<legend> Vous pouvez également imprimer la facture que vous souhaitez imprimer !</legend>--> 
+           
+            <div class="form-group">
+                <label class="sr-only" for="dateDebutPeriode">Date début période </label>
+                <!--<label class="control-label" for="dateDebutPeriode">Date début période </label>-->
+                <p class="input-group">
+                    <input type="text" id="field_dateDebut" name="dateDebutMois" uib-datepicker-popup="dd MMM yyyy" placeholder="Date début période"
+                               ng-model="vm.rapportData.dateDebutPeriode" is-open="vm.datePickerOpenStatus.dateDebutMois" class="form-control" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutMois')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+                <div ng-show="editForm.dateDebut.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+            </div>
+
+            <div   class="form-group" >
+                <!--<label class="control-label" for="dateFinPeriode">Date fin période </label>-->
+                <label class="sr-only" for="dateFinPeriode">Date fin période </label>
+
+                <p class="input-group">
+                    <input type="text"  class="form-control" id="field_dateDebut" name="dateFinMois" uib-datepicker-popup="dd MMM yyyy" placeholder="Date fin période"
+                                ng-model="vm.rapportData.dateFinPeriode" is-open="vm.datePickerOpenStatus.dateFinMois" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinMois')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+                <div ng-show="editForm.dateFin.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                 <p class="input-group">
+                <button class="btn btn-default btn-rounded" 
+                        ng-click="vm.listeBonDeSortieTransfert()" type="submit"> 
+                    Valider</button>
+                 </p>
+            </div>
+             <div class="form-group">
+                 <p class="input-group">
+                <button class="btn btn-info btn-rounded" ng-click="vm.imprimerDetailsTransfert()" type="submit"> 
+                    <i class="glyphicon glyphicon-print"></i>
+                    Imprimer détails des transferts</button>
+                 </p>
+            </div>
+        </fieldset>
+    </form>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Numéro Bon de sortie</th>
+                    <th>Magasin de destination</th>
+                    <th style="display: none">ID</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                        
+                <tr ng-repeat="lignebon in vm.bonDeSortieTranfert">
+                    <td ><span>{{lignebon.daateCreation | date : "dd MMMM yyyy" }}</span></td>
+                    <td ><span>{{lignebon.numero}}</span></td>                                       
+                    <td ><span ng-show="lignebon.destination != null">{{lignebon.destination.nomMagasin}}</span></span></td>                   
+                    <td  style="display: none"><span >{{lignebon.id}}</span></td>
+                    <td >
+
+                        <div class="btn-group flex-btn-group-container">
+                            <!--ui-sref="produit-detail({id:produit.id})"-->
+                            <button type="submit" ng-click="vm.imprimerBonDeSortie(lignebon.id)"                                    
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-print"></span>
+                                <span class="hidden-xs hidden-sm" >Imprimer</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+<!--        <div>
+            <button class="btn btn-default btn-rounded" >
+                <span class="glyphicon glyphicon-print"></span>
+                Imprimer
+            </button>
+        </div>-->
+    </div>
+</div>

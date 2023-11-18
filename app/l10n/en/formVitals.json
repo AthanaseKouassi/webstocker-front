@@ -1,0 +1,33 @@
+{
+    "webstockerApp": {
+        "formVitals" : {
+            "home": {
+                "title": "FormVitals",
+                "createLabel": "Create a new FormVitals",
+                "createOrEditLabel": "Create or edit a FormVitals",
+                "search": "Search for FormVitals"
+            },
+            "created": "A new FormVitals is created with identifier {{ param }}",
+            "updated": "A FormVitals is updated with identifier {{ param }}",
+            "deleted": "A FormVitals is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete FormVitals {{ id }}?"
+            },
+            "detail": {
+                "title": "FormVitals"
+            },
+            "bps": "Bps",
+            "bpd": "Bpd",
+            "weight": "Weight",
+            "height": "Height",
+            "temperature": "Temperature",
+            "note": "Note",
+            "bmi": "Bmi",
+            "waistCirc": "WaistCirc",
+            "headCirc": "HeadCirc",
+            "oxygenSaturation": "OxygenSaturation",
+            "date": "Date",
+            "encounter": "Encounter"
+        }
+    }
+}

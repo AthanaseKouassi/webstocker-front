@@ -1,0 +1,50 @@
+
+<form name="editForm" role="form" novalidate  show-validation class="form-horizontal">
+    <!--ng-submit="vm.save()"-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLocaliteLabel" >Créer ou editer un Quartier</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <!--<label for="id" translate="global.field.id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id"-->
+                    <!--ng-model="vm.localite.id" readonly />-->
+        </div>
+        <div class="form-group">
+            <label class=" control-label col-md-2"  for="field_nom">Nom</label>
+            <div class="col-md-6">
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                    ng-model="vm.localite.nom"
+                    required />
+            <div ng-show="editForm.nom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+
+        <div class="form-group">
+            <label class=" control-label col-md-2" for="field_communes">Communes</label>
+            <div class="col-md-6">
+            <select class="form-control" id="field_communes" name="communes" ng-model="vm.localite.communes" ng-options="commune as commune.libelle for commune in vm.communes track by commune.id">
+                <option value=""></option>
+            </select>
+                </div>
+            <div class="col-md-4"> </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span >Annuler</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary btn-rounded"ng-click="vm.rechercher(vm.localite.nom)">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span >Sauvegarder</span>
+        </button>
+    </div>
+</form>

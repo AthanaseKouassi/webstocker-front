@@ -1,0 +1,25 @@
+{
+    "webstockerApp": {
+        "ligneBonDeSortie" : {
+            "home": {
+                "title": "LigneBonDeSorties",
+                "createLabel": "Create a new LigneBonDeSortie",
+                "createOrEditLabel": "Create or edit a LigneBonDeSortie",
+                "search": "Search for LigneBonDeSortie"
+            },
+            "created": "A new LigneBonDeSortie is created with identifier {{ param }}",
+            "updated": "A LigneBonDeSortie is updated with identifier {{ param }}",
+            "deleted": "A LigneBonDeSortie is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete LigneBonDeSortie {{ id }}?"
+            },
+            "detail": {
+                "title": "LigneBonDeSortie"
+            },
+            "quantite": "Quantite",
+            "prixVente": "PrixVente",
+            "produit": "Produit",
+            "bonDeSortie": "BonDeSortie"
+        }
+    }
+}

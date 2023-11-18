@@ -1,0 +1,405 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Sortie de produit pour la promotion</h1>
+    <jhi-alert></jhi-alert>
+</div>
+
+<div class="wrapper-md">
+    <uib-tabset class="tab-container" active="steps.indexActif" ng-init="steps={percent:20, step1:true, step2:false, step3:false, indexActif:0}">
+
+        <uib-tab index="0" heading="Bon de sortie"  active="steps.step1" select="steps.percent=10">
+            <!--<p class="m-b">Use the Bootstrap tab components and ngForm to build the form wizard.</p>-->
+            <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+            <!--<h4>Validate Form</h4>-->
+            <form name="step1" class="form-validation form-horizontal">
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Numero bon de sortie</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="numero" required="" ng-change="vm.bonDeSortie.numero = (vm.bonDeSortie.numero | uppercase)"
+                                   ng-model="vm.bonDeSortie.numero" class="form-control"/>
+                            <span ng-show="form.validateInput('numero', 'pattern')" class="text-danger">This field must contain only digits</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <small class="text-muted">*</small>
+                        </div>
+
+                        <label class="col-md-2 control-label">Numéro facture</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="numeroFacture" 
+                                   ng-model="vm.bonDeSortie.numeroFactureNormalise" class="form-control"/>
+                            <!--<span ng-show="form.validateInput('numero', 'pattern')" class="text-danger">This field must contain only digits</span>-->
+
+                        </div>
+                        <div class="col-sm-1">
+                            <!--<small class="text-muted">*</small>-->
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+
+                        <label class="col-md-2 control-label">Date bon de sortie</label>
+                        <div class="col-sm-3">
+                            <p class="input-group">
+                                <input id="field_dateCommande" type="text" class="form-control" readonly name="dateCommande" uib-datepicker-popup="dd MMMM yyyy"
+                                       ng-model="vm.bonDeSortie.daateCreation"  is-open="vm.datePickerOpenStatus.dateCommande"  required=""/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCommande')"><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            <span ng-show="form.validateInput('dateCommande', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <small class="text-muted">*</small>
+                        </div>
+
+
+
+                        <!--<label class="col-md-2 control-label"> </label>-->
+                        <label class="col-md-2 control-label">Date Facture</label>
+                        <div class="col-sm-3">
+                            <p class="input-group">
+                                <input id="dateFacture" type="text" class="form-control" readonly name="dateFacture" uib-datepicker-popup="dd MMMM yyyy"
+                                       ng-model="vm.bonDeSortie.dateFacture" is-open="vm.datePickerOpenStatus.dateFacture" required=""/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFacture')"><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            <span ng-show="form.validateInput('dateFacture', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <!--<small class="text-muted">*</small>-->
+                        </div>
+
+
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Demandeur</label>
+                        <div class="col-md-6">
+                            <!--<label class="col-md-2 control-label">{{vm.commande.fabricant.produit.nomProduit}}</label>-->
+                            <select class="form-control" required="" id="demandeur" name="demandeur"
+                                    ng-model="vm.bonDeSortie.demandeur"
+                                    ng-options="userAimas as (userAimas.lastName + ' ' + userAimas.firstName) for userAimas in vm.userAimas track by userAimas.id">
+                                <option value=""></option>
+                            </select>
+                            <span ng-show="form.validateInput('demandeur', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Magasin de sortie</label>
+                        <div class="col-md-6">
+                            <select  name="magasin" required="" ng-model="vm.bonDeSortie.magasin"
+                                     ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id"
+                                     class="form-control">
+                                <option value=""></option>
+                            </select>
+                            <span ng-show="form.validateInput('magasin', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Client</label>
+                        <div class="col-md-6">
+                            <select  name="fabricant" required="" ng-model="vm.bonDeSortie.client"
+                                     ng-options="client as client.nomClient for client in vm.clients track by client.id"
+                                     class="form-control">
+                                <option value=""></option>
+                            </select>
+                            <span ng-show="form.validateInput('fabricant', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+                <div class="m-t m-b">
+                    <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded"
+                            ng-click="steps.indexActif = 1">Suivant
+                    </button>
+                    <button type="submit" ng-show=" !vm.bonDeSortie.id? false :true " class="btn btn-default btn-rounded"
+                            ng-click="vm.rechargermentDataBonDesortie()">
+                        <i class="fa fa-pencil-square-o"> </i> Modifier
+                    </button>
+                </div>
+            </form>
+        </uib-tab>
+
+        <uib-tab index="1" heading="Lignes bon de sortie" disable="step1.$invalid" active="steps.step2" select="steps.percent=30">
+            <form name="step2" class="form-validation form-horizontal">
+                <!--<p class="m-b">Continue the next step</p>-->
+                <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+
+                <fieldset>
+                    <div  class="form-group">
+                        <label class="col-md-2 control-label">Produit</label>
+                        <div class="col-sm-3">
+                            <!--<label class="col-md-2 control-label">{{vm.commande.fabricant.produit.nomProduit}}</label>-->
+                            <select class="form-control" required="" id="field_produit" name="produit"
+                                    ng-model="vm.produitCommande"
+                                    ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                                <option value=""></option>
+                            </select>
+                            <span ng-show="form.validateInput('produit', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Quantité</label>
+                        <div class="col-md-6">
+                            <input type="number" name="quantite" ng-model="vm.lignecommande.quantite"
+                                   required="" ng-pattern="/^[0-9]+$/"
+                                   class="form-control" max="{{maxStockProduit}}" placeholder="{{qteStockProduitDisponiblePlaceholder}}"/>
+                            <span ng-show="form.validateInput('quantiteLigneCommande', 'number')"
+                                  class="text-danger">This field must be a valid number</span>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+                <div class="panel-footer text-center">
+                    <button type="submit" ng-disabled="step2.$invalid" ng-click="vm.addLigneCommande()" class="btn btn-info btn-rounded">Ajouter une ligne au bon de sortie</button>
+                </div>
+
+
+                <fieldset>
+                    <legend>
+                        <small class="text-muted">Lignes du bon</small>
+                    </legend>
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>Produit</th>
+                                    <th>Quantite</th>
+                                    <th>Lot</th>
+                                    <th>Date Peremption</th>
+                                    <!--<th>Prix de vente</th>-->
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="ligne in vm.sortieWrappers track by ligne.lot.id">
+                                    <td>
+                                        <!--<a ui-sref="produit-detail({id:lignecommande.produit.id})">{{lignecommande.produit.nomProduit}}</a>-->
+                                        {{ligne.produit.nomProduit}}
+                                    </td>
+
+                                    <td>{{ligne.quantite}}</td>
+
+                                    <td>{{ligne.lot.numeroLot}}</td>
+
+                                    <td>{{ligne.lot.datePeremption | date :"dd MMMM yyyy"}}</td>
+                                    <td class="text-right">                                        
+                                        <div class="btn-group flex-btn-group-container">
+<!--                                            <button type="submit"  ng-click="vm.modifierLigneTransfert(ligne.id)"
+                                                class="btn btn-purple btn-sm" ng-show=" btnModifierLigne=='modifier' "> 
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                            <span class="hidden-xs hidden-sm"></span>
+                                            Modifier
+                                        </button>-->
+                                        <!--ng-hide="btnModifierLigne=='modifier' "-->
+                                            <button type="submit" ng-click="vm.removeLigneCommande(ligne)"
+                                                    class="btn btn-danger btn-sm" > 
+                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                <span class="hidden-xs hidden-sm"
+                                                      translate="entity.action.delete"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--</div>-->
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <p></p>
+                </fieldset>
+
+                <div class="m-t m-b">
+                    <button type="button" class="btn btn-default btn-rounded" ng-click="steps.indexActif = 0">Préc.</button>
+                    <button type="submit" ng-disabled="(vm.ligneCommandeIndex >= 1) ? false : true" class="btn btn-default btn-rounded"
+
+                            ng-click="steps.indexActif = 2">Suivant
+                    </button>
+                </div>
+            </form>
+        </uib-tab>
+
+        <uib-tab index="2" heading="Détails de la promotion" disable="step2.$invalid" active="steps.step3" select="maxqte ==0 ? steps.percent=100 : steps.percent=60">
+            <p class="m-b">Vérifier les informations de la promotion et valider.</p>
+            <uib-progressbar value="steps.percent" class="progress-xs" type="success"></uib-progressbar>
+
+            <form name="step1" class="form-validation form-horizontal">
+
+
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Numero bon de sortie</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="numero" required=""
+                                   ng-model="vm.bonDeSortie.numero" class="form-control" ng-disabled="true"/>
+                            <span ng-show="form.validateInput('numero', 'pattern')" class="text-danger">This field must contain only digits</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Date bon de sortie</label>
+                        <div class="col-sm-3">
+                            <p class="input-group">
+                                <input id="field_dateCommande" type="text" class="form-control"
+                                       ng-value="vm.bonDeSortie.daateCreation | date: 'dd MMMM yyyy' " ng-disabled="true"/>
+
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCommande')">
+                                        <i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            <span ng-show="form.validateInput('dateCommande', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <small class="text-muted">*</small>
+                        </div>
+
+                        <label class="col-md-2 control-label">Demandeur</label>
+                        <div class="col-sm-3">
+                            <!--<label class="col-md-2 control-label">{{vm.commande.fabricant.produit.nomProduit}}</label>-->
+                            <select class="form-control" required="" id="demandeur" name="demandeur" ng-disabled="true"
+                                    ng-model="vm.bonDeSortie.demandeur"
+                                    ng-options="userAimas as (userAimas.lastName + ' ' + userAimas.firstName) for userAimas in vm.userAimas track by userAimas.id">
+                                <option value=""></option>
+                            </select>
+                            <span ng-show="form.validateInput('demandeur', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <small class="text-muted">*</small>
+                        </div>
+
+
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Magasin de sortie</label>
+                        <div class="col-md-6">
+                            <select  name="magasin" required="" ng-model="vm.bonDeSortie.magasin"
+                                     ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id"
+                                     class="form-control"  ng-disabled="true">
+                                <option value=""></option>
+                            </select>
+                            <span ng-show="form.validateInput('magasin', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!--                <div class="m-t m-b">
+                                    <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded"
+                                            ng-click="steps.indexActif=1">Suivant
+                                    </button>
+                                </div>-->
+            </form>
+
+            <fieldset>
+                <legend>
+                    <small class="text-muted">Lignes du bon</small>
+                </legend>
+                <div class="table-responsive">
+                    <!--                            <div class="col-sm-1"></div>
+                                                <div class="col-sm-10">-->
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>Produit</th>
+                                    <th>Quantite</th>
+                                    <th>Lot</th>
+                                    <th>Date Peremption</th>
+                                    <!--<th>Prix de vente</th>-->
+                                    <!--<th></th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="ligne in vm.sortieWrappers track by ligne.lot.id">
+                                    <td>
+                                        <!--<a ui-sref="produit-detail({id:lignecommande.produit.id})">{{lignecommande.produit.nomProduit}}</a>-->
+                                        {{ligne.produit.nomProduit}}
+                                    </td>
+
+                                    <td>{{ligne.quantite}}</td>
+
+                                    <td>{{ligne.lot.numeroLot}}</td>
+
+                                    <td>{{ligne.lot.datePeremption| date : "dd MMMM yyyy"}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--</div>-->
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div class="col-sm-1"></div>
+                <!--<p></p>-->
+                <!--<br/>-->
+                <!--<div class="col-sm-1"></div>-->
+                <!--<div class="col-sm-10">-->
+                <!--<button ng-click="table.addUser()" class="btn btn-success" style="color: white;">Valider-->
+                <!--Commande-->
+                <!--</button>-->
+                <!--</div>-->
+                <!--<div class="col-sm-1"></div>-->
+                <p></p>
+            </fieldset>
+
+
+            <p>Validez le bon pour terminer.</p>
+            <div class="m-t m-b">
+                <button type="button" class="btn btn-default btn-rounded" ng-click="steps.indexActif = 1">Préc.</button>
+                <button type="button" class="btn btn-default btn-rounded"  ng-disabled="button_clicked"   ng-click="vm.saveCommandeFournisseur()">Valider le bon
+                </button>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+
+</div>

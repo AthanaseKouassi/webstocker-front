@@ -1,0 +1,112 @@
+<div class="panel panel-body">
+    <form role="form" class="form-horizontal">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="magasin">Magasin</label>
+                <div class="col-md-6" >
+                    <p class="input-group">
+                    <div >
+                        <select required class="form-control" id="field_produit" name="magasin"
+                                ng-model="vm.rapportData.magasin"
+                                ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id">
+                            <option value=""></option>
+                        </select>
+                    </div> 
+                    </p>
+                    
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="field_dateDebut">Date début période </label>
+                <div class="col-md-6" >
+                    <p class="input-group">
+                        <input type="text"  id="field_dateDebut" name="dateDebutMois" uib-datepicker-popup="dd MMMM yyyy"
+                               ng-model="vm.rapportData.dateDebutPeriode" is-open="vm.datePickerOpenStatus.dateDebutMois" class="form-control" required />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                    <div ng-show="editForm.dateDebut.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+            <div   class="form-group" >
+                <label class="col-md-2 control-label" for="field_dateFin">Date fin période </label>
+                <div class="col-md-6">
+                    <p class="input-group">
+                        <input type="text" id="field_dateFin" name="dateFinMois" uib-datepicker-popup="dd MMMM yyyy" 
+                               ng-model="vm.rapportData.dateFinPeriode" is-open="vm.datePickerOpenStatus.dateFinMois" class="form-control" required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                    <div ng-show="editForm.dateFin.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn btn-default btn-rounded" ng-click="vm.afficherBondesorties()" type="submit"> Valider</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span >Date Bon de sortie</span></th>
+                    <th><span >N° Bon de sortie</span></th>
+                    <th><span >Magasin</span></th>
+                    <th><span >Destinataire</span></th>
+                    <th><span > </span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lignebon in vm.lignebons">
+                    <td >{{lignebon.daateCreation| date : "dd MMM yyyy"}}</td>
+                    <td>{{lignebon.numero}}</td>
+                    <td>{{lignebon.magasin.nomMagasin}}</td>
+                    <td>
+                        <span ng-show="lignebon.destination != null">{{lignebon.destination.nomMagasin}}</span>
+                        <span ng-show="lignebon.client != null">{{lignebon.client.nomClient}}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+
+                            <a type="submit" ng-click="vm.imprimerBordereauLivraison(lignebon.id)" class="btn btn-primary btn-md">
+                                <span class="glyphicon glyphicon-print"></span>
+                                <span class="hidden-sm hidden-md" >Bordereau livraison</span>
+
+                            </a>
+                            <a type="submit" ng-click="vm.imprimerBonDeSortie(lignebon.id)" class="btn btn-info btn-md">
+                                <span class="glyphicon glyphicon-print"></span>
+                                <span class="hidden-xs hidden-sm" >Bon de sortie</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

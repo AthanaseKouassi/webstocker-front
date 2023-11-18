@@ -1,0 +1,87 @@
+
+<form name="editForm" role="form" class="form-horizontal"  novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLivraisonLabel" translate="webstockerApp.livraison.home.createOrEditLabel">Create or edit a Livraison</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" style="display: none">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.livraison.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"  for="field_dateLivraison">Date</label>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input id="field_dateLivraison" type="text" class="form-control" name="dateLivraison" uib-datepicker-popup="{{dateformat}}" ng-model="vm.livraison.dateLivraison" is-open="vm.datePickerOpenStatus.dateLivraison"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateLivraison')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateLivraison.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateLivraison.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="field_quantiteLivre">Quantité livrée</label>
+            <div class="col-md-6">
+            <input type="number" class="form-control" name="quantiteLivre" id="field_quantiteLivre"
+                    ng-model="vm.livraison.quantiteLivre"
+                    required />
+            <div ng-show="editForm.quantiteLivre.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.quantiteLivre.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.quantiteLivre.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div style="display: none" class="form-group">
+            <label class="control-label" translate="webstockerApp.livraison.descriptionLivraison" for="field_descriptionLivraison">DescriptionLivraison</label>
+            <input type="text" class="form-control" name="descriptionLivraison" id="field_descriptionLivraison"
+                    ng-model="vm.livraison.descriptionLivraison"/>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="field_magasin">Magasin</label>
+            <div class="col-md-6">
+            <select class="form-control" id="field_magasin" name="magasin" ng-model="vm.livraison.magasin" ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id">
+                <option value=""></option>
+            </select>
+                </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="field_commande">Commande</label>
+            <div class="col-md-6">
+            <select class="form-control" id="field_commande" name="commande" ng-model="vm.livraison.commande" ng-options="commande as commande.numeroCommande for commande in vm.commandes track by commande.id">
+                <option value=""></option>
+            </select>
+                </div>
+            <div class="col-md-4"> </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span >Annuler</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary btn-rounded">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span >Sauvegarder</span>
+        </button>
+    </div>
+</form>

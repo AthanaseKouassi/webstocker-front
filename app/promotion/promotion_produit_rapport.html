@@ -1,0 +1,21 @@
+
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Aperçu avant impression : Bon de sortie</h1>    <br/>
+    <!--         <input ng-show="promotionUrl!=''" class="btn btn-default btn-rounded  " type="button" value="Imprimer" ng-click="getPdf(promotionUrl)"/>-->
+    <input class="btn btn-default btn-rounded" type="button" value="Imprimer" onclick="printIt()"/>
+    <a href="#/app/promotion-produit" class="btn btn-primary btn-rounded"
+       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+       onmouseout="this.style.color = '';this.style.textDecoration = 'none'" >  
+        Retour</a>
+    <script type="text/javascript"> 
+        function printIt() {
+            var url = document.getElementById("pdfdoc").getAttribute("url");
+            var wnd = window.open(url);
+        }
+    </script>
+    <jhi-alert></jhi-alert>
+</div>
+
+<div class="wrapper-md">
+    <pdf-viewer width="850" class="img-responsive" id="pdfdoc" url="{{promotionUrl}}"></pdf-viewer>
+</div>

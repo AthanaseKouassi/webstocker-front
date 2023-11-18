@@ -1,0 +1,69 @@
+
+<form  name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCommandeLabel" >Réglément de la facture!</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row">
+            <div class="form-group" style="display: none">
+                <label for="id" translate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id" name="id" />
+            </div>
+            <div class="form-group">
+                <label class=" col-md-2 control-label" >Date Réglément </label>            
+                <div class=" col-md-6 input-group">
+                    <input  type="text" class="form-control" name="dateReglement" uib-datepicker-popup="dd MMMM yyyy"
+                            ng-model="vm.reglement.dateReglement" is-open="vm.datePickerOpenStatus.dateReglement" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateReglement')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div class="col-md-4">
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">N° facture</label>
+                <div class=" col-md-6 input-group">
+                    <input type="text" ng-model="vm.reglement.facture.bonDeSortie.numeroFactureNormalise" class="form-control" readonly name="numerofacture"/>
+                    <!--<input type="text" ng-model="vm.reglement.facture.id" class="form-control" readonly name="numerofacture"/>-->
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2">Reste à payer</label>
+                <div class="col-md-6 input-group">
+                    <input type="number" class="form-control" name="resteaPayer"
+                           ng-model="vm.reglement.reste" readonly/>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2">Avance</label>
+                <div class="col-md-6 input-group">
+                    <input type="number" min="1" max="{{vm.reglement.reste}}" class="form-control" ng-model="vm.reglement.montantReglement" name="avance" required/>
+                    <span ng-show="editForm.validateInput('avance', 'number')"
+                          class="text-danger">This field must be a valid number</span>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span >Annuler</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary btn-rounded">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span >Sauvegarder</span>
+        </button>
+    </div>
+</form>

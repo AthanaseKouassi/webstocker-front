@@ -1,0 +1,319 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Rapport des ventes</h1>
+    <small>Pour avoir des rapports sur une période sur les ventes </small>
+</div>
+
+<div class="wrapper-md">
+
+
+    <div class="panel-group col-md-12" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a  href="" style="font-size: 1.3em; font-weight: bold" 
+                        onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                        onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                        data-toggle="collapse" data-parent="#accordion"  data-target="#collapse1">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span> Quantité de produit vendue par Antenne</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse"> 
+
+                <div  ng-include="rapportVenteParDistrictUrl">   
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse2">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span> Chiffre d'affaire par produit</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div ng-include="rapportChiffredAffaireProduitUrl"> </div>
+            </div>
+        </div>
+
+<!--        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"                    
+                       data-toggle="collapse" data-parent="#accordion" data-target="#collapse3">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span> Chiffre d'affaire par client</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div  ng-include="rapportChiffreAffaireClientUrl"></div>
+            </div>
+        </div>-->
+<!--        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"                    
+                       data-toggle="collapse" data-parent="#accordion" data-target="#collapse4">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span> Chiffre d'affaire par magasin/laboratoire</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+                <div  ng-include="rapportChiffreAffaireMagasinUrl"></div>
+            </div>
+        </div>-->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse5">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span> Recherche/impression factures</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse">
+                <div ng-include="listeDesFacturesUrl"></div>
+            </div>
+        </div>
+
+<!--        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    data-toggle="collapse" data-parent="#accordion" 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse6">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span> Etat de reconciliation</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse6" class="panel-collapse collapse">
+                <div ng-include="etatdereconciliationControllerUrl"> </div>
+            </div>
+        </div>      -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse7">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span> Taux d'atteinte des résultats par mois</span>
+                        <!--<span> Taux d'atteinte des résultats par mois, par trimestre et par année</span>-->
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse7" class="panel-collapse collapse">
+                <div ng-include="tauxAtteinteResultatsUrl"> </div>
+            </div>
+        </div>      
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse8">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Etat du stock d'un produit dans les magasins</span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse8" class="panel-collapse collapse">
+                <div ng-include="etatProduitsParMagasinUrl"> </div>
+            </div>
+        </div>      
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse9">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Etat du stock des produits d'un magasin</span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse9" class="panel-collapse collapse">
+                <div ng-include="etatStockparMagasindeProduitUrl"> </div>
+            </div>
+        </div>      
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse10">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Bon de sortie et bordereau de livraison emis d'un magasin </span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse10" class="panel-collapse collapse">
+                <div ng-include="bondesortieParMagasinUrl"> </div>
+            </div>
+        </div>      
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse11">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Liste des transferts par magasin </span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse11" class="panel-collapse collapse">
+                <div ng-include="listeDesTranfertParMagasinUrl"> </div>
+            </div>
+        </div> 
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse12">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Vente par produit et par magasin </span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse12" class="panel-collapse collapse">
+                <div ng-include="venteParProduitMagasinUrl"> </div>
+            </div>
+        </div>      
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse13">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Promotion par produit et par magasin </span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse13" class="panel-collapse collapse">
+                <div ng-include="promotionParProduitMagasinUrl"> </div>
+            </div>
+        </div>      
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse14">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Transfert par produit et par magasin </span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse14" class="panel-collapse collapse">
+                <div ng-include="transfertParProduitMagasinUrl"> </div>
+            </div>
+        </div>      
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse15">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Perte par produit et par magasin </span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse15" class="panel-collapse collapse">
+                <div ng-include="perteParProduitMagasinUrl"> </div>
+            </div>
+        </div>    
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse16">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Chiffre d'affaire : par type de client / par client </span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse16" class="panel-collapse collapse">
+                <div ng-include="chriffreAffaireParClientNouveauUrl"> </div>
+            </div>
+        </div>      
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse17">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Quantité de produits vendue par commercial  </span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse17" class="panel-collapse collapse">
+                <div ng-include="quantiteVendueParAgentUrl"> </div>
+            </div>
+        </div>      
+
+
+        <br/>
+        
+    </div>
+</div>

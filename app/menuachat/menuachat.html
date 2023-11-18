@@ -1,0 +1,146 @@
+<div class="bg-light lter b-b wrapper-md" >
+    <h1 class="m-n font-thin h3">Gestion des Achats</h1>
+    <small>Entrée en stock des produits au magasin</small>
+</div>
+
+<div class="wrapper-md" >
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Gestion des Achats</div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="col-sm-3" has-authority="ROLE_MAGASINIER">
+                    <!--<div class="panel panel-default ">-->
+                    <div class=" img-responsive img-center" style="margin:0 auto;">
+                        <a  ng-click="stock()"  ui-sref="liste-bordereau-livraison" title="Imprimer bordereau de livraison"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/imprimerBL.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Imprimer bordereau de livraison</b></p>
+                        <p></p>
+
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-sm-3" has-authority="ROLE_MAGASINIER">
+                   <div class=" img-responsive img-center" style="margin:0 auto;" >
+                       <a  ng-click="stock()" href="#" ui-sref="inventaire" title="Situation mensuelle de stock de produit"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/magasin.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Inventaire mensuel</b></p>
+                        <p></p>
+                    </div>
+                </div>
+<!--                <div class="col-sm-3" has-authority="ROLE_CONSULTATION">
+                   <div class=" img-responsive img-center" style="margin:0 auto;" >
+                       <a  ng-click="stock()" href="#" ui-sref="stock-magasin" title="Le stock d'un produit dans chaque magasin"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/magasin.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Etat du stock par magasin</b></p>
+                        <p></p>
+                    </div>
+                </div>-->
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-sm-3" has-authority="ROLE_TCF" >
+                    <div class=" img-responsive img-center" style="margin:0 auto;">
+                        <a  ng-click="stock()" ui-sref="livraison.new" title="Réceptionner une commande fabricant"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/approvisionnement.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Réceptionner une commande fabricant</b></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-md-12">
+                <div class="col-sm-3 " has-authority="ROLE_TCF">
+                     <div class=" img-responsive img-center" style="margin:0 auto;">
+                        <a  ng-click="stock()" ui-sref="commande.new" title="Passer une commande"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/commande.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Passer une commande</b></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-sm-3" has-authority="ROLE_CONSULTATION">   
+                    <div class=" img-responsive img-center" style="margin:0 auto;">
+                        <a  ng-click="stock()" ui-sref="rapport-global-stock" title="Etat du stock global"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/etat-stock-magasin.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Etat du stock global</b></p>
+                        <p></p>
+                    </div>                                     
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-sm-3" has-authority="ROLE_PAP">
+                     <div class=" img-responsive img-center" style="margin:0 auto;">
+                        <a  ng-click="stock()" ui-sref="perte-produit" title="Les Produits perdus"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/remove.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Produits abimés et périmés</b></p>
+                        <p></p>
+                    </div> 
+                </div>
+            </div>  
+            
+<!--            <div class="col-md-12">
+                <div class="col-sm-3" has-authority="ROLE_MAGASINIER">
+                    <div class=" img-responsive img-center" style="margin:0 auto;">
+                        <a  ng-click="stock()" ui-sref="inventaire" title="Realiser un inventaire"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/inventaire.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Realiser un inventaire</b></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-sm-3" has-authority="ROLE_MAGASINIER">                   
+                    <div class=" img-responsive img-center" style="margin:0 auto;">
+                        <a  ng-click="stock()" ui-sref="reception_transfert" title="Receptionner un transfert de produit"  data-toggle="tooltip"  data-placement="bottom">
+                            <img id="imagesurvol" src="img/recep_trans.png" class=" img-circle img-responsive" />
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: center; "> <b>Réceptionner un transfert de produit</b></p>
+                        <p></p>
+                    </div>
+                    
+                    
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-sm-3">
+                    
+                </div>
+                
+            
+        </div>-->
+    </div>
+</div>

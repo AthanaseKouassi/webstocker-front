@@ -1,0 +1,30 @@
+{
+    "webstockerApp": {
+        "formEncounter" : {
+            "home": {
+                "title": "FormEncounters",
+                "createLabel": "Créer un nouveau FormEncounter",
+                "createOrEditLabel": "Créer ou éditer un FormEncounter",
+                "search": "Recherche pour FormEncounter"
+            },
+            "created": "Un nouveau FormEncounter a été créé avec l'identifiant {{ param }}",
+            "updated": "Le FormEncounter avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le FormEncounter avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le FormEncounter {{ id }} ?"
+            },
+            "detail": {
+                "title": "FormEncounter"
+            },
+            "dateCreation": "DateCreation",
+            "dateDebut": "DateDebut",
+            "dateFin": "DateFin",
+            "raison": "Raison",
+            "diagnosticAdmission": "DiagnosticAdmission",
+            "active": "Active",
+            "refferalSource": "RefferalSource",
+            "provider": "Provider",
+            "patient": "Patient"
+        }
+    }
+}

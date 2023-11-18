@@ -1,0 +1,122 @@
+<div class="panel-body">
+
+    <div class="col-md-12"  >
+        <!--<p>Choisir le Magasin et les dates de début et de fin pour avoir l'état</p>-->               
+        <div class="col-md-12">
+            <form   role="form" >
+                <div class="row">
+                    <div class=" col-sm-5 form-group">
+                        <label class=" control-label">Produit</label>
+                        <div >
+                            <select required class="form-control" id="field_produit" name="produit"
+                                    ng-model="vm.rapportData.produit"
+                                    ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                                <option value=""></option>
+                            </select>
+                        </div> 
+                    </div>
+                    <div class=" col-md-5 form-group">
+                        <label class=" control-label">Magasin</label>
+                        <div >
+                            <select required class="form-control" id="field_produit" name="produit"
+                                    ng-model="vm.rapportData.magasin"
+                                    ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id">
+                                <option value=""></option>
+                            </select>
+                        </div>        
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class=" col-md-5 form-group">
+                        <label class="control-label"  for="dateDebutPeriode">Date début période</label>
+                        <div class="input-group">
+                            <input id="dateDebutPeriode" type="text" class="form-control" name="dateDebutPeriode" uib-datepicker-popup="dd MMMM yyyy"
+                                   ng-model="vm.rapportData.dateDebutPeriode" is-open="vm.datePickerOpenStatus.dateDebutPeriode" required="true"/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutPeriode')"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </div>
+                        <div ng-show="editForm.dateDebutPeriode.$invalid">
+                            <p class="help-block"
+                               ng-show="editForm.dateDebutPeriode.$error.required" translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                        </div>
+                    </div> 
+                    <div class="col-md-5 form-group">
+                        <label class="control-label"  for="dateFinPeriode">Date fin période</label>
+                        <div class=" input-group">
+                            <input id="dateFinPeriode" type="text" class="form-control" name="dateFinPeriode" uib-datepicker-popup="dd MMMM yyyy"
+                                   ng-model="vm.rapportData.dateFinPeriode" is-open="vm.datePickerOpenStatus.dateFinPeriode" required="true"/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinPeriode')"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </div>
+                        <div ng-show="editForm.dateFinPeriode.$invalid">
+                            <p class="help-block"
+                               ng-show="editForm.dateFinPeriode.$error.required" translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                        </div>            
+                    </div>
+                    <div class=" col-md-2 input-group">
+                        <br/>
+                        <button type="submit" ng-click="vm.promotionParProduitMagasin()" class="btn btn-info  btn-rounded" ng-disabled="button_clicked" >
+                            <span><i class="glyphicon glyphicon-search"></i> rechercher</span>                       
+                        </button> 
+                    </div>   
+                </div>
+            </form>
+            <br/>
+
+            
+            <div class="table table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>N° Bon de sortie</th>
+                    <th>Date Bon de sortie</th>
+                    <!--<th>N°Facture</th>-->
+                    <!--<th>Date facture</th>-->
+                    <th>Bénéficiaire</th>
+                    <th style="display: none">ID</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr ng-repeat="lignePromo in vm.bonsPromotion">
+                    <td ><span>{{lignePromo.bonDeSortie.numero}}</span></td>
+                    <td ><span>{{lignePromo.bonDeSortie.daateCreation}}</span></td>
+                    <!--<td ><span>{{lignebon.bonDeSortie.numeroFactureNormalise}}</span></td>-->
+                    <!--<td ><span >{{lignebon.dateFacture| date : "dd MMMM yyyy" }}</span></td>-->
+                    <td ><span >{{lignePromo.bonDeSortie.client.nomClient}}</span></td>
+                    <td  style="display: none"><span >{{lignebon.bonDeSortie.id}}</span></td>
+                    <td >
+
+                        <div class="btn-group flex-btn-group-container">
+                            <!--ui-sref="produit-detail({id:produit.id})"-->
+                            <button type="submit" ng-click="vm.imprimerFactureZero(lignePromo.bonDeSortie.id)"                                    
+                                    class="btn btn-primary btn-md">
+                                <span class="glyphicon glyphicon-print"></span>
+                                <span class="hidden-xs hidden-sm" >Facture zéro</span>
+                            </button>
+                            
+                            <a type="submit" ng-click="vm.imprimerBonDeSortie(lignePromo.bonDeSortie.id)" class="btn btn-info btn-md">
+                                <span class="glyphicon glyphicon-print"></span>
+                                <span class="hidden-xs hidden-sm" >Bon de sortie</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+            
+            
+        </div>
+
+    </div>
+
+
+</div>            
+

@@ -1,0 +1,24 @@
+{
+    "webstockerApp": {
+        "diagnostics" : {
+            "home": {
+                "title": "Diagnostics",
+                "createLabel": "Créer un nouveau Diagnostics",
+                "createOrEditLabel": "Créer ou éditer un Diagnostics",
+                "search": "Recherche pour Diagnostics"
+            },
+            "created": "Un nouveau Diagnostics a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Diagnostics avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Diagnostics avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Diagnostics {{ id }} ?"
+            },
+            "detail": {
+                "title": "Diagnostics"
+            },
+            "diagCode": "DiagCode",
+            "description": "Description",
+            "active": "Active"
+        }
+    }
+}

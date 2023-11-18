@@ -1,0 +1,95 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Créances client</h1>
+    <small>La date de créance permet de lister des creances client à partir de celle-ci</small>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default ">
+        <div class="panel panel-body">
+            <form role="form" class="form-horizontal">
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label class=" col-md-2 control-label"> Date créance  </label>
+                            <!--<div class="form-group">-->
+                            <!--<label class="col-md-2 control-label">Date fin</label>-->
+                            <div class="col-md-4">
+                                <select class="form-control" ng-model="critere" ng-init="critere = '0'">
+                                    <option value="0">choix</option>
+                                    <option value="1">Moins de 30 jours</option>
+                                    <option value="2">Egal à 30 jours</option>
+                                    <option value="3">Supérieur à 30 et inférieur 90 jours</option>
+                                    <option value="4">Egal à 90 jours</option>
+                                    <option value="5">Supérieur à 90 jours</option>
+                                </select>
+                                <!--                                <p class="input-group">
+                                                                    <input id="field_dateLivraison" required type="text" name="dateFintMission"  uib-datepicker-popup="{{dateformat}}"
+                                                                           ng-model="vm.livraison.dateLivraison"
+                                                                           is-open="vm.datePickerOpenStatus.dateLivraison"
+                                                                           class="form-control"/>
+                                                                    <span class="input-group-btn">
+                                                                        <button type="button" class="btn btn-default"
+                                                                                ng-click="vm.openCalendar('dateFintMission')"><i
+                                                                                class="glyphicon glyphicon-calendar"></i></button>
+                                                                    </span>
+                                                                    </span>
+                                                                </p>
+                                                                <span ng-show="form.validateInput('dateLivraison', 'required')" class="text-danger">This field is required</span>-->
+                            </div>
+                            <div class="col-md-6"> 
+                                <!--<div class="m-t m-b">-->                    
+                                <button type="submit" class="btn btn-info btn-rounded " ng-click="getCreancesByCriteria(critere)">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                    Rechercher
+                                </button>
+                                <!--</div>-->
+                            </div>
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+                <!--</form>-->
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th ><span >Date </span></th>
+                                <th><span >Client</span></th>
+                                <!--                            <th><span >N° facture</span></th>-->
+                                <th><span >Montant Total</span></th>
+                                <th><span >Reste à payer</span></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-show="creances.length > 0" ng-repeat="creance in creances"><!--ng-repeat="produit in vm.produits track by produit.id"-->
+                                <td>{{creance.dateFacture}}</td>
+                                <td>{{creance.nomClient}}</td>
+                                <!--                            <td>{{creance.}}</td>-->
+                                <td>{{creance.montantFacture}}</td>
+                                <td>{{creance.montantFacture}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <!--            <div class="col-md-offset-1 col-md-11">
+                                <div class="m-t m-b">                    
+                                    <button type="submit" class="btn btn-default btn-rounded ">
+                                        <i class="glyphicon glyphicon-print"></i>
+                                        Imprimer
+                                    </button>
+                                </div>
+                            </div>-->
+            </form>
+
+        </div>
+
+        <p> 
+            <a href="#/app/gestion-clientelle"
+               onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+               onmouseout="this.style.color = '';this.style.textDecoration = 'none'" >Retourner au menu gestion client</a>
+        </p>
+
+    </div>
+</div>

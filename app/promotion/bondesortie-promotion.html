@@ -1,0 +1,127 @@
+<div>
+    <h2 >Bon de sortie promotion</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <!--                <button class="btn btn-primary" ui-sref="bon-de-sortie.new" >
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                    <span class="hidden-xs"  >
+                                        Modifier une vente
+                                    </span>
+                                </button>-->
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-change="vm.trouverBonDeSortie(vm.searchQuery)" ng-model="vm.searchQuery" id="searchQuery" placeholder="Rechercher un numero bon de sortie">
+                        <!--<input type="text" class="form-control" ng-model='vm.recherche' ng-change='vm.refresh((vm.data | filter:vm.recherche), vm.data, vm)' id="searchQuery" placeholder="Rechercher un numero bon de sortie">-->
+                        <span  class="input-group-btn width-min" >
+                            <!--<button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">-->                     
+                            <button class="btn btn-info" click="vm.trouverBonDeSortie(vm.searchQuery)" >
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr >
+                    <!--<th ><span>ID</span> </th>-->
+                    <th><span >N° bon de sortie</span> </th>
+                    <th ><span>Date bon de sortie</span> </th>
+                    <th ><span>N° Facture</span> </th>
+                    <!--<th ><span>Date Facture</span> </th>-->
+                    <th ><span>Type de sortie</span> </th>
+                    <!--<th ><span >Type de vente</span> </th>-->
+                    <th ><span >Demandeur</span> </th>
+
+                    <th ><span >Magasin</span> </th>
+                    <th ><span >Bénéficiaire </span> </th>
+                    <!--<th ><span>destination</span> </th>-->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr ng-repeat="bonDeSortie in vm.items track by bonDeSortie.id">-->
+                <tr ng-repeat="bonDeSortie in vm.bonDeSortie track by bonDeSortie.id">
+                    <!--<td><a ui-sref="bon-de-sortie-detail({id:bonDeSortie.id})">{{bonDeSortie.id}}</a></td>-->
+                    <td>{{bonDeSortie.numero}}</td>
+                    <td>{{bonDeSortie.daateCreation| date:'dd MMMM yyyy'}}</td>
+                    <td >{{bonDeSortie.numeroFactureNormalise}}</td>
+                    <!--<td >{{bonDeSortie.facture.datefacture}}</td>-->
+                    <td >{{bonDeSortie.typeSortie}}</td>
+                    <!--<td >{{bonDeSortie.typeVente}}</td>-->
+                    <td>
+                        {{bonDeSortie.demandeur.lastName + " " + bonDeSortie.demandeur.firstName}}
+                    </td>
+
+                    <td>
+                        {{bonDeSortie.magasin.nomMagasin}}
+                    </td>
+                    <td>
+                        {{bonDeSortie.client.nomClient}}
+                    </td>
+                    <!--                    <td>
+                                           {{bonDeSortie.destination.id}}
+                                        </td>-->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <!--      <button type="submit"
+                                       ui-sref="bon-de-sortie-detail({id:bonDeSortie.id})"
+                                           class="btn btn-info btn-sm">
+                                             <span class="glyphicon glyphicon-eye-open"></span>
+                                                   <span class="hidden-xs hidden-sm" ></span>
+                                                   Détails
+                                    </button>-->
+                            <!--ui-sref="bon-de-sortie.edit({id:bonDeSortie.id})"-->
+                            <button type="submit"
+                                     ui-sref="promotion-produit.edit({id:bonDeSortie.id})" 
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                                Editer
+                            </button>
+                            <!--ui-sref="bon-de-sortie.delete({id:bonDeSortie.id})"-->
+<!--                            <button type="submit"
+
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" ></span>
+                                Supprimer
+                            </button>-->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<div data-ng-include=" 'tpl/blocks/pagination-template.html' "></div>-->
+    </div>
+    
+    <div class="text-center">
+        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(0)">
+            << 
+        </button>
+        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(vm.currentPage - 1)">
+            < Précedent
+        </button>
+        {{vm.currentPage + 1}}/{{vm.totalPage}}
+        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.currentPage + 1)">
+            Suivant >
+        </button>
+        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.totalPage - 1)">
+            >>
+        </button>
+
+    </div>
+</div>

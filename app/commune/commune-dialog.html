@@ -1,0 +1,52 @@
+
+<form name="editForm" role="form" novalidate  show-validation class="form-horizontal">
+<!--ng-submit="vm.save()"-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCommuneLabel" >Créer ou editer une Commune</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" style="display: none">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.commune.id" readonly />
+        </div>
+        <div class="form-group" >
+            <label class=" control-label col-md-2" for="field_ville">Ville</label>
+            <div class="col-md-6">
+            <select class="form-control" id="field_ville" name="ville" ng-model="vm.commune.ville" 
+                    ng-options="ville as ville.libelle for ville in vm.villes track by ville.id">
+                <option value=""></option>
+            </select>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-md-2" for="field_libelle">Commune</label>
+            <div class="col-md-6">
+            <input type="text" class="form-control" name="libelle" id="field_libelle"
+                    ng-model="vm.commune.libelle"  required />
+            <div ng-show="editForm.libelle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.libelle.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span >Annuler</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary btn-rounded" ng-click="vm.rechercher(vm.commune.libelle)">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span >Sauvegarder</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,111 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Transfert</h1>
+    <small>Transfert de produit vers les magasins da AIMAS</small>
+</div>
+<div class="wrapper-md" ng-controller="FormDemoCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Transfert</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+                        <div class="form-group"  style="display: none">
+                            <label class="col-md-2 control-label" for="id" translate="global.field.id">ID</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="id" name="id" ng-model="vm.livraison.id" readonly />
+                            </div>
+                            <div class="col-md-4">
+                                <small class="text-muted">*</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Magasin destination</label>
+                            <div class="col-md-4">
+                                <select class="form-control" name="magasin" ng-model="vm.livraison.magasin" ng-options="magasin as magasin.nomMagasin for magasin in vm.magasins track by magasin.id">
+                                    <option value=""></option>
+                                </select>
+                                <!--<span ng-show="form.validateInput('magasin', 'required')" class="text-danger">Ce champ est requis</span>-->
+                            </div>
+                            <div class="col-sm-1">    </div>
+                            <label class="col-md-2 control-label">Date transfert</label>
+                            <div class="col-sm-3 input-group">
+                                <!--<p class="input-group">-->
+                                    <input id="field_dateCommande" type="text" class="form-control"
+                                           name="datelivraison"  uib-datepicker-popup="{{dateformat}}" ng-model="vm.livraison.dateLivraison" 
+                                           is-open="vm.datePickerOpenStatus.dateLivraison" required/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateLivraison')">
+                                            <i class="glyphicon glyphicon-calendar"> </i> 
+                                        </button>
+                                    </span>
+                                <!--</p>-->
+                                <div ng-show="editForm.dateLivraison.$invalid">
+                                    <p class="help-block"
+                                       ng-show="editForm.dateLivraison.$error.required" translate="entity.validation.required">
+                                        This field is required.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Code produit</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="code" ng-model="" ng-options="">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Produit</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="produit" ng-model=""  readonly=""/>
+                            </div>
+                            <div class="col-md-4"> </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Lot</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="lot" ng-model=""
+                                        ng-options="">
+                                    <option value=""></option>
+                                </select>
+                                <span ng-show="form.validateInput('lot', 'required')" class="text-danger">Ce champ est requis</span>
+                            </div>
+                            <div class="col-sm-3">   </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Quantité</label>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" name="quantite" required=""
+                                       ng-pattern="/^[0-9]+$/" ng-model="vm.livraison.quantiteLivre" />
+                                <!--<span ng-show="form.validateInput('quantite', 'number')" class="text-danger">Ce champ requiert un nombre valide</span>-->
+                                <div ng-show="editForm.quantiteLivre.$invalid">
+                                    <p class="help-block text-danger"
+                                       ng-show="editForm.quantiteLivre.$error.required" translate="entity.validation.required">
+                                        Ce champ requiert un nombre valide
+                                    </p>
+<!--                                    <p class="help-block"
+                                       ng-show="editForm.quantiteLivre.$error.number" translate="entity.validation.number">
+                                        This field should be a number.
+                                    </p>-->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="form-group"> 
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Enregistrer tranfert</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>

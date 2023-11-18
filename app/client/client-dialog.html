@@ -1,0 +1,91 @@
+
+<form name="editForm" role="form" class="form-horizontal" novalidate  show-validation>
+<!--ng-submit="vm.save()"-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myClientLabel" translate="webstockerApp.client.home.createOrEditLabel">Create or edit a Client</h4>
+    </div>
+    <div class="modal-body">
+        <!--<jhi-alert-error></jhi-alert-error>-->
+        <div class="form-group" style="display:none">
+            <label for="id" >ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.client.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"  for="field_nomClient">Nom</label>
+            <div class="col-md-6">
+            <input type="text" class="form-control" name="nomClient " id="field_nomClient" ng-change="vm.client.nomClient = (vm.client.nomClient | uppercase)"
+                    ng-model="vm.client.nomClient" required />
+            <div ng-show="editForm.nomClient.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nomClient.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <!--<div class="form-group" style="display:none">-->
+            <!--<label class="control-label col-md-2" for="field_localiteClient">Localité</label>-->
+            <!--<div class="col-md-6">-->
+            <!--<input type="text" class="form-control" name="localiteClient" id="field_localiteClient"-->
+                    <!--ng-model="vm.client.localiteClient"  required />-->
+            <!--<div ng-show="editForm.localiteClient.$invalid">-->
+                <!--<p class="help-block"-->
+                    <!--ng-show="editForm.localiteClient.$error.required" translate="entity.validation.required">-->
+                    <!--This field is required.-->
+                <!--</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-4"> </div>-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="control-label col-md-2" for="field_telephoneClient">Téléphone</label>
+            <div class="col-md-6">
+            <input type="text" class="form-control" name="telephoneClient" id="field_telephoneClient"
+                    ng-model="vm.client.telephoneClient" />
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"  for="field_boitepostale">Boite postale</label>
+            <div class="col-md-6">
+            <input type="text" class="form-control" name="boitepostale" id="field_boitepostale" ng-change="vm.client.boitepostale = (vm.client.boitepostale | uppercase)"
+                    ng-model="vm.client.boitepostale"/>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="field_categorieclient">Catégorie</label>
+            <div class="col-md-6">
+            <select class="form-control" id="field_categorieclient" name="categorieclient" ng-model="vm.client.categorieclient"
+                    ng-options="categorieclient as categorieclient.libelleCategorieclient for categorieclient in vm.categorieclients track by categorieclient.id">
+                <option value=""></option>
+            </select>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="field_localite">Quartier</label>
+            <div class="col-md-6">
+            <!--<select class="form-control" id="field_localite" name="localite" ng-model="vm.client.localite" ng-options="localite as localite.displayName for localite in vm.localites track by localite.id">-->
+            <select class="form-control" id="field_localite" name="localite" ng-model="vm.client.commune" ng-options="commune as commune.libelle for commune in vm.communes track by commune.id">
+                <option value=""></option>
+            </select>
+            </div>
+            <div class="col-md-4"> </div>
+        </div>
+    </div>
+<!--ng-click="vm.rechercher(vm.client.nomClient)"-->
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span >Annuler</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary btn-rounded" ng-click="vm.trouverUnClientParNomClient()">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span >Sauvegarder</span>
+        </button>
+    </div>
+</form>

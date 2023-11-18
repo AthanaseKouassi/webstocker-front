@@ -1,0 +1,139 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Produits abimés et périmés</h1>
+    <small>Enregistrer les produits abimés et périmés à faire sortir du stock</small>
+</div>
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Produits abimés et périmés</div>
+                <div class="panel-body">
+                    <form role="form" class="form-validate form-horizontal">
+                        <jhi-alert></jhi-alert>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Date de la perte</label>
+                            <div class="col-md-6">
+                                <p class="input-group">
+                                    <input id="field_dateperte" type="text" class="form-control" name="datePerte" required/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" >
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Produit</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="produit"  required="" >
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Lot</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="lot"  required="" >
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Quantité</label>
+                            <div class="col-md-6">
+                                <input type="number" id="quantite" name="quantite" class="form-control"/>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Type de perte</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="lot"   >
+                                    <option value=""></option>
+                                    <option value="abime">Abimé</option>
+                                    <option value="perime">périmé</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10" >
+                                <button type="submit" class="btn btn-info btn-rounded" >Ajouter à la liste </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!--</div>-->
+                    <br/>
+                    <fieldset>
+                        <legend> <small> Liste des produits perdus</small></legend>
+                        <div class="table-responsive">
+
+                            <table class="jh-table table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th><span >Date de la perte</span></th>
+                                        <th><span >Produit</span></th>
+                                        <th><span >Numéro lot</span></th>                  
+                                        <th><span >Quantite</span></th>
+                                        <th><span >Type de perte</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr >
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td class="text-right">
+                                            <div class="btn-group flex-btn-group-container">
+                                                <!--                                        <button type="submit"
+                                                                                                ui-sref="commande-detail({id:commande.id})"
+                                                                                                class="btn btn-info btn-sm">
+                                                                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                                                                            <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                                                                                        </button>-->
+                                                <button type="submit"
+                                                        ui-sref="commande.edit({id:commande.id})"
+                                                        class="btn btn-primary btn-sm">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                                                </button>
+                                                <button type="submit"
+                                                        ui-sref="commande.delete({id:commande.id})"
+                                                        class="btn btn-danger btn-sm">
+                                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                                    <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="m-t m-b" >
+                            <button type="submit" class="btn btn-default btn-rounded" >
+                                <i class="glyphicon glyphicon-ok-sign"> </i> Valider la perte</button>
+                            <button type="submit" class="btn btn-default btn-rounded" >
+                                <i class="glyphicon glyphicon-print"> </i> Imprimer liste</button>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+</div>

@@ -1,0 +1,75 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Menu des activités</h1>
+    <jhi-alert></jhi-alert>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Menu</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Les missions</div>
+                        <div class="panel-body">
+
+                            <div class="btn btn-default btn-block btn-lg" style="text-align: left">
+                                <a ui-sref="mission_list"><i class="fa fa-users"></i>
+                                    <span>Mission</span></a>
+                            </div>
+
+                            <div class="btn btn-default btn-block btn-lg" style="text-align: left">                                
+                                <a ui-sref="rapport-mission" ><i class="fa fa-file-pdf-o"></i>
+                                    <span> Rapport de mission</span></a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Distribution</div>
+                        <div class="panel-body">
+                            <div class="btn btn-default btn-block btn-lg" style="text-align: left">
+                                <a href="#/app/menuvente"><i class="fa fa-share-alt"></i>
+                                    <span> Distribution de produits</span></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <!--<div class="col-md-12">-->
+                    
+                    <div class=" panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading font-bold">
+                                <!--<div class="panel-body">-->
+                                <a  href="" style=" font-weight: bold" 
+                                    onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                                    onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                                    data-toggle="collapse" data-parent="#accordion"  data-target="#collapse1">
+                                    <i class="fa fa-file-pdf-o"></i>
+                                    Rapports des délégués
+                                </a>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse"> 
+                                <div  ng-include="rapportDelegueUrl"> 
+                                    
+                                </div>                               
+                            </div>  
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6">     </div>-->
+
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

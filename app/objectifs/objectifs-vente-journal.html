@@ -1,0 +1,103 @@
+<div class="bg-light lter b-b wrapper-md" >
+    <h1 class="m-n font-thin h3">Journal des objectifs de vente</h1>
+    <small>Le taux d'atteinte est présenté pour chaque produit par mois </small>
+</div>
+
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Les taux d'atteintes des objectifs de vente</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <p> Veuillez indiquer le produit et les dates début et fin du mois<br/> 
+                            pour avoir la quantité vendue et le taux d'atteinte du résultat</p>
+                    </div>
+                    <br/>
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label class="sr-only" for="produit">Produit </label>                            
+                            <select class="form-control" id="field_produit"  name="produit" ng-model="vm.objectifs.produit" 
+                                    ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                                <option value=" "> choisissez le produit</option>
+                            </select>
+                            
+                        </div>
+                        <P> </P>
+                        <div class="form-group">
+                            <label class="sr-only" for="field_dateDebut">Date début  </label>
+                            <p class="input-group">
+                                <input type="text" id="field_dateDebut"  placeholder="Date début" uib-datepicker-popup="{{dateformat}}" 
+                           ng-model="vm.rapportData.dateDebut" is-open="vm.datePickerOpenStatus.dateDebut" class="form-control"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div   class="form-group" >
+                            <label class="sr-only" for="field_dateFin">Date fin  </label>
+
+                            <p class="input-group">
+                                <input type="text" id="field_periode" name="dateFin" placeholder="Date fin" uib-datepicker-popup="{{dateformat}}" 
+                           ng-model="vm.rapportData.dateFin" is-open="vm.datePickerOpenStatus.dateFin" class="form-control"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <p class="input-group">  <button class="btn btn-default btn-rounded" type="submit"> Valider</button> </p>
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+                                    <th><span >Produit</span></th>
+                                    <th><span >Quantité attendue</span></th>
+                                    <th><span >Quantité vendue</span></th>
+                                    <th><span >Taux d'atteinte (%)</span></th>
+                                    <!--<th></th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td> </td>
+
+                                    <!--                                <td class="text-right">
+                                                                        <div class="btn-group flex-btn-group-container">                                       
+                                                                            <button type="submit"
+                                                                                    ui-sref="objectifs.delete({id:objectifs.id})"
+                                                                                    class="btn btn-danger btn-sm">
+                                                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                                                <span class="hidden-xs hidden-sm" translate="entity.action.delete">Supprimer</span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </td>-->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <button type="button" class="btn btn-default btn-rounded">
+                    <i class="glyphicon glyphicon-print"> </i> Imprimer</button> 
+                <label>     </label>
+                <!--<a href="#/app/menuvente" >Retourner au menu</a>-->
+            </div>
+        </div>
+    </div>
+</div>

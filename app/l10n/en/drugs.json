@@ -1,0 +1,26 @@
+{
+    "webstockerApp": {
+        "drugs" : {
+            "home": {
+                "title": "Drugs",
+                "createLabel": "Create a new Drugs",
+                "createOrEditLabel": "Create or edit a Drugs",
+                "search": "Search for Drugs"
+            },
+            "created": "A new Drugs is created with identifier {{ param }}",
+            "updated": "A Drugs is updated with identifier {{ param }}",
+            "deleted": "A Drugs is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Drugs {{ id }}?"
+            },
+            "detail": {
+                "title": "Drugs"
+            },
+            "name": "Name",
+            "route_desc": "Route_desc",
+            "form_desc": "Form_desc",
+            "dosage": "Dosage",
+            "unit_dosage": "Unit_dosage"
+        }
+    }
+}

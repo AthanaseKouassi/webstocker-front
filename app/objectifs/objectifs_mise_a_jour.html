@@ -1,0 +1,138 @@
+<div class="bg-light lter b-b wrapper-md" >
+    <h1 class="m-n font-thin h3">Journal des mise à jour des objectifs de vente</h1>
+    <small>La quantité de produit vendue et le taux d'atteinte de l'objectif sont présentés pour chaque produit par mois </small>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Mise à jour des objectifs de vente</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <p> Veuillez entrer la date du mois pour faire la mise à jour du taux d'atteinte des résultats</p>
+                    </div>
+                    <br/>
+
+                </div>
+                <div class="col-md-10" >
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="field_dateDebut">Date du mois </label>
+                        <div class="col-md-6" >
+                            <p class="input-group">
+                                <input type="text"  id="field_dateDebut" name="periode" uib-datepicker-popup="dd MMMM yyyy"
+                                       ng-model="vm.objectifs.periode" is-open="vm.datePickerOpenStatus.periode" class="form-control" required />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('periode')">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                            <!--<span ng-show="form.validateInput('periode', 'required')" class="text-danger">This field is required</span>-->
+                            <div ng-show="editForm.periode.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.periode.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-default btn-rounded"  ng-click="vm.afficherObjectifDuMois(vm.objectifs.periode)"> 
+                                Afficher objectifs
+                            </button>
+                            <button type="button" class="btn btn-default btn-rounded" ng-disabled="!vm.isDisabled" ng-click="vm.updateObjectifs()" > 
+
+                                Mettre à jour
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" >
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="display: none"><span translate="global.field.id">ID</span></th>
+                                    <th><span >produit</span></th>
+                                    <th><span >Période</span></th>
+                                    <th><span >Quantité prévisionnelle</span></th>
+                                    <th><span >Quantité vendue</span></th>
+                                    <th><span >Taux (%)</span></th>
+                                    <!--                    <th><span >produit</span></th>-->
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="objectifs in vm.objectifs track by objectifs.id">
+                                    <td style="display: none"><a ui-sref="objectifs-detail({id:objectifs.id})">{{objectifs.id}}</a></td>
+                                    <td>
+                                        <a ui-sref="produit-detail({id:objectifs.produit.id})">{{objectifs.produit.nomProduit}}</a>
+                                    </td>
+                                    <!--<td>{{objectifs.periode| date:'mediumDate'}}</td>-->
+                                    <td>{{objectifs.periode| date:'MMMM'}}</td>
+                                    <td>{{objectifs.quantiteAttendue}}</td>
+                                    <td>{{objectifs.quantiteObtenu}}</td>
+                                    <td >{{objectifs.taux| number : 2}}</td>
+                                    <!--                    <td>
+                                                            <a ui-sref="produit-detail({id:objectifs.produit.id})">{{objectifs.produit.nomProduit}}</a>
+                                                        </td>-->
+                                    <td class="text-right">
+                                        <div class="btn-group flex-btn-group-container">
+                                            <button type="submit" style="display: none"
+                                                    ui-sref="objectifs-detail({id:objectifs.id})"
+                                                    class="btn btn-info btn-sm">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                                            </button>
+                                            <!--ui-sref="objectifs.edit({id:objectifs.id})"-->
+                                            <button type="submit" style="display: none"
+                                                    ui-sref="objectifs_mise_a_jour.edit({id:objectifs.id})"
+                                                    class="btn btn-primary btn-sm">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                <span class="hidden-xs hidden-sm" >Mettre à jour</span>
+                                            </button>
+                                            <button type="submit" style="display: none"
+                                                    ui-sref="objectifs.delete({id:objectifs.id})"
+                                                    class="btn btn-danger btn-sm">
+                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <!--<p>Graphique des taux d'atteinte des objectif de vente</p>-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Graphique des taux d'atteinte des objectif de vente</div>
+                        <div class="panel-body text-center">
+                            <canvas  class="chart chart-pie" id="pie"
+                                    chart-data="dataTaux" chart-labels="labelProduit" chart-options="options">
+                                
+                            </canvas> 
+                            <!--width="688" height="344" style="display: block; width: 688px; height: 344px;"-->
+
+                        </div>
+                    </div>
+                </div>
+                <!--                <div class="col-md-5">
+                                    <button type="button" class="btn btn-default btn-rounded">
+                                        <i class="glyphicon glyphicon-print"> </i> Imprimer</button> 
+                                    <label>     </label>
+                                    
+                                </div>-->
+                <!--<a href="#/app/menuvente" >Retourner au menu</a>-->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+    "webstockerApp": {
+        "formDiag" : {
+            "home": {
+                "title": "FormDiags",
+                "createLabel": "Créer un nouveau FormDiag",
+                "createOrEditLabel": "Créer ou éditer un FormDiag",
+                "search": "Recherche pour FormDiag"
+            },
+            "created": "Un nouveau FormDiag a été créé avec l'identifiant {{ param }}",
+            "updated": "Le FormDiag avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le FormDiag avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le FormDiag {{ id }} ?"
+            },
+            "detail": {
+                "title": "FormDiag"
+            },
+            "notes": "Notes",
+            "dateDiag": "DateDiag",
+            "diagnostic": "Diagnostic",
+            "encounter": "Encounter",
+            "provider": "Provider"
+        }
+    }
+}

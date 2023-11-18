@@ -1,0 +1,25 @@
+{
+    "webstockerApp": {
+        "livraison" : {
+            "home": {
+                "title": "Livraisons",
+                "createLabel": "Livraison erstellen",
+                "createOrEditLabel": "Livraison erstellen oder bearbeiten",
+                "search": "Suche nach Livraison"
+            },
+            "created": "Livraison erstellt mit ID {{ param }}",
+            "updated": "Livraison aktualisiert mit ID {{ param }}",
+            "deleted": "Livraison gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Livraison {{ id }} wirklich dauerhaft gejöscht werden?"
+            },
+            "detail": {
+                "title": "Livraison"
+            },
+            "dateLivraison": "DateLivraison",
+            "quantiteLivre": "QuantiteLivre",
+            "magasin": "Magasin",
+            "commande": "Commande"
+        }
+    }
+}

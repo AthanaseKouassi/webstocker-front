@@ -1,0 +1,23 @@
+{
+    "webstockerApp": {
+        "categorie" : {
+            "home": {
+                "title": "Catégories",
+                "createLabel": "Créer une nouvelle Catégorie",
+                "createOrEditLabel": "Créer ou éditer un Categorie",
+                "search": "Recherche pour Catégorie"
+            },
+            "created": "Une nouvelle Catégorie a été créé avec l'identifiant {{ param }}",
+            "updated": "La Catégorie avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Catégorie avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Catégorie {{ id }} ?"
+            },
+            "detail": {
+                "title": "Catégorie"
+            },
+            "nomCategorie": "Catégorie",
+            "produit": "Produit"
+        }
+    }
+}

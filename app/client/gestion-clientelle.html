@@ -1,0 +1,146 @@
+<div class="bg-light lter b-b wrapper-md" >
+    <h1 class="m-n font-thin h3">Gestion des clients</h1>
+    <small>Gestions des clients</small>
+</div>
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold"> Gestion des clients</div>
+        <div class="panel-body">
+            <div class="row">
+<!--                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Les listes</div>
+                        <div class="panel-body">
+                            <div class="btn btn-default btn-block btn-lg" style="text-align: left">
+                               
+                                <a href="" ng-click="vm.afficherListeClientCategorie()" >
+                                    <i class="fa fa-file-pdf-o"></i>
+                                    <span >Liste des clients par type de clients </span></a>
+                            </div>
+                                <div class="btn btn-default btn-block btn-lg" style="text-align: left">
+                                    <a ui-sref="frequence-achat"><i class="fa fa-file-pdf-o"></i>
+                                    <span> Liste des clients par fréquence d'achat</span></a>
+                                    </div>
+                            <p> </p>
+
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            data-toggle="collapse" data-parent="#accordion" 
+                                            <a href="" style="font-size: 1.1em; " 
+                                               onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                                               onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                                               data-toggle="collapse" data-parent="#accordion"  data-target="#collapse2">
+                                                <i class="fa fa-file-pdf-o"></i>
+                                                <span> chiffre d'affaire d'un client</span>
+                                                <span> Liste des clients par fréquence d'achat</span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+
+                                        <div ng-include="frequenceAchatUrl"> </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            data-toggle="collapse" data-parent="#accordion" 
+                                            <a href="" style="font-size: 1.1em; " 
+                                               onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                                               onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                                               data-toggle="collapse" data-parent="#accordion"  data-target="#collapse3">
+                                                <i class="fa fa-file-pdf-o"></i>                                               
+                                                <span>Chiffre d'affaire par type de client</span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+
+                                        <div ng-include="chiffreAffaireTypeClientUrl"> </div>
+                                    </div>
+                                </div> 
+                            </div>
+
+
+
+
+                            <div class="btn btn-default btn-block btn-lg"  style="text-align: left">
+                                <a href ng-model="valeurClick" ng-init="valeurClick = '1'" ng-click="choixTemplate()">
+                                    <i class="fa fa-money"></i>
+                                    <span>Chiffre d'affaire par type de client</span></a>
+                            </div>
+
+                            <p> </p>
+
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            data-toggle="collapse" data-parent="#accordion" 
+                                            <a href="" style="font-size: 1.1em; " 
+                                               onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                                               onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                                               data-toggle="collapse" data-parent="#accordion"  data-target="#collapse1">
+                                                <i class="fa fa-file-pdf-o"></i>
+                                                <span> chiffre d'affaire d'un client</span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse">
+                                        <div ng-include="chiffreAffaireUnClientUrl"> </div>
+                                    </div>
+                                </div> 
+                            </div>
+
+                        </div>
+                    </div>
+                </div>         -->
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Etat clients</div>
+                        <div class="panel-body">
+                            <div class="btn btn-default btn-block btn-lg" style="text-align: left">                              
+                                <a  ui-sref="reglement-credit">
+                                    <i class="fa fa-angle-double-right"></i>
+                                    <span>  Réglément client</span></a>
+                            </div>
+                            <div class="btn btn-default btn-block btn-lg" style="text-align: left">
+                                <a  ui-sref="creance-client">
+                                    <i class="glyphicon glyphicon-th-list "></i>                                
+                                    <span> Créance clients</span></a>
+                            </div>
+                            <!--                            <div class="btn btn-default btn-block btn-lg" style="text-align: left">  
+                                                            <i class="fa fa-clock-o"></i> 
+                                                            <span> L'âge du client</span>
+                                                        </div>-->
+                            <div class="btn btn-default btn-block btn-lg" style="text-align: left">
+                                <a ui-sref="fiche-client"><i class="fa fa-file"></i> 
+                                    <span>Etat global du client</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-if="valeurClick"  ng-hide="true">
+                    voila
+                </div>
+            </div>
+            <div class="row">
+                <div ng-if="valeurClick"  ng-show="false">
+                    source
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+
+        </div>
+    </div>
+</div>

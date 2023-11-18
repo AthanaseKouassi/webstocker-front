@@ -1,0 +1,439 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Commande de Produits</h1>
+    <small>Enregistrer une commande fournisseur</small>
+</div>
+<!--class="container-fluid"-->
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Commande</div>
+                <div class="panel-body">
+                    <form name="form.formValidate" ng-submit="vm.save()" novalidate="" class="form-validate form-horizontal">
+                        <!--<div class="panel panel-info">-->
+                        <!--<div class="panel-body">-->
+
+                        <jhi-alert-error></jhi-alert-error>
+
+                        <fieldset style="display: none">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">ID</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="id" name="id" ng-model="vm.commande.id" readonly
+                                           class="form-control"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <!--  <small class="text-muted">*</small>-->
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Numero Commande</label>
+                                <div class="col-sm-3">
+                                    <input type="text" name="numeroCommande" required="" ng-pattern="/^[0-9]+$/"
+                                           ng-model="vm.commande.numeroCommande" class="form-control"/>
+                                    <span ng-show="form.validateInput('numeroCommande', 'pattern')" class="text-danger">This field must contain only digits</span>
+                                </div>
+                                <div class="col-sm-1">
+                                    <small class="text-muted">*</small>
+                                </div>
+
+                                <label class="col-md-2 control-label">Bailleur</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="bailleur" ng-model="vm.commande.bailleur"
+                                            ng-options="bailleur as bailleur.nomBailleur for bailleur in vm.bailleurs track by bailleur.id">
+                                        <option value=""></option>
+                                    </select>
+                                    <span ng-show="form.validateInput('bailleur', 'pattern')" class="text-danger">This field must contain only digits</span>
+                                </div>
+                                <div class="col-sm-1">
+                                    <small class="text-muted">*</small>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Date commande</label>
+                                <div class="col-sm-3">
+                                    <p class="input-group">
+                                        <input id="field_dateCommande" type="text" class="form-control"
+                                               name="dateCommande" uib-datepicker-popup="{{dateformat}}"
+                                               ng-model="vm.commande.dateCommande"
+                                               is-open="vm.datePickerOpenStatus.dateCommande"
+                                               required/>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateCommande')"><i
+                                                    class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                    <span ng-show="form.validateInput('dateCommande', 'required')" class="text-danger">This field is required</span>
+                                </div>
+                                <div class="col-sm-1">
+                                    <small class="text-muted">*</small>
+                                </div>
+
+                                <label class="col-md-2 control-label">Fabricant</label>
+                                <div class="col-sm-3">
+                                    <select name="fabricant" required="" ng-model="vm.commande.fabricant"
+                                            ng-options="fabricant as fabricant.nomFabricant for fabricant in vm.fabricants track by fabricant.id"
+                                            class="form-control">
+                                        <option value=""></option>
+                                    </select>
+                                    <span ng-show="form.validateInput('fabricant', 'required')" class="text-danger">This field is required</span>
+                                </div>
+                                <div class="col-sm-1">
+                                    <small class="text-muted">*</small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Nom produit</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" required="" id="field_produit" name="produit"
+                                            ng-model="vm.lignecommande.produit"
+                                            ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                                        <option value=""></option>
+                                    </select>
+                                    <span ng-show="form.validateInput('produit', 'required')" class="text-danger">This field is required</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <small class="text-muted">*</small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Prix d'achat</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="prixAchat" ng-model="vm.commande.prixAchat"
+                                           placeholder=" prix d'achat de la commande" required=""
+                                           ng-pattern="/^[0-9]+$/" class="form-control"/>
+                                    <span ng-show="form.validateInput('prixAchat', 'number')" class="text-danger">This field must be a valid number</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <small class="text-muted">*</small>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Quantite</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="quantiteCommande" ng-model="vm.commande.quantiteCommande"
+                                           placeholder=" quantite du produit" required="" ng-pattern="/^[0-9]+$/"
+                                           class="form-control"/>
+                                    <span ng-show="form.validateInput('quantiteCommande', 'number')"
+                                          class="text-danger">This field must be a valid number</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <small class="text-muted">*</small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div ng-controller="DatepickerDemoCtrl as dpick" class="form-group">
+                                <label class="col-md-2 control-label">Date fabrication</label>
+                                <div class="col-md-6">
+                                    <p class="input-group">
+                                        <input type="text" name="dateFabrication" required=""
+                                               uib-datepicker-popup="{{dpick.format}}"
+                                               ng-model="vm.lignecommande.dateFabrication" is-open="dpick.opened"
+                                               min-date="dpick.minDate" max-date="'2019-12-22'"
+                                               uib-datepicker-options="dpick.dateOptions"
+                                               date-disabled="dpick.disabled(date, mode)"
+                                               close-text="Close" class="form-control"/>
+                                        <span class="input-group-btn">
+                                            <button type="button" ng-click="dpick.open($event)" class="btn btn-default">
+                                                <em class="fa fa-calendar"></em>
+                                            </button>
+                                        </span>
+                                    </p>
+                                    <span ng-show="form.validateInput('dateFabrication', 'required')"
+                                          class="text-danger">This field is required</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <small class="text-muted">*</small>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!--</div>-->
+                        <div class="panel-footer text-center">
+                            <button type="submit" class="btn btn-info">Ajouter une ligne de commande</button>
+                        </div>
+
+                        <fieldset>
+                            <legend>
+                                <small class="text-muted">Ligne de commande</small>
+                            </legend>
+                            <div class="table-responsive">
+                                <!--                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-10">-->
+                                <table class="jh-table table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="display: none"><span translate="global.field.id">ID</span></th>
+                                            <th>commande</th>
+                                            <th>Produit</th>
+                                            <th>Quantite</th>
+                                            <th>Date de Fabrication</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="lignecommande in vm.lignecommandes track by lignecommande.id">
+
+                                            <td style="display: none"><a ui-sref="lignecommande-detail({id:lignecommande.id})">{{lignecommande.id}}</a>
+                                            </td>
+                                            <td>{{lignecommande.quantiteLigneCommande}}</td>
+                                            <td>
+                                                <!--<a ui-sref="produit-detail({id:lignecommande.produit.id})">{{lignecommande.produit.nomProduit}}</a>-->
+                                                {{lignecommande.produit.nomProduit}}
+                                            </td>
+                                            <td>
+                                                <!--<a ui-sref="commande-detail({id:lignecommande.commande.id})">{{lignecommande.commande.id}}</a>-->
+                                                {{lignecommande.commande.id}}
+                                            </td>
+                                            <td>{{lignecommande.dateFabrication| date:'mediumDate'}}</td>
+
+                                            <td class="text-right">
+                                                <div class="btn-group flex-btn-group-container">
+                                                    <button type="submit"
+                                                            ui-sref="lignecommande-detail({id:lignecommande.id})"
+                                                            class="btn btn-info btn-sm">
+                                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                                        <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                                                    </button>
+                                                    <button type="submit"
+                                                            ui-sref="lignecommande.edit({id:lignecommande.id})"
+                                                            class="btn btn-primary btn-sm">
+                                                        <span class="glyphicon glyphicon-pencil"></span>
+                                                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                                                    </button>
+                                                    <button type="submit"
+                                                            ui-sref="lignecommande.delete({id:lignecommande.id})"
+                                                            class="btn btn-danger btn-sm">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                                        <span class="hidden-xs hidden-sm"
+                                                              translate="entity.action.delete"></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!--</div>-->
+                            </div>
+                            <div class="col-sm-1"></div>
+                            <p></p>
+                            <br/>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
+                                <button ng-click="table.addUser()" class="btn btn-success" style="color: white;">Valider
+                                    Commande
+                                </button>
+                            </div>
+                            <div class="col-sm-1"></div>
+                            <p></p>
+                        </fieldset>
+                        <!--</div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="portlets-wrapper">
+    START row
+   <div class="row">
+      <div id="portlet-1" portlet="portlet" class="col-lg-4">
+          START panel
+         <div id="panelPortlet1" class="panel panel-default">
+            <div class="panel-heading portlet-handler">Default Panel
+               <paneltool tool-collapse="tool-collapse"></paneltool>
+            </div>
+            <div uib-collapse="panelPortlet1" class="panel-wrapper">
+               <div class="panel-body">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+               </div>
+               <div class="panel-footer">Panel Footer</div>
+            </div>
+         </div>
+          END panel
+          START panel
+         <div id="panelPortlet2" class="panel panel-primary">
+            <div class="panel-heading portlet-handler">Primary Panel
+               <paneltool tool-collapse="tool-collapse"></paneltool>
+            </div>
+            <div uib-collapse="panelPortlet2" class="panel-wrapper">
+               <div class="panel-body">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+               </div>
+               <div class="panel-footer">Panel Footer</div>
+            </div>
+         </div>
+          END panel
+          START panel
+         <div id="panelPortlet3" class="panel panel-success">
+            <div class="panel-heading portlet-handler">Success Panel</div>
+            <div class="panel-body">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+            </div>
+            <div class="panel-footer">Panel Footer</div>
+         </div>
+          END panel
+          START widget
+         <div id="panelPortlet4" class="panel widget">
+            <div class="portlet-handler">
+               <div class="row row-table row-flush">
+                  <div class="col-xs-4 bg-danger text-center">
+                     <em class="fa fa-music fa-2x"></em>
+                  </div>
+                  <div class="col-xs-8">
+                     <div class="panel-body text-center">
+                        <h4 class="mt0">100%</h4>
+                        <p class="mb0 text-muted">VOLUME</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+          END widget
+          START widget
+         <div id="panelPortlet5" class="panel widget">
+            <div class="portlet-handler">
+               <div class="row row-table row-flush">
+                  <div class="col-xs-4 bg-inverse text-center">
+                     <em class="fa fa-code-fork fa-2x"></em>
+                  </div>
+                  <div class="col-xs-8">
+                     <div class="panel-body text-center">
+                        <h4 class="mt0">150</h4>
+                        <p class="mb0 text-muted">FORKS</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+          END widget
+      </div>
+      <div id="portlet-2" portlet="portlet" class="col-lg-4">
+          START panel
+         <div id="panelPortlet6" class="panel panel-info">
+            <div class="panel-heading portlet-handler">Info Panel</div>
+            <div class="panel-body">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+            </div>
+            <div class="panel-footer">Panel Footer</div>
+         </div>
+          END panel
+          START panel
+         <div id="panelPortlet7" class="panel panel-warning">
+            <div class="panel-heading portlet-handler">Warning Panel</div>
+            <div class="panel-body">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+            </div>
+            <div class="panel-footer">Panel Footer</div>
+         </div>
+          END panel
+          START panel
+         <div id="panelPortlet8" class="panel panel-danger">
+            <div class="panel-heading portlet-handler">Danger Panel</div>
+            <div class="panel-body">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+            </div>
+            <div class="panel-footer">Panel Footer</div>
+         </div>
+          END panel
+          START widget
+         <div id="panelPortlet9" class="panel widget">
+            <div class="portlet-handler">
+               <div class="row row-table row-flush">
+                  <div class="col-xs-12">
+                     <div class="panel-body text-center bg-purple">
+                        <h4 class="mt0">10k</h4>
+                        <p class="mb0 text-white">VISITORS</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+          END widget
+          START widget
+         <div id="panelPortlet10" class="panel widget">
+            <div class="portlet-handler">
+               <div class="row row-table row-flush">
+                  <div class="col-xs-12">
+                     <div class="panel-body text-center bg-pink">
+                        <h4 class="mt0">100%</h4>
+                        <p class="mb0 text-white">VOLUME</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+          END widget
+      </div>
+      <div id="portlet-3" portlet="portlet" class="col-lg-4">
+          START panel
+         <div id="panelPortlet11" class="panel panel-inverse">
+            <div class="panel-heading portlet-handler">Inverse Panel</div>
+            <div class="panel-body">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+            </div>
+            <div class="panel-footer">Panel Footer</div>
+         </div>
+          END panel
+          START panel
+         <div id="panelPortlet12" class="panel panel-purple">
+            <div class="panel-heading portlet-handler">Purple Panel</div>
+            <div class="panel-body">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+            </div>
+            <div class="panel-footer">Panel Footer</div>
+         </div>
+          END panel
+          START panel
+         <div id="panelPortlet13" class="panel panel-green">
+            <div class="panel-heading portlet-handler">Green Panel</div>
+            <div class="panel-body">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+            </div>
+            <div class="panel-footer">Panel Footer</div>
+         </div>
+          END panel
+          START widget
+         <div id="panelPortlet14" class="panel widget">
+            <div class="portlet-handler">
+               <div class="row row-table row-flush">
+                  <div class="col-xs-12">
+                     <div class="panel-body text-center bg-green">
+                        <h4 class="mt0">150</h4>
+                        <p class="mb0 text-white">FORKS</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+          END widget
+          START widget
+         <div id="panelPortlet15" class="panel widget">
+            <div class="portlet-handler">
+               <div class="row row-table row-flush">
+                  <div class="col-xs-12">
+                     <div class="panel-body text-center bg-primary">
+                        <h4 class="mt0">10</h4>
+                        <p class="mb0 text-white">NEW MESSAGES</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+          END widget
+      </div>
+   </div>
+    END row
+</div>-->

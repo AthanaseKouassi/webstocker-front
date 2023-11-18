@@ -1,0 +1,36 @@
+                    <div class="text-center">
+                        <!-- pagination -->
+                        <div ng-if="vm.pager.pages.length">
+                            <!--{{ vm.items[0] }} {{ "vm.items.length" }}<br><br>-->
+                                
+                            de {{ (vm.pager.currentPage * 20) - 19}}
+                            à {{ (vm.pager.currentPage === vm.pager.totalPages && vm.pager.totalPages > 20) ? vm.pager.currentPage * 20 - (20 - vm.pager.totalItems % 20) : vm.pager.totalItems < 20 ? vm.pager.totalItems : vm.pager.currentPage * 20 }} items 
+                            sur {{ vm.pager.totalItems % 20 === 0 ? vm.pager.totalPages * 20 : vm.pager.totalPages * 20 - (20 - vm.pager.totalItems % 20) }} items
+                            
+                            
+                            <!--de {{ vm.pager.pages[0] }} à {{ vm.pager.pages[9] || vm.pager.pages[vm.pager.pages.length - 1] }} sur {{ vm.pager.pages[vm.pager.pages.length - 1] }}-->
+                            
+                            
+<!--                                    de {{ vm.items.length < 20 ? 1 : vm.pager.pages[0] * 20 - 19 }} 
+                                    à {{  vm.items.length < 20 ? vm.item.length : 20 || vm.pager.pages[vm.pager.pages.length - 1] * 20 }} sur {{   vm.items.length < 20 ? vm.items.length : vm.pager.totalPages * 20 }}-->
+                                
+                        </div>
+                        <ul ng-if="vm.pager.pages.length" class="pagination">
+                            <li ng-class="{disabled:vm.pager.currentPage === 1}">
+                                <a class="lien" ng-click="vm.setPage(1)">«</a>
+                            </li>
+                            <li ng-class="{disabled:vm.pager.currentPage === 1}">
+                                <a ng-click="vm.setPage(vm.pager.currentPage - 1)">‹</a>
+                            </li>
+                            <li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}">
+                                <a class="lien" ng-click="vm.setPage(page)">{{page}}</a>
+                            </li>                
+                            <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+                                <a class="lien" ng-click="vm.setPage(vm.pager.currentPage + 1)">›</a>
+                            </li>
+                            <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+                                <a class="lien" ng-click="vm.setPage(vm.pager.totalPages)">»</a>
+                            </li>
+                        </ul>
+
+                    </div>

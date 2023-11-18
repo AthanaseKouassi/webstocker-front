@@ -1,0 +1,52 @@
+{
+    "webstockerApp": {
+        "formRos" : {
+            "home": {
+                "title": "FormRos",
+                "createLabel": "Create a new FormRos",
+                "createOrEditLabel": "Create or edit a FormRos",
+                "search": "Search for FormRos"
+            },
+            "created": "A new FormRos is created with identifier {{ param }}",
+            "updated": "A FormRos is updated with identifier {{ param }}",
+            "deleted": "A FormRos is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete FormRos {{ id }}?"
+            },
+            "detail": {
+                "title": "FormRos"
+            },
+            "date": "Date",
+            "weightChange": "WeightChange",
+            "weakness": "Weakness",
+            "fatigue": "Fatigue",
+            "anorexia": "Anorexia",
+            "fever": "Fever",
+            "chills": "Chills",
+            "nightSweats": "NightSweats",
+            "insomnia": "Insomnia",
+            "irritability": "Irritability",
+            "heatOrCold": "HeatOrCold",
+            "intolerance": "Intolerance",
+            "changeInVision": "ChangeInVision",
+            "glaucomaHistory": "GlaucomaHistory",
+            "eyePain": "EyePain",
+            "irritation": "Irritation",
+            "redness": "Redness",
+            "excessiveTearing": "ExcessiveTearing",
+            "doubleVision": "DoubleVision",
+            "blindSpot": "BlindSpot",
+            "photophobia": "Photophobia",
+            "hearingLoss": "HearingLoss",
+            "discharge": "Discharge",
+            "pain": "Pain",
+            "vertigo": "Vertigo",
+            "tinnitus": "Tinnitus",
+            "frequentColds": "FrequentColds",
+            "soreThroat": "SoreThroat",
+            "sinusProblems": "SinusProblems",
+            "postNasalDrip": "PostNasalDrip",
+            "encounter": "Encounter"
+        }
+    }
+}
