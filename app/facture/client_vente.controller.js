@@ -256,7 +256,8 @@
                 id: vm.bonDeSortie.id,
 //                id: null,
                 remise: vm.bonDeSortie.remise,
-                ligneBonDeSorties: vm.sortieWrappers
+                ligneBonDeSorties: vm.sortieWrappers,
+                dateReglement: vm.bonDeSortie.dateReglement
 
             };
 
@@ -291,6 +292,7 @@
         vm.datePickerOpenStatus.daateCreation = false;
         vm.datePickerOpenStatus.dateFabrication = false;
         vm.datePickerOpenStatus.datePeremption = false;
+        vm.datePickerOpenStatus.datePaiement = false;
 
         vm.openCalendar = function (date) {
             vm.datePickerOpenStatus[date] = true;
