@@ -1,0 +1,176 @@
+<div class="modal-header">
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="vm.cancel()"><span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title" id="showHealthLabel">
+		Reglement facture
+    </h4>
+</div>
+<div class="modal-body pad">
+
+    <div class="row">
+    
+    <div style="margin-bottom: 45px;">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Numéro facture</label>
+                <div class="col-md-8">
+                    <input type="number" name="delaiPaiement" ng-model="vm.delaiPaiement"
+                           required ng-pattern="/^[0-9]+$/" class="form-control" disabled/>
+
+                    <span ng-show="form.validateInput('delaiPaiement', 'required')" class="text-danger">This field is required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Date facture</label>
+                <div class="col-md-8">
+                    <input type="number" name="delaiPaiement" ng-model="vm.delaiPaiement"
+                           required ng-pattern="/^[0-9]+$/" class="form-control" disabled/>
+
+                    <span ng-show="form.validateInput('delaiPaiement', 'required')" class="text-danger">This field is required</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style="margin-bottom: 45px;">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Date dernier règlement</label>
+                <div class="col-md-8">
+                    <input type="number" name="delaiPaiement" ng-model="vm.delaiPaiement"
+                           required ng-pattern="/^[0-9]+$/" class="form-control" disabled/>
+
+                    <span ng-show="form.validateInput('delaiPaiement', 'required')" class="text-danger">This field is required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Age créance</label>
+                <div class="col-md-8">
+                    <input type="number" name="delaiPaiement" ng-model="vm.delaiPaiement"
+                           required ng-pattern="/^[0-9]+$/" class="form-control" disabled/>
+
+                    <span ng-show="form.validateInput('delaiPaiement', 'required')" class="text-danger">This field is required</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-12" style="padding-left: 0%; padding-right: 0%;">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label">Client</label>
+                <div class="col-md-8" >
+                    <input type="number" name="delaiPaiement" ng-model="vm.delaiPaiement"
+                           required ng-pattern="/^[0-9]+$/" class="form-control" disabled/>
+
+                    <span ng-show="form.validateInput('delaiPaiement', 'required')" class="text-danger">This field is required</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            
+        </div> 
+        
+    </div>
+
+    <div class="col-md-12">
+        <hr>
+    </div>
+
+
+
+    <div class="" style="margin-left: 10px; margin-right: 10px;">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr >
+                    <th><span >Produit</span> </th>
+
+                    <th style="text-align: right;"><span >Quantité</span><br><span style="color: #7a72ed; font-size: .9em;">Prix unitaire</span></th>
+                    <!-- <th ><span >Magasin</span> </th> -->
+                    <!--<th ><span >Client</span> </th>-->
+                    <th style="text-align: right;"><span>Prix total</span> </th>
+                    <th ><span>Montant encaissé</span> </th>
+                    <th style="text-align: right;">Soldé<br><span style="color: #7a72ed; font-size: .9em;">Reste à soldé</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="bonDeSortie in [1, 2]">
+                    <td>Complice<br><span style="color: #7a72ed">P0001</span></td>
+                    <!-- <td>BS00001</td> -->
+                    <td style="text-align: right;">300<br><span style="color: #7a72ed; font-size: .9em;">1 500</span></td>
+                    <!-- <td>Magasin Centrale</td> -->
+                    <td style="text-align: right;">450 000</td>
+                    <td>
+                        <input type="number" name="delaiPaiement" ng-model="vm.delaiPaiement"
+                                   required ng-pattern="/^[0-9]+$/" class="form-control" style="text-align: right;"/>
+                    </td>
+                    <td style="text-align: right;" class="">150 000<br><span style="color: #7a72ed; font-size: .9em;">300 000</span></td>
+                    
+                </tr>
+                <!-- <tr ng-repeat="bonDeSortie in vm.bonDeSortie">
+                    <td>{{bonDeSortie.numero}}</td>
+                    <td>{{bonDeSortie.daateCreation| date:'mediumDate'}}</td>
+                    <td>
+                        {{bonDeSortie.demandeur.lastName + ' ' + bonDeSortie.demandeur.firstName}}
+                    </td>
+                    <td>{{bonDeSortie.magasin.nomMagasin}} </td>
+                    <td> {{bonDeSortie.destination.nomMagasin}}  </td>
+                    <td >{{bonDeSortie.statusTranfert}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+
+                            <button type="submit"              
+                                    ui-sref="reception_transfert.edit({id:bonDeSortie.id})"                                   
+                                    class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-ok ">  </span>
+                                <span class="hidden-xs hidden-sm"></span>
+                                   Valider
+                            </button>
+
+                        </div>
+                    </td>
+                </tr> -->
+            </tbody>
+         
+        </table>
+       
+    </div>
+
+    <div style="margin-top: 30px; display: flex; justify-content: flex-end; margin-right: 10px" >
+        <table class="jh-table table table-striped" style="width: 30%">
+            <tr>
+                <th>Valeur total: </th>
+                <th style="text-align: right;">350 000</th>
+            </tr>
+            <tr>
+                <th>Soldé: </th>
+                <th style="text-align: right;">150 000</th>
+            </tr>
+            <tr>
+                <th>Reste à solder: </th>
+                <th style="text-align: right;">200 000</th>
+            </tr>
+        </table>
+    </div>
+
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success pull-right btn-rounded" type="submit" style="    margin-left: 10px;
+    padding-left: 30px;
+    padding-right: 30px;">Payer</button>
+
+    <button data-dismiss="modal" class="btn btn-default pull-right btn-rounded" type="button" ng-click="vm.cancel()" style="padding-left: 30px;
+    padding-right: 30px;">Fermer</button>
+    
+</div>

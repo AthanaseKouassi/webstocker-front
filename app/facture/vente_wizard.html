@@ -144,6 +144,28 @@
                     </div>
                 </fieldset>
                 <fieldset ng-switch="vm.bonDeSortie.typeVente">
+                    <div class="form-group" ng-switch-when="CASH">
+                        <label class="col-md-2 control-label">Date de paiement</label>
+                        <div class="col-md-6">
+                            <p class="input-group">
+                                <input id="datePaiement" type="text" class="form-control" readonly
+                                       name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                       ng-model="vm.bonDeSortie.dateReglement"
+                                       is-open="vm.datePickerOpenStatus.datePaiement"
+                                       required/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datePaiement')"><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset ng-switch="vm.bonDeSortie.typeVente">
                     <div class="form-group" ng-switch-when="CREDIT">
                         <label class="col-md-2 control-label">Délai de paiement (jours)</label>
                         <div class="col-md-6">
@@ -458,6 +480,26 @@
                                 <option value="CREDIT">CREDIT</option>
                             </select>
                             <span ng-show="form.validateInput('typeVente', 'required')" class="text-danger">This field is required</span>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted">*</small>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset >
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Date de paiement</label>
+                        <div class="col-md-6">
+                            <p class="input-group">
+                                <input id="datePaiement2" type="text" class="form-control" readonly
+                                       name="datePaiement2"
+                                       ng-value="vm.bonDeSortie.dateReglement | date: 'dd MMMM yyyy'" ng-disabled="true"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            <span ng-show="form.validateInput('datePaiement2', 'required')" class="text-danger">This field is required</span>
                         </div>
                         <div class="col-md-4">
                             <small class="text-muted">*</small>

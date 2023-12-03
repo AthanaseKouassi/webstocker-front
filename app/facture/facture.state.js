@@ -213,6 +213,56 @@
                         // controllerAs: 'vm'
                     }
                 }
+            })
+            .state('tresorerie', {
+                parent: 'app',
+                url: '/tresorerie',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'webstockerApp.livraison.home.title'
+                },
+                views: {
+                    '@app': {
+                        templateUrl: 'facture/tresorerie.html',
+                        controller: 'TresorerieController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('facture');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            })
+            .state('tresorerie.pay', {
+                parent: 'tresorerie',
+                url: '/tresorerie-pay',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'facture/tresorerie-dialog.html',
+                        controller: 'ConfirmationTresorerieController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            entity: function () {
+                                return {
+                                    quantiteFacture: null,
+                                    id: null
+                                };
+                            }
+                        }
+                    }).result.then(function() {
+                        $state.go('tresorerie', null, { reload: true });
+                    }, function() {
+                        $state.go('tresorerie');
+                    });
+                }]
             });
     }
 
