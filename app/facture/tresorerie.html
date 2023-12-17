@@ -1,0 +1,196 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Trésorerie</h1>
+    <jhi-alert></jhi-alert>
+</div>
+<div class="wrapper-md">
+
+    <div class="panel panel-default">
+        <!-- <div class="panel-heading font-bold">Listes des créances</div> -->
+        <div class="panel-body">
+            <div class="col-md-12" >
+                <div class="col-md-12" style="padding-top: 10px; padding-left: 30px; font-weight: bold;">
+                    Rechercher facture par
+                </div>
+                <div class="col-md-12">
+                    <div class="radio col-md-2">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="vm.typeRecherche" value="bynum" checked style="display: inline;">
+                            Numero facture
+                        </label>
+                        </div>
+                        <div class="radio col-md-2" style="    margin-top: 10px;">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="vm.typeRecherche" value="bydate" style="display: inline;">
+                            Période
+                        </label>
+                        </div>
+
+
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6" ng-show="vm.typeRecherche == 'bynum'">
+                        <label class="col-md-4 control-label">Numero de facture</label>
+                        <div class="col-md-8" style="margin-bottom: 20px;">
+                            <div class="input-group">
+                                <input type="text" name="numero" required="" ng-change="vm.bonDeSortie.numero = (vm.bonDeSortie.numero | uppercase)" 
+                                    ng-model="vm.bonDeSortie.numero" class="form-control"/>
+                                <span class="input-group-btn">
+                                    <!-- btn-rounded -->
+                                    <button type="submit" class="btn btn-default"
+                                            ng-click="vm.rechargermentDataBonDesortie()">
+                                        <i class="fa fa-search"> </i>
+                                    </button>
+                                </span>
+
+                                <span ng-show="form.validateInput('numero', 'pattern')" class="text-danger">This field must contain only digits</span>
+                            </div>
+                        </div>
+
+                            
+             
+                    </div>
+
+                    <div class="col-md-12" ng-show="vm.typeRecherche == 'bydate'">
+                        <label class="col-md-1 control-label" style="margin-bottom: 10px; width: 95px;">Date debut</label>
+                        <div class="col-md-4" style="margin-bottom: 10px;">
+                            <p class="input-group">
+                                <input id="datePaiement" type="text" class="form-control" readonly
+                                       name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                       ng-model="vm.bonDeSortie.dateReglement"
+                                       is-open="vm.datePickerOpenStatus.datePaiement"
+                                       required/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datePaiement')"><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
+                       </div>
+
+                        <label class="col-md-1 control-label text">Date fin</label>
+                        <div class="col-md-4">
+                            <p class="input-group">
+                                <input id="datePaiement" type="text" class="form-control" readonly
+                                       name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                       ng-model="vm.bonDeSortie.dateReglement"
+                                       is-open="vm.datePickerOpenStatus.datePaiement"
+                                       required/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datePaiement')"><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
+                       </div>
+
+                       <div class="col-md-2" style="display: flex; justify-content: flex-end;    width: 150px;">
+                        <button type="submit" class="btn btn-default btn-rounded"
+                                ng-click="vm.rechargermentDataBonDesortie()" style="    width: 125px;">
+                            <i class="fa fa-search"> </i> Rechercher
+                        </button>
+                       </div>
+
+                    </div>
+   
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">Listes des factures</div>
+        <div class="panel-body">
+            <div class="col-md-12" >
+                <form class="form-validation form-horizontal">                
+
+
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr >
+                                    <!--<th ><span>ID</span> </th>-->
+                                    <th><span >Facture</span> </th>
+                                    <!-- <th ><span>N° bon sortie</span> </th> -->
+
+                                    <th ><span >Client</span> </th>
+                                    <!-- <th ><span >Magasin</span> </th> -->
+                                    <th ><span >Date prévu paiement</span> </th>
+                                    <!--<th ><span >Client</span> </th>-->
+                                    <th ><span>Date dernier paiement</span> </th>
+                                    <th ><span>Age créance</span> </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>F00001<br><span style="color: #7a72ed">14 Oct. 2023</span></td>
+                                    <!-- <td>BS00001</td> -->
+                                    <td>KOUASSI Antoine<br><span style="color: #7a72ed">Abidjan</span></td>
+                                    <!-- <td>Magasin Centrale</td> -->
+                                    <td>16 Nov. 2023</td>
+                                    <td>01 Dec. 2023</td>
+                                    <td>36 jours</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-success btn-sm"
+                                        ui-sref="tresorerie.pay">
+                                        <i class="fa fa-money"> </i>
+                                    </button>
+                                    </td>
+                                </tr>
+                                <!--track by bonDeSortie.id-->
+                                <tr ng-repeat="bonDeSortie in vm.bonDeSortie">
+                                    <!--<td style="display: none">{{bonDeSortie.id}}</td>-->
+                                    <td>{{bonDeSortie.numero}}</td>
+                                    <td>{{bonDeSortie.daateCreation| date:'mediumDate'}}</td>
+                                    <td>
+                                        {{bonDeSortie.demandeur.lastName + ' ' + bonDeSortie.demandeur.firstName}}
+                                    </td>
+                                    <td>{{bonDeSortie.magasin.nomMagasin}} </td>
+                                    <td> {{bonDeSortie.destination.nomMagasin}}  </td>
+                                    <td >{{bonDeSortie.statusTranfert}}</td>
+                                    <td class="text-right">
+                                        <div class="btn-group flex-btn-group-container">
+
+                                            <button type="submit"              
+                                                    ui-sref="reception_transfert.edit({id:bonDeSortie.id})"                                   
+                                                    class="btn btn-success btn-sm">
+                                                <span class="glyphicon glyphicon-ok ">  </span>
+                                                <span class="hidden-xs hidden-sm"></span>
+                                                   Valider
+                                            </button>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                       
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(0)">
+                            << 
+                        </button>
+                        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(vm.currentPage - 1)">
+                            < Précedent
+                        </button>
+                        {{vm.currentPage + 1}}/{{vm.totalPage}}
+                        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.currentPage + 1)">
+                            Suivant >
+                        </button>
+                        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.totalPage - 1)">
+                            >>
+                        </button>
+
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
