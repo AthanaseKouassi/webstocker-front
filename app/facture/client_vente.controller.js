@@ -296,6 +296,13 @@
             vm.datePickerOpenStatus[date] = true;
         };
 
+        vm.options = {};
+        vm.toggleMin = function() {
+            vm.options.maxDate = vm.options.maxDate ? null : new Date();
+        };
+
+        vm.toggleMin();
+
 
         /*****************Methode pour la modification*************************************/
         vm.factures = null;
