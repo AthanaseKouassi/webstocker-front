@@ -149,7 +149,8 @@
                         <div class="col-md-6">
                             <p class="input-group">
                                 <input id="datePaiement" type="text" class="form-control" readonly
-                                       name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                       name="datePaiement" uib-datepicker-popup="dd MMMM yyyy" 
+                                       datepicker-options="vm.options"
                                        ng-model="vm.bonDeSortie.dateReglement"
                                        is-open="vm.datePickerOpenStatus.datePaiement"
                                        required/>
@@ -486,8 +487,8 @@
                         </div>
                     </div>
                 </fieldset>
-                <fieldset >
-                    <div class="form-group">
+                <fieldset ng-switch="vm.bonDeSortie.typeVente">
+                    <div class="form-group" ng-switch-when="CASH">
                         <label class="col-md-2 control-label">Date de paiement</label>
                         <div class="col-md-6">
                             <p class="input-group">
