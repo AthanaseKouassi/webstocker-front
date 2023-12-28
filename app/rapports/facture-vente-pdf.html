@@ -1,15 +1,19 @@
 <div class="bg-light lter b-b wrapper-md">
     <h1 class="m-n font-thin h3">Aperçu avant impression  </h1>
     <br/>
-    <button class="btn btn-default btn-rounded"  type="button"  onclick="printIt()">
-        <span class="glyphicon glyphicon-print"></span> Imprimer
-    </button>
     <span>
         <a href="#/app/rapport-de-vente" class="btn btn-primary btn-rounded"
            onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
            onmouseout="this.style.color = '';this.style.textDecoration = 'none'" >  
             Retour</a>
     </span>
+    <button class="btn btn-default btn-rounded"  type="button"  onclick="printIt()">
+        <span class="glyphicon glyphicon-print"></span> Imprimer facture
+    </button>
+    <button class="btn btn-default btn-rounded"  type="button"  onclick="printIt()">
+        <span class="glyphicon glyphicon-print"></span> Imprimer reçu
+    </button>
+ 
     <script type="text/javascript">
         function printIt() {
             var url = document.getElementById("pdfdoc").getAttribute("url");
