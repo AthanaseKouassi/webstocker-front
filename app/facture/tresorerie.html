@@ -59,11 +59,11 @@
                             <p class="input-group">
                                 <input id="datePaiement" type="text" class="form-control" readonly
                                        name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
-                                       ng-model="vm.bonDeSortie.dateReglement"
-                                       is-open="vm.datePickerOpenStatus.datePaiement"
+                                       ng-model="vm.dateDebut"
+                                       is-open="vm.datePickerOpenStatus.dateDebut"
                                        required/>
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datePaiement')"><i
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i
                                             class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
@@ -75,11 +75,11 @@
                             <p class="input-group">
                                 <input id="datePaiement" type="text" class="form-control" readonly
                                        name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
-                                       ng-model="vm.bonDeSortie.dateReglement"
-                                       is-open="vm.datePickerOpenStatus.datePaiement"
+                                       ng-model="vm.dateFin"
+                                       is-open="vm.datePickerOpenStatus.dateFin"
                                        required/>
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datePaiement')"><i
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i
                                             class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
@@ -88,7 +88,7 @@
 
                        <div class="col-md-2" style="display: flex; justify-content: flex-end;    width: 150px;">
                         <button type="submit" class="btn btn-info btn-rounded"
-                                ng-click="vm.rechargermentDataBonDesortie()" style="    width: 125px;">
+                                ng-click="vm.loadAllFacturesByPeriode()" style="    width: 125px;">
                             <i class="fa fa-search"> </i> Rechercher
                         </button>
                        </div>
@@ -126,17 +126,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>F00001<br><span style="color: #7a72ed">14 Oct. 2023</span></td>
+                                <tr  ng-repeat="facture in vm.factures track by facture.id">
+                                    <td>{{ facture.numero }}<br><span style="color: #7a72ed">{{ facture.dateFacture | date: 'dd MMM yyyy' }}</span></td>
                                     <!-- <td>BS00001</td> -->
-                                    <td>KOUASSI Antoine<br><span style="color: #7a72ed">Abidjan</span></td>
+                                    <td>{{ facture.client.nomClient }}<br><span style="color: #7a72ed">{{ facture.client.localite }}</span></td>
                                     <!-- <td>Magasin Centrale</td> -->
-                                    <td>16 Nov. 2023</td>
-                                    <td>01 Dec. 2023</td>
-                                    <td>36 jours</td>
+                                    <td>{{ facture.dateLimitePaiement | date: 'dd MMM yyyy' }}</td>
+                                    <td>{{ facture.dateFacture | date: 'dd MMM yyyy' }}</td>
+                                    <td>{{ facture.delaiPaiement }} jours</td>
                                     <td>
                                         <button type="submit" class="btn btn-info btn-sm"
-                                        ui-sref="tresorerie.pay">
+                                        ui-sref="tresorerie.pay({id:facture.id})">
                                         <i class="fa fa-money"> </i>
                                     </button>
                                     </td>

@@ -238,7 +238,7 @@
             })
             .state('tresorerie.pay', {
                 parent: 'tresorerie',
-                url: '/tresorerie-pay',
+                url: '/tresorerie-pay/{id}/edit',
                 data: {
                     authorities: ['ROLE_USER']
                 },
@@ -250,17 +250,15 @@
                         backdrop: 'static',
                         size: 'lg',
                         resolve: {
-                            entity: function () {
-                                return {
-                                    quantiteFacture: null,
-                                    id: null
-                                };
-                            }
+                            entity: ['Facture', function(Facture) {
+                                console.log("$stateParams.id", $stateParams.id);
+                                return Facture.get({id : $stateParams.id});
+                            }]
                         }
                     }).result.then(function() {
                         $state.go('tresorerie', null, { reload: true });
                     }, function() {
-                        $state.go('tresorerie');
+                        $state.go('^');
                     });
                 }]
             });
