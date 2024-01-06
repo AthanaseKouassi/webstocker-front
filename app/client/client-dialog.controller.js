@@ -18,6 +18,7 @@
         vm.communes = Commune.query();
         vm.donnees = {};
         vm.load = function (id) {
+            console.log("BOOOOM", id);
             Client.get({id: id}, function (result) {
                 vm.client = result;
             });

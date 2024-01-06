@@ -9,6 +9,8 @@
     function Facture ($resource, DateUtils, API_URL) {
         var resourceUrl =  API_URL+'api/factures/:id';
         
+        console.log("url des ressources Facture");
+        console.log(resourceUrl);
 //        var resourceUrl =  'http://83.166.138.228:8080/api/factures/:id';
 //        var resourceUrl =  'http://localhost:8080/api/factures/:id';
 
