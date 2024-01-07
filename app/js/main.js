@@ -88,4 +88,67 @@ angular.module('app')
           return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
 
+
+
+
+      
+
+
+
+
+      setInterval(() => {
+        
+        
+                // Display a warning toast, with no title
+//toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
+
+// Display a success toast, with a title
+//toastr.success('Have fun storming the castle!', 'Miracle Max Says')
+
+// Display an error toast, with a title
+//toastr.error('I do not think that word means what you think it means.', 'Inconceivable!')
+
+// Immediately remove current toasts without using animation
+//toastr.remove()
+
+// Remove current toasts using animation
+//toastr.clear()
+
+// Override global options
+//toastr.success('We do have the Kapua suite available.', 'Turtle Bay Resort', {timeOut: 5000})
+
+
+//toastr.options.closeButton = true;
+toastr.options = {
+  "closeButton": true,
+  "debug": true,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": true,
+  //"onclick": null,
+  "onclick": (event) => {
+    console.log("Cliqué: ====> redirection", event.type, "&&&&&", event.message, "&&&&&&", event.target.innerText);
+    alert("Cliqué: ====> redirection");
+  },
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "10000",
+  "extendedTimeOut": "5000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+};
+
+toastr.error('Isaac N\'DRI, Brice ZAMBLE3, F000003, AIMAS, 2 632 000 XOF', 'Créance client');
+toastr.success('Isaac N\'DRI, Brice ZAMBLE2, F000002, PREGNON, 780 000 XOF', 'Créance client');
+toastr.info('Isaac N\'DRI, Brice ZAMBLE3, F000003, AIMAS, 2 632 000 XOF', 'Créance client');
+toastr.warning('Isaac N\'DRI, Brice ZAMBLE1, F000001, COMPLICE, 450 000 XOF', 'Créance client');
+
+
+      }, 20000);
+
+
+
   }]);
