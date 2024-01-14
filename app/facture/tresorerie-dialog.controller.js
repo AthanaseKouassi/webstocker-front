@@ -213,6 +213,14 @@
         };
 
 
+        vm.options = {};
+        vm.toggleMin = function() {
+            vm.options.maxDate = vm.options.maxDate ? null : new Date();
+        };
+
+        vm.toggleMin();
+
+
     }
 
     
