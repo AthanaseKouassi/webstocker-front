@@ -20,6 +20,7 @@
         vm.clients = Client.query();
 
         vm.listDetailFactureDto   = [];
+        vm.numeroFacture = null;
 
         vm.cancel = cancel;
 
@@ -221,7 +222,13 @@
         vm.toggleMin();
 
 
+        vm.toNumber = function (a) {
+            return Number((a || 0));
+        }
+
     }
+
+
 
     
 

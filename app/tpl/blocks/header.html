@@ -29,7 +29,7 @@
 
         <div class="col-md-4" style="    display: flex;
         align-content: space-around;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: flex-start;">
         <!--les notifications-->
         <ul class="nav navbar-nav" ng-controller="NotificationController">
@@ -39,39 +39,36 @@
             </li>
 
             
-            <li class="dropdown">
+            <li class="dropdown" ng-controller="LoginController">
                 <a href class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="icon-bell fa-fw"></i>
                     <span class="visible-xs-inline">Notifications</span>
                     <span class="badge badge-sm up bg-danger pull-right-xs">
-                        {{Bons.length + Factures.length}}
+                        <!-- {{Bons.length + Factures.length}} -->
+                        {{ creances.length || 0 }}
                     </span>
                 </a>
                  
                 <div class="dropdown-menu w-xl animated fadeInUp">
-                    <div class="panel bg-white">
+                    <div class="panel bg-white" style="margin-right: 32px;">
                         <div class="panel-heading b-light bg-light">
-                            <strong>Vous avez <span>{{Factures.length + Bons.length}}</span> notifications</strong>
-                        </div>                
-                        <div class="list-group">
-                            <a href class="list-group-item" ng-show="Bons.length == 0">
+                            <!-- {{Factures.length + Bons.length}} -->
+                            <strong>Vous avez <span>{{ creances.length }}</span> notifications</strong>
+                        </div>  
+                        <div style="max-height: 300px; overflow-y: auto;">         
+                        <div ng-repeat="creance in creances track by creance.idFacture">
+                            <a href class="list-group-item">
                                 <span class="clear block m-b-none">
-                                    Bons de sortie en cours                                    
-                                    <span class="badge">{{Bons.length}}</span>
+                                    {{ creance.nomClient }}, {{ creance.nomUser }}, {{ creance.numero }}, {{ creance.nomProduit }}, {{ creanceresteApayer }}                                  
+                                    <!-- <span class="badge">{{Bons.length}}</span> -->
                                 </span>
                             </a>
                         </div>
-                        <div class="list-group">
-                            <a href class="list-group-item" ng-show="Factures.length == 0">
-                                <span class="clear block m-b-none">
-                                    Factures emise                                     
-                                    <span class="badge">{{Factures.length}}</span>
-                                </span>
-                            </a>
-                        </div>
+                        
+                        </div>     
                         <div class="panel-footer text-sm">
                             <a href class="pull-right"><i class="fa fa-cog"></i></a>
-                            <a href="#notes" data-toggle="class:show animated fadeInRight">Voir toutes les notifications</a>
+                            <a ui-sref="creance" data-toggle="class:show animated fadeInRight">Voir toutes les notifications</a>
                         </div>
 
                     </div>
@@ -91,7 +88,7 @@
                     </span>     
                 </div>-->
 
-        <div class=" navbar-right"   ng-controller="LoginController" >
+        <div class=" navbar-right"   ng-controller="LoginController" style="padding-top: 9px;">
             <span style="display: inline-block; margin-top: 5px;">
             <!--<span style="display: inline-block; margin-top: 5px;" translate-values="{username: '{{vm.username}}'}">-->
                 <a href="" ui-sref="settings" class="dropdown-toggle  text-lt">

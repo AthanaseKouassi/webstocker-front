@@ -117,7 +117,7 @@
                                 datepicker-options="vm.options"
                                 ng-model="vm.dateReglements[index]"
                                 is-open="vm.datePickerOpenStatus['dateReglement' + index]"
-                                {{ (lbs.resteApaye || 0)  != 0 && vm.montantVerses[index] ? "required" : "" }} style="height: 1.9em; background-color: #eee; opacity: 1;"/>
+                                ng-required='(lbs.resteApaye || 0)  != 0 && vm.montantVerses[index] ? "required" : ""' style="height: 1.9em; background-color: #eee; opacity: 1;"/>
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateReglement' + index)" style="    height: 1.9em;
                                 padding-top: 2px;">
@@ -129,16 +129,16 @@
 
                     <td style="padding-top: 2px;
                     padding-bottom: 2px;" ng-style="{'background-color':( (lbs.resteApaye || 0)  == 0 ? '#30c7517d' : '')}">
-                        <input ng-keyup="vm.verifMontantSaisie(index)" ng-if="(lbs.resteApaye || 0) != 0" type="number" name="montantVerse" ng-model="vm.montantVerses[index]" 
-                        {{ (lbs.resteApaye || 0)  != 0 && vm.dateReglements[index] ? "required" : "" }} ng-pattern="/^[0-9]+$/" min="0" max="{{ (lbs.resteApaye || 0) }}" class="form-control" style="text-align: right; height: 1.9em;" />
+                        <input ng-keyup="vm.verifMontantSaisie(index)" ng-if="(lbs.resteApaye || 0) != 0" type="text" name="montantVerse" ng-model="vm.montantVerses[index]" 
+                        ng-required='(lbs.resteApaye || 0)  != 0 && vm.dateReglements[index] ? "required" : ""' ng-pattern="/^[0-9]+$/" min="0" max="{{ (lbs.resteApaye || 0) }}" class="form-control" style="text-align: right; height: 1.9em;" />
 
                         <!-- <input ng-if="(lbs.resteApaye || 0) == 0" disabled type="number"
                                    required ng-pattern="/^[0-9]+$/" min="0" max="{{ (lbs.resteApaye || 0) }}" class="form-control" style="text-align: right; height: 1.9em;" /> -->
                     </td>
                     <td style="text-align: right; padding-top: 2px;
-                    padding-bottom: 2px;" class="" ng-style="{'background-color':( (lbs.resteApaye || 0)  == 0 ? '#30c7517d' : '')}">{{ ((lbs.montantRegle || 0) + (vm.montantVerses[index] || 0)).toLocaleString() }}</td>
+                    padding-bottom: 2px;" class="" ng-style="{'background-color':( (lbs.resteApaye || 0)  == 0 ? '#30c7517d' : '')}">{{ (toNumber(lbs.montantRegle || '0') + (vm.montantVerses[index] || 0)).toLocaleString() }}</td>
                     <td style="text-align: right; padding-top: 2px;
-                    padding-bottom: 2px;" class="" ng-style="{'background-color':( (lbs.resteApaye || 0)  == 0 ? '#30c7517d' : '')}">{{ ((lbs.resteApaye || 0) - (vm.montantVerses[index] || 0)).toLocaleString() }}</td>
+                    padding-bottom: 2px;" class="" ng-style="{'background-color':( (lbs.resteApaye || 0)  == 0 ? '#30c7517d' : '')}">{{ (vm.toNumber(lbs.resteApaye || '0') - (vm.montantVerses[index] || 0)).toLocaleString() }}</td>
                     
                 </tr>
                 <!-- <tr ng-repeat="bonDeSortie in vm.bonDeSortie">
@@ -193,7 +193,7 @@
 <div class="modal-footer">
     <button class="btn btn-success pull-right btn-rounded" type="submit" style="    margin-left: 10px;
     padding-left: 30px;
-    padding-right: 30px;" ng-disabled="vm.isSaving">Payer</button>
+    padding-right: 30px;" ng-disabled="vm.isSaving || !(vm.dateReglements.length && vm.montantVerses.length)">Payer</button>
 
     <button data-dismiss="modal" class="btn btn-default pull-right btn-rounded" type="button" ng-click="vm.cancel()" style="padding-left: 30px;
     padding-right: 30px;">Fermer</button>

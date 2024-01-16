@@ -35,12 +35,12 @@
                         <label class="col-md-4 control-label">Numero de facture</label>
                         <div class="col-md-8" style="margin-bottom: 20px;">
                             <div class="input-group">
-                                <input type="text" name="numero" required="" ng-change="vm.bonDeSortie.numero = (vm.bonDeSortie.numero | uppercase)" 
-                                    ng-model="vm.bonDeSortie.numero" class="form-control"/>
+                                <input type="text" name="numero" required=""  
+                                    ng-model="vm.numeroFacture" class="form-control"/>
                                 <span class="input-group-btn">
                                     <!-- btn-rounded -->
                                     <button type="submit" class="btn btn-info"
-                                            ng-click="vm.rechargermentDataBonDesortie()">
+                                            ng-click="vm.loadFactureByNumFacture()">
                                         <i class="fa fa-search"> </i>
                                     </button>
                                 </span>
@@ -130,9 +130,9 @@
                                     <!-- <td>BS00001</td> -->
                                     <td>{{ facture.dateFacture | date: 'dd MMM yyyy' }}</span></td>
                                     <!-- <td>Magasin Centrale</td> -->
-                                    <td>{{ facture.client.nomClient }}</td>
-                                    <td>{{ facture.dateFacture | date: 'dd MMM yyyy' }}</td>
-                                    <td>{{ facture.delaiPaiement }} jours</td>
+                                    <td>{{ facture.nomClient }}</td>
+                                    <td>{{ facture.montantTotal }}</td>
+                                    <td>{{ facture.resteApayer }}</td>
                                     <td>
                                         <button type="submit" class="btn btn-info btn-sm"
                                         ui-sref="tresorerie.pay({id:facture.id})">
@@ -140,31 +140,7 @@
                                     </button>
                                     </td>
                                 </tr>
-                                <!--track by bonDeSortie.id-->
-                                <tr ng-repeat="bonDeSortie in vm.bonDeSortie">
-                                    <!--<td style="display: none">{{bonDeSortie.id}}</td>-->
-                                    <td>{{bonDeSortie.numero}}</td>
-                                    <td>{{bonDeSortie.daateCreation| date:'mediumDate'}}</td>
-                                    <td>
-                                        {{bonDeSortie.demandeur.lastName + ' ' + bonDeSortie.demandeur.firstName}}
-                                    </td>
-                                    <td>{{bonDeSortie.magasin.nomMagasin}} </td>
-                                    <td> {{bonDeSortie.destination.nomMagasin}}  </td>
-                                    <td >{{bonDeSortie.statusTranfert}}</td>
-                                    <td class="text-right">
-                                        <div class="btn-group flex-btn-group-container">
-
-                                            <button type="submit"              
-                                                    ui-sref="reception_transfert.edit({id:bonDeSortie.id})"                                   
-                                                    class="btn btn-success btn-sm">
-                                                <span class="glyphicon glyphicon-ok ">  </span>
-                                                <span class="hidden-xs hidden-sm"></span>
-                                                   Valider
-                                            </button>
-
-                                        </div>
-                                    </td>
-                                </tr>
+                             
                             </tbody>
                         </table>
                        
