@@ -20,6 +20,7 @@
         vm.clients = Client.query();
 
         vm.listDetailFactureDto   = [];
+        vm.numeroFacture = null;
 
         vm.cancel = cancel;
 
@@ -213,7 +214,21 @@
         };
 
 
+        vm.options = {};
+        vm.toggleMin = function() {
+            vm.options.maxDate = vm.options.maxDate ? null : new Date();
+        };
+
+        vm.toggleMin();
+
+
+        vm.toNumber = function (a) {
+            return Number((a || 0));
+        }
+
     }
+
+
 
     
 

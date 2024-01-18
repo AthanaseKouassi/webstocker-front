@@ -3,15 +3,15 @@
 
     angular
             .module('app')
-            .controller('TresorerieController', TresorerieController);
+            .controller('CreanceController', CreanceController);
 
-    TresorerieController.$inject = ['$scope', '$state', '$filter', 'AlertService', '$stateParams', 'API_URL', 'FetchData','BonDeSortie'];
+    CreanceController.$inject = ['$scope', '$state', '$filter', 'AlertService', '$stateParams', 'API_URL', 'FetchData','BonDeSortie'];
 
-    function TresorerieController($scope, $state,$filter,AlertService, $stateParams, API_URL, FetchData,BonDeSortie) {
+    function CreanceController($scope, $state,$filter,AlertService, $stateParams, API_URL, FetchData,BonDeSortie) {
         var vm = this;
          vm.bonDeSorties = {}; //BonDeSortie.query();
          vm.bonDeSortie = [];
-         vm.factures = [];
+         vm.creances = [];
 
         vm.currentPage = 0;
         vm.pageSize = 20;
@@ -76,41 +76,19 @@
             //         });
             // };
 
-            vm.loadAllFacturesByPeriode = function () {
-                var dateDebut, dateFin = null;
-                if(vm.dateDebut!==null){
-                    dateDebut = $filter('date')(vm.dateDebut, 'yyyy-MM-dd');
-                }
-                if(vm.dateFin!==null){
-                    dateFin = $filter('date')(vm.dateFin, 'yyyy-MM-dd');
-                }
-                if (dateDebut && dateFin)
-                    FetchData.getData(API_URL + 'api/facture/factures-non-solde/?dateDebut=' + dateDebut + '&dateFin=' + dateFin)
-                    .then(function (response) {
-                        console.log(response);
-                        vm.factures = response.data;
-                        vm.totalElements = response.data.totalElements;
-                        vm.totalPage = response.data.totalPages;
-
-                        console.log('nombre d\'élément ' + vm.totalElements);
-                        console.log('nombre de page ' + vm.totalPage);
-                        // console.log("OUUHHH "+vm.bonDeSortie.numero);
-                    }, function (error) {
-                        console.log(error);
-                    });
-            };
 
 
 
-            vm.numeroFacture = null;
 
-            vm.loadFactureByNumFacture = function () {
+            vm.categorieCreance = null;
+
+            vm.allCreancesByCategorie = function () {
             
-                if (vm.numeroFacture)
-                    FetchData.getData(API_URL + 'api/ligne-bds/detail-facture/?idFacture=' + vm.numeroFacture)
+                if (vm.categorieCreance)
+                    FetchData.getData(API_URL + 'api/facture/'+vm.categorieCreance+'/categorie-creance')
                     .then(function (response) {
                         console.log(response);
-                        vm.factures = response.data;
+                        vm.creances = response.data;
                         vm.totalElements = response.data.totalElements;
                         vm.totalPage = response.data.totalPages;
 

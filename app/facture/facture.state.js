@@ -261,6 +261,28 @@
                         $state.go('^');
                     });
                 }]
+            })
+            .state('creance', {
+                parent: 'app',
+                url: '/creance',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'webstockerApp.livraison.home.title'
+                },
+                views: {
+                    '@app': {
+                        templateUrl: 'facture/creance.html',
+                        controller: 'CreanceController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('facture');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
             });
     }
 

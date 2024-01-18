@@ -5,9 +5,9 @@
             .module('app')
             .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', 'User'];
+    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', 'User', 'API_URL', 'FetchData'];
 
-    function LoginController($rootScope, $state, $timeout, Auth, User) {
+    function LoginController($rootScope, $state, $timeout, Auth, User, API_URL, FetchData) {
         var vm = this;
 
         vm.authenticationError = false;
@@ -78,5 +78,63 @@
             //$uibModalInstance.dismiss('cancel');
             $state.go('requestReset');
         }
+
+        vm.creances = [];
+        $rootScope.creances = [];
+
+        setTimeout(function() {
+            console.log("Notification creances");
+            vm.allCreancesByCategorie2();
+        });
+
+        setInterval(function() {
+            console.log("Notification creances");
+            vm.allCreancesByCategorie2();
+        }, 10000);
+
+        vm.allCreancesByCategorie2 = function () {
+          
+                FetchData.getData(API_URL + 'api/facture/'+1+'/categorie-creance')
+                .then(function (response) {
+                    console.log(response.data);
+                    vm.creances = response.data && response.data.length ? response.data : [];
+                    vm.totalElements = response.data.totalElements;
+                    vm.totalPage = response.data.totalPages;
+
+                    console.log('vm.creances', vm.creances.length, vm.creances);
+                    console.log('nombre d\'élément ' + vm.totalElements);
+                    console.log('nombre de page ' + vm.totalPage);
+                    // console.log("OUUHHH "+vm.bonDeSortie.numero);
+
+                    
+                    vm.allCreancesByCategorie3();
+                }, function (error) {
+                    console.log(error);
+                });
+        };
+
+        vm.allCreancesByCategorie3 = function () {
+            
+       
+                FetchData.getData(API_URL + 'api/facture/'+3+'/categorie-creance')
+                .then(function (response) {
+                    console.log(response.data);
+                    // if (!vm.creances.filter(c => c.length).length) vm.creances = [];
+                    vm.creances.push(...response.data);
+                    vm.totalElements = response.data.totalElements;
+                    vm.totalPage = response.data.totalPages;
+
+                    console.log('vm.creances++', vm.creances.length, vm.creances);
+                    console.log('nombre d\'élément ' + vm.totalElements);
+                    console.log('nombre de page ' + vm.totalPage);
+                    // console.log("OUUHHH "+vm.bonDeSortie.numero);
+
+                    console.log("BOOOOOM");
+                    $rootScope.creances = vm.creances;
+                    console.log("$rootScope.creances", $rootScope.creances);
+                }, function (error) {
+                    console.log(error);
+                });
+        };
     }
 })();
