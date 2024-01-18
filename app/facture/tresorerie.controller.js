@@ -107,7 +107,7 @@
             vm.loadFactureByNumFacture = function () {
             
                 if (vm.numeroFacture)
-                    FetchData.getData(API_URL + 'api/ligne-bds/detail-facture/?idFacture=' + vm.numeroFacture)
+                    FetchData.getData(API_URL + 'api/facture/'+vm.numeroFacture+'/factures-non-solde')
                     .then(function (response) {
                         console.log(response);
                         vm.factures = response.data;

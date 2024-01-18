@@ -94,7 +94,7 @@
 
         vm.allCreancesByCategorie2 = function () {
           
-                FetchData.getData(API_URL + 'api/facture/'+1+'/categorie-creance')
+                FetchData.getData(API_URL + 'api/facture/'+2+'/categorie-creance')
                 .then(function (response) {
                     console.log(response.data);
                     vm.creances = response.data && response.data.length ? response.data : [];

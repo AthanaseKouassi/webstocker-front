@@ -19,9 +19,9 @@
                         <div class="col-md-8" style="margin-bottom: 20px;">
                             <select  name="magasin" required="" ng-model="vm.categorieCreance" class="form-control" ng-change="vm.allCreancesByCategorie()">
                                 <option value=""></option>
-                                <option value="1">Catégorie 1 ( Créances inférieures 30 jours )</option>
+                                <option value="1">Catégorie 1 ( Créances inférieures à 30 jours )</option>
                                 <option value="2">Catégorie 2 ( Créances entre 30 et 45 jours )</option>
-                                <option value="3">Catégorie 3 ( Créance supérieures 45 jours )</option>
+                                <option value="3">Catégorie 3 ( Créance supérieures à 45 jours )</option>
                             </select>
                             <span ng-show="form.validateInput('magasin', 'required')" class="text-danger">This field is required</span>
                         
@@ -68,14 +68,14 @@
                                 <tr  ng-repeat="creance in vm.creances track by creance.idFacture">
                                     <td>{{ creance.nomClient }}</td>
                                     <!-- <td>BS00001</td> -->
-                                    <td></td> <!-- N° tel-->
+                                    <td>{{ creance.telClient }}</td> <!-- N° tel-->
                                     <!-- <td>Magasin Centrale</td> -->
                                     <td>{{ creance.nomUser }}</td>
                                     <td>{{ creance.nomProduit }}</td>
                                     <td>{{ creance.dateFacture | date: 'dd MMM yyyy' }}</td>
                                     <td>{{ creance.numero }}</td>
                                     <td>{{ creance.prixDeVente }}</td>
-                                    <td>{{ creance.resteApayer }}</td>
+                                    <td style="background-color: rgb(172, 242, 172);">{{ creance.resteApayer }}</td>
                                     <!-- <td>
                                         <button type="submit" class="btn btn-info btn-sm"
                                         ui-sref="tresorerie.pay({id:facture.id})">
