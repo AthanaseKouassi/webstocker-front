@@ -124,5 +124,15 @@
 
 
 
+            vm.options = {};
+            vm.toggleMin = function() {
+                console.log("toggleMin");
+                vm.options.maxDate = vm.options.maxDate ? null : new Date();
+            };
+    
+            vm.toggleMin();
+
+
+
     }
 })();

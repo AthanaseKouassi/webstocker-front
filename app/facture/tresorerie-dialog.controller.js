@@ -161,6 +161,15 @@
         }
 
 
+        vm.verifMontantMinMax = function (index) {
+            if (vm.montantVerses[index] < 0) {
+                vm.montantVerses[index] = 0;
+            } else if (vm.montantVerses[index] > vm.listDetailFactureDto[index].resteApaye) {
+                vm.montantVerses[index] = vm.listDetailFactureDto[index].resteApaye;
+            }
+        }
+
+
        function onSaveSuccess(result) {
             $scope.$emit('webstockerApp:bonDeSortieUpdate', result);
             $uibModalInstance.close(result);
