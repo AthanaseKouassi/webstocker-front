@@ -39,8 +39,16 @@
             $rootScope.factureUrl = API_URL + 'api/report/lignesfactures/facture/' + result.id;
             console.log("url pdf oh");
             console.log($rootScope.factureUrl);
+
+            $rootScope.recuUrl = API_URL + 'api/report/recu/' + result.id;
+            console.log("recuUrl url pdf oh");
+            console.log($rootScope.recuUrl);
+
             $state.go("facture-vente");
         };
+
+
+
 
         var onSaveError = function () {
             vm.isSaving = false;
