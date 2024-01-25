@@ -34,13 +34,23 @@
             $scope.$emit('app:commandeUpdate', result);
             // $uibModalInstance.close(result);
             console.log(result);
+
+            localStorage.removeItem("url");
+            localStorage.removeItem("url2");
+
             vm.bonDeSortie = result;
+            console.log("vm.bonDeSortie", vm.bonDeSortie);
             vm.isSaving = false;
             $rootScope.factureUrl = API_URL + 'api/report/lignesfactures/facture/' + result.id;
             console.log("url pdf oh");
             console.log($rootScope.factureUrl);
 
-            $rootScope.recuUrl = API_URL + 'api/report/recu/' + result.id;
+            if (vm.bonDeSortie.typeVente == 'CASH') {
+                $rootScope.recuUrl = API_URL + 'api/report/recu/' + result.id;
+            } else {
+                $rootScope.recuUrl = API_URL + 'api/report/credit/recu/' + result.facture.id;
+            }
+            
             console.log("recuUrl url pdf oh");
             console.log($rootScope.recuUrl);
 
