@@ -8,9 +8,9 @@
 
     function FetchData ($http) {
        return{
-           getData : function(url){
-               return $http.get(url);
-           },
+            getData : function(url){
+                return $http.get(url);
+            },
            postJSON : function(url,data){
                return $http.post(url,data);
         },

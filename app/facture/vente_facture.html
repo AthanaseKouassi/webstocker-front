@@ -1,11 +1,12 @@
 
+<!-- VUE PDF POUR VENTE CLIENT BON DE SORTIE -->
 <div class="bg-light lter b-b wrapper-md">
     <h1 class="m-n font-thin h3">Aperçu avant impression : Facture </h1>
     <br/>
     <button class="btn btn-default btn-rounded"  type="button"  onclick="printIt()">
         <span class="glyphicon glyphicon-print"></span> Imprimer facture
     </button>
-    <button class="btn btn-info btn-rounded"  type="button"  onclick="printIt()">
+    <button class="btn btn-info btn-rounded"  type="button"  onclick="printIt2()">
         <span class="glyphicon glyphicon-print"></span> Imprimer reçu
     </button>
  <span>
@@ -15,10 +16,48 @@
         Retour</a>
     </span>
     <script type="text/javascript">
+
+        /*$(document).ready((event) => {
+            console.log("DOM fully loaded and parsed");
+            var url=document.getElementById("pdfdoc").getAttribute("url");
+            if (url) {
+                localStorage.setItem("url", url);
+            }
+            
+            var url2=document.getElementById("input").value;
+            if (url2) {
+                localStorage.setItem("url2", url2);
+            }
+        });*/
+        
         function printIt() {
             var url=document.getElementById("pdfdoc").getAttribute("url");
-            var wnd = window.open(url);
+
+            if (url) {
+                localStorage.setItem("url", url);
+            }
+
+            var wnd = window.open(localStorage.getItem("url"));
         }
+
+        function printIt2() {
+            var url2=document.getElementById("input").value;
+            if (url2) {
+                localStorage.setItem("url2", url2);
+            }
+            var wnd = window.open(localStorage.getItem("url2"));
+        }
+
+
+
+        if (localStorage.getItem("url")) {
+            document.getElementById("pdfdoc").setAttribute("url", localStorage.getItem("url"));
+        }
+
+        if (localStorage.getItem("url2")) {
+            document.getElementById("input").value = localStorage.getItem("url2");
+        }
+        
     </script>
 <!--     <input ng-show="factureUrl!=''" class="btn btn-default btn-rounded  " type="button" value="Imprimer" ng-click="getPdf(factureUrl)"/>-->
      <!--<input ng-show="factureUrl!=''" class="btn btn-default btn-rounded  " type="button" value="Imprimer" ng-click="getPdf(factureUrl)"/>-->
@@ -26,5 +65,6 @@
 </div>
 
 <div class="wrapper-md">
+    <input type="text" id="input" onfocus="$(this).blur()" value="{{ recuUrl }}" style="display: none;">
     <pdf-viewer width="850" class="img-responsive" id="pdfdoc" url="{{factureUrl}}"></pdf-viewer>
 </div>

@@ -235,6 +235,17 @@
             return Number((a || 0));
         }
 
+
+        
+        vm.existeChampsRequireEmpty = function () {
+            console.log("existeChampsRequireEmpty", vm.dateReglements, vm.montantVerses, vm.dateReglements.filter((dr, ind) => (dr && !vm.montantVerses[ind]) || (!dr && vm.montantVerses[ind])), vm.dateReglements.filter((dr, ind) => (dr && !vm.montantVerses[ind]) || (!dr && vm.montantVerses[ind])).length);
+            return vm.dateReglements.filter((dr, ind) => (dr && !vm.montantVerses[ind]) || (!dr && vm.montantVerses[ind])).length
+        };
+
+
+
+
+
     }
 
 
