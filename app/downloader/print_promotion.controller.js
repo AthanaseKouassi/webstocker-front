@@ -9,8 +9,13 @@
 
 
     function PrintController($rootScope, $scope, $state, $window, $stateParams, $location, $http) {
-
+        
         var vm = this;
+
+        vm.typeVente = localStorage.getItem("type");
+        vm.url3 = localStorage.getItem("url3");
+
+        // alert(vm.typeVente);
          $scope.getPdf = function(url){
             if(url===undefined){
                 alert('Erreur d\'impression');
