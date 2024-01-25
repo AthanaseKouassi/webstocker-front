@@ -26,7 +26,7 @@
                         <label class="col-md-2 control-label">Numéro facture</label>
                         <div class="col-sm-3">
                             <input type="text" name="numeroFacture"  
-                                   ng-model="vm.bonDeSortie.numeroFactureNormalise" class="form-control"/>
+                                   ng-model="vm.bonDeSortie.numeroFactureNormalise" class="form-control text-u-c"/>
                             <!--<span ng-show="form.validateInput('numero', 'pattern')" class="text-danger">This field must contain only digits</span>-->
                         </div>
                         <div class="col-sm-1">
@@ -41,7 +41,9 @@
                         <label class="col-md-2 control-label">Date bon de sortie</label>
                         <div class="col-sm-3">
                             <p class="input-group">
-                                <input id="daateCreation" type="text" class="form-control" readonly name="daateCreation" uib-datepicker-popup="dd MMMM yyyy"
+                                <input id="daateCreation" type="text" class="form-control"
+                                 readonly name="daateCreation" uib-datepicker-popup="dd MMMM yyyy" 
+                                 datepicker-options="vm.options"
                                        ng-model="vm.bonDeSortie.daateCreation"  is-open="vm.datePickerOpenStatus.daateCreation"  required/>
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="vm.openCalendar('daateCreation')"><i
@@ -59,7 +61,8 @@
                         <div class="col-sm-3">
                             <p class="input-group">
                                 <input id="dateFacture" type="text" class="form-control" readonly
-                                       name="dateFacture" uib-datepicker-popup="dd MMMM yyyy"
+                                       name="dateFacture" uib-datepicker-popup="dd MMMM yyyy" 
+                                       datepicker-options="vm.options"
                                        ng-model="vm.bonDeSortie.dateFacture"
                                        is-open="vm.datePickerOpenStatus.dateFacture"
                                        required/>
@@ -410,7 +413,7 @@
                         <label class="col-md-2 control-label">Numéro facture</label>
                         <div class="col-sm-3">
                             <input type="text" name="numeroFacture" 
-                                   ng-model="vm.bonDeSortie.numeroFactureNormalise" class="form-control" disabled/>
+                                   ng-model="vm.bonDeSortie.numeroFactureNormalise" class="form-control text-u-c" disabled/>
                             <!--<span ng-show="form.validateInput('numero', 'pattern')" class="text-danger">This field must contain only digits</span>-->
                         </div>
                         <div class="col-sm-1">
@@ -426,7 +429,8 @@
                         <label class="col-md-2 control-label">Date bon de sortie</label>
                         <div class="col-sm-3">
                             <p class="input-group">
-                                <input id="daateCreation" type="text" class="form-control"
+                                <input id="daateCreation" type="text" class="form-control" 
+                                       datepicker-options="vm.options"
                                        ng-value="vm.bonDeSortie.daateCreation | date: 'dd MMMM yyyy'" ng-disabled="true"/>
 
                                 <span class="input-group-btn">

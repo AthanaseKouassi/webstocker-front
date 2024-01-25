@@ -90,7 +90,7 @@
         setInterval(function() {
             console.log("Notification creances");
             vm.allCreancesByCategorie2();
-        }, 10000);
+        }, 60 * 1000);
 
         vm.allCreancesByCategorie2 = function () {
           

@@ -102,5 +102,11 @@
 
 
 
+            vm.sommeTotal = function() {
+                return vm.creances.map(cr => cr.resteApayer).reduce((a, b) => Number(a) + Number(b), 0);
+            }
+
+
+
     }
 })();
