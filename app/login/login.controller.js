@@ -79,17 +79,21 @@
             $state.go('requestReset');
         }
 
-        vm.creances = [];
-        $rootScope.creances = [];
+        vm.creances1 = [];
+        vm.creances2 = [];
+        $rootScope.creances1 = [];
+        $rootScope.creances2 = [];
 
         setTimeout(function() {
             console.log("Notification creances");
             vm.allCreancesByCategorie2();
+            vm.allCreancesByCategorie3();
         });
 
         setInterval(function() {
             console.log("Notification creances");
             vm.allCreancesByCategorie2();
+            vm.allCreancesByCategorie3();
         }, 60 * 1000);
 
         vm.allCreancesByCategorie2 = function () {
@@ -97,17 +101,19 @@
                 FetchData.getData(API_URL + 'api/facture/'+2+'/categorie-creance')
                 .then(function (response) {
                     console.log(response.data);
-                    vm.creances = response.data && response.data.length ? response.data : [];
+                    vm.creances1 = response.data && response.data.length ? response.data : [];
                     vm.totalElements = response.data.totalElements;
                     vm.totalPage = response.data.totalPages;
 
-                    console.log('vm.creances', vm.creances.length, vm.creances);
+                    console.log('vm.creances1', vm.creances1.length, vm.creances1);
                     console.log('nombre d\'élément ' + vm.totalElements);
                     console.log('nombre de page ' + vm.totalPage);
                     // console.log("OUUHHH "+vm.bonDeSortie.numero);
 
+                    $rootScope.creances1 = vm.creances1;
+                    console.log("$rootScope.creances1", $rootScope.creances1);
                     
-                    vm.allCreancesByCategorie3();
+                    
                 }, function (error) {
                     console.log(error);
                 });
@@ -120,18 +126,19 @@
                 .then(function (response) {
                     console.log(response.data);
                     // if (!vm.creances.filter(c => c.length).length) vm.creances = [];
-                    vm.creances.push(...response.data);
+                    // vm.creances.push(...response.data);
+                    vm.creances2 = response.data && response.data.length ? response.data : [];
                     vm.totalElements = response.data.totalElements;
                     vm.totalPage = response.data.totalPages;
 
-                    console.log('vm.creances++', vm.creances.length, vm.creances);
+                    console.log('vm.creances2++', vm.creances2.length, vm.creances2);
                     console.log('nombre d\'élément ' + vm.totalElements);
                     console.log('nombre de page ' + vm.totalPage);
                     // console.log("OUUHHH "+vm.bonDeSortie.numero);
 
                     console.log("BOOOOOM");
-                    $rootScope.creances = vm.creances;
-                    console.log("$rootScope.creances", $rootScope.creances);
+                    $rootScope.creances2 = vm.creances2;
+                    console.log("$rootScope.creances2", $rootScope.creances2);
                 }, function (error) {
                     console.log(error);
                 });

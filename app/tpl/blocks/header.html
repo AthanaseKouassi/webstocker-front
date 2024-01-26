@@ -38,14 +38,14 @@
                 <a ui-fullscreen></a>
             </li>
 
-            
-            <li class="dropdown" ng-controller="LoginController">
+
+            <li class="dropdown" ng-controller="LoginController" title="Vous avez {{ creances1.length }} créances entre 30 et 45 jours">
                 <a href class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="icon-bell fa-fw"></i>
                     <span class="visible-xs-inline">Notifications</span>
-                    <span class="badge badge-sm up bg-danger pull-right-xs">
+                    <span ng-if="creances1.length" class="badge badge-sm up bg-warning pull-right-xs">
                         <!-- {{Bons.length + Factures.length}} -->
-                        {{ creances.length || 0 }}
+                        {{ creances1.length || 0 }}
                     </span>
                 </a>
                  
@@ -53,11 +53,50 @@
                     <div class="panel bg-white" style="margin-right: 32px;">
                         <div class="panel-heading b-light bg-light">
                             <!-- {{Factures.length + Bons.length}} -->
-                            <strong>Vous avez <span>{{ creances.length }}</span> créances</strong>
+                            <strong>Vous avez <span>{{ creances1.length }}</span> créances entre 30 et 45 jours</strong>
                         </div>  
                         <div style="max-height: 300px; overflow-y: auto;">     
                             <!-- track by creance.idFactur     -->
-                        <div ng-repeat="creance in creances">
+                        <div ng-repeat="creance in creances1">
+                            <a href class="list-group-item">
+                                <span class="clear block m-b-none">
+                                    {{ creance.nomClient }}, {{ creance.nomUser }}, {{ creance.numero }}, {{ creance.nomProduit }}, {{ creanceresteApayer }}                                  
+                                    <!-- <span class="badge">{{Bons.length}}</span> -->
+                                </span>
+                            </a>
+                        </div>
+                        
+                        </div>     
+                        <div class="panel-footer text-sm">
+                            <a href class="pull-right"><i class="fa fa-cog"></i></a>
+                            <a ui-sref="creance" data-toggle="class:show animated fadeInRight">Voir toutes les créances</a>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </li>
+
+            
+            <li class="dropdown" ng-controller="LoginController" title="Vous avez {{ creances2.length }} créance(s) supérieur(s) à 45 jours">
+                <a href class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="icon-bell fa-fw"></i>
+                    <span class="visible-xs-inline">Notifications</span>
+                    <span ng-if="creances2.length" class="badge badge-sm up bg-danger pull-right-xs">
+                        <!-- {{Bons.length + Factures.length}} -->
+                        {{ creances2.length || 0 }}
+                    </span>
+                </a>
+                 
+                <div class="dropdown-menu w-xl animated fadeInUp">
+                    <div class="panel bg-white" style="margin-right: 32px;">
+                        <div class="panel-heading b-light bg-light">
+                            <!-- {{Factures.length + Bons.length}} -->
+                            <strong>Vous avez <span>{{ creances2.length }}</span> créance(s) supérieur(s) à 45 jours</strong>
+                        </div>  
+                        <div style="max-height: 300px; overflow-y: auto;">     
+                            <!-- track by creance.idFactur     -->
+                        <div ng-repeat="creance in creances2">
                             <a href class="list-group-item">
                                 <span class="clear block m-b-none">
                                     {{ creance.nomClient }}, {{ creance.nomUser }}, {{ creance.numero }}, {{ creance.nomProduit }}, {{ creanceresteApayer }}                                  
@@ -89,7 +128,7 @@
                     </span>     
                 </div>-->
 
-        <div class=" navbar-right"   ng-controller="LoginController" style="padding-top: 9px;">
+        <div class=" navbar-right"   ng-controller="LoginController" style="padding-top: 9px; margin-left: 15px;">
             <span style="display: inline-block; margin-top: 5px;">
             <!--<span style="display: inline-block; margin-top: 5px;" translate-values="{username: '{{vm.username}}'}">-->
                 <a href="" ui-sref="settings" class="dropdown-toggle  text-lt">
