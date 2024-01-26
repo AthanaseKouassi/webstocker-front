@@ -1,24 +1,42 @@
 
 <!-- VUE PDF POUR VENTE CLIENT BON DE SORTIE -->
-<div class="bg-light lter b-b wrapper-md">
-    <h1 class="m-n font-thin h3">Aperçu avant impression : Facture </h1>
+<div class="bg-light lter b-b wrapper-md"> 
+    <h1 class="m-n font-thin h3">Aperçu avant impression: {{ vm.url3 ? 'Reçu' : 'Facture' }} </h1>
     <br/>
-    <button class="btn btn-default btn-rounded"  type="button"  onclick="printIt()">
+    <button ng-if="!vm.url3" class="btn btn-default btn-rounded"  type="button"  onclick="printIt()">
         <span class="glyphicon glyphicon-print"></span> Imprimer facture
     </button>
-    <button class="btn btn-info btn-rounded"  type="button"  onclick="printIt2()">
+    <button ng-if="vm.typeVente == 'CASH' && !vm.url3" class="btn btn-info btn-rounded"  type="button"  onclick="printIt2()">
+        <span class="glyphicon glyphicon-print"></span> Imprimer reçu
+    </button>
+    <button ng-if="vm.url3" class="btn btn-info btn-rounded"  type="button"  onclick="printIt3()">
         <span class="glyphicon glyphicon-print"></span> Imprimer reçu
     </button>
  <span>
-    <a href="#/app/client-vente" class="btn btn-primary btn-rounded"
+    <a ng-if="!vm.url3" href="#/app/client-vente" class="btn btn-primary btn-rounded"
+       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+       onmouseout="this.style.color = '';this.style.textDecoration = 'none'" >  
+        Retour</a>
+
+    <a  ng-if="vm.url3" href="#/app/tresorerie" class="btn btn-primary btn-rounded"
        onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
        onmouseout="this.style.color = '';this.style.textDecoration = 'none'" >  
         Retour</a>
     </span>
     <script type="text/javascript">
-
+        
+        $(window).on("load", function() {
+            console.log("Azertyyuiop");
+            // Votre code ici sera exécuté une fois que la page a fini de charger
+            //alert("La page a fini de charger.");
+            // Placez votre code ici.
+        });
         /*$(document).ready((event) => {
             console.log("DOM fully loaded and parsed");
+            $(function() {
+                //alert("azertyuiop2");
+            });
+            
             var url=document.getElementById("pdfdoc").getAttribute("url");
             if (url) {
                 localStorage.setItem("url", url);
@@ -29,6 +47,12 @@
                 localStorage.setItem("url2", url2);
             }
         });*/
+
+        document.addEventListener("load", function() {
+            // Votre code ici sera exécuté une fois que la page a fini de charger
+            console.log("La page a fini de charger.");
+            // Placez votre code ici.
+        });
         
         function printIt() {
             var url=document.getElementById("pdfdoc").getAttribute("url");
@@ -48,6 +72,10 @@
             var wnd = window.open(localStorage.getItem("url2"));
         }
 
+        function printIt3() {
+            var wnd = window.open(localStorage.getItem("url3"));
+        }
+
 
 
         if (localStorage.getItem("url")) {
@@ -57,6 +85,12 @@
         if (localStorage.getItem("url2")) {
             document.getElementById("input").value = localStorage.getItem("url2");
         }
+
+        if (localStorage.getItem("url3")) {
+            document.getElementById("pdfdoc").setAttribute("url", localStorage.getItem("url3"));
+        }
+
+
         
     </script>
 <!--     <input ng-show="factureUrl!=''" class="btn btn-default btn-rounded  " type="button" value="Imprimer" ng-click="getPdf(factureUrl)"/>-->
@@ -65,6 +99,7 @@
 </div>
 
 <div class="wrapper-md">
-    <input type="text" id="input" onfocus="$(this).blur()" value="{{ recuUrl }}" style="display: none;">
+    <!-- TYPE: "{{ vm.typeVente }}" -->
+    <input ng-if="vm.typeVente == 'CASH' && !vm.url3" type="text" id="input" onfocus="$(this).blur()" value="{{ recuUrl }}" style="display: none;">
     <pdf-viewer width="850" class="img-responsive" id="pdfdoc" url="{{factureUrl}}"></pdf-viewer>
 </div>

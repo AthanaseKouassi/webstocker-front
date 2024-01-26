@@ -5,9 +5,9 @@
             .module('app')
             .controller('ConfirmationTresorerieController', ConfirmationTresorerieController);
 
-    ConfirmationTresorerieController.$inject = ['$timeout', '$scope', '$rootScope', 'Facture', '$stateParams', '$uibModalInstance', '$q', 'entity', 'BonDeSortie', 'Magasin', 'User', 'Client', 'SweetAlert', 'FetchData', 'API_URL', 'ReglementFacture', '$filter'];
+    ConfirmationTresorerieController.$inject = ['$timeout', '$scope', '$rootScope', 'Facture', '$stateParams', '$state' , '$uibModalInstance', '$q', 'entity', 'BonDeSortie', 'Magasin', 'User', 'Client', 'SweetAlert', 'FetchData', 'API_URL', 'ReglementFacture', '$filter'];
 
-    function ConfirmationTresorerieController($timeout, $scope, $rootScope, Facture, $stateParams, $uibModalInstance, $q, entity, BonDeSortie, Magasin, User, Client, SweetAlert, FetchData, API_URL, ReglementFacture, $filter) {
+    function ConfirmationTresorerieController($timeout, $scope, $rootScope, Facture, $stateParams, $state, $uibModalInstance, $q, entity, BonDeSortie, Magasin, User, Client, SweetAlert, FetchData, API_URL, ReglementFacture, $filter) {
         var vm = this;
 
         vm.bonDeSortie = entity;
@@ -174,6 +174,23 @@
             $scope.$emit('webstockerApp:bonDeSortieUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
+
+            console.log("result @@@@@@@@@@@@@@", result);
+
+            localStorage.removeItem("url");
+            localStorage.removeItem("url2");
+            localStorage.removeItem("type");
+            localStorage.removeItem("url3");
+
+            $rootScope.creditRecuUrl = API_URL + 'api/report/credit/recu/' + result.idFacture;
+            localStorage.setItem("url3", $rootScope.creditRecuUrl);
+            console.log("url pdf oh");
+            console.log($rootScope.creditRecuUrl);
+
+            $state.go("facture-vente");
+
+
+            
         }
 
         function onSaveError() {
@@ -220,6 +237,9 @@
             console.log("apres saveFactureReglement");
             vm.isSaving = false;
             $uibModalInstance.dismiss('cancel');
+
+
+            
         };
 
 

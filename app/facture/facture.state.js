@@ -209,8 +209,8 @@
                 views: {
                     '@app': {
                         templateUrl: 'facture/vente_facture.html',
-                         controller: 'PrintController'
-                        // controllerAs: 'vm'
+                         controller: 'PrintController',
+                        controllerAs: 'vm'
                     }
                 }
             })

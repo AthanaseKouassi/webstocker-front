@@ -37,22 +37,30 @@
 
             localStorage.removeItem("url");
             localStorage.removeItem("url2");
+            localStorage.removeItem("type");
+            localStorage.removeItem("url3");
 
             vm.bonDeSortie = result;
-            console.log("vm.bonDeSortie", vm.bonDeSortie);
+            $rootScope.typeVente = vm.bonDeSortie.typeVente;
+
             vm.isSaving = false;
             $rootScope.factureUrl = API_URL + 'api/report/lignesfactures/facture/' + result.id;
+            localStorage.setItem("url", $rootScope.factureUrl);
             console.log("url pdf oh");
             console.log($rootScope.factureUrl);
 
+            $rootScope.recuUrl = vm.bonDeSortie.typeVente == 'CASH' ? API_URL + 'api/report/recu/' + result.id : "";
+            
             if (vm.bonDeSortie.typeVente == 'CASH') {
-                $rootScope.recuUrl = API_URL + 'api/report/recu/' + result.id;
-            } else {
-                $rootScope.recuUrl = API_URL + 'api/report/credit/recu/' + result.facture.id;
+                localStorage.setItem("url2", $rootScope.recuUrl);
             }
+
+            localStorage.setItem("type", vm.bonDeSortie.typeVente);
             
             console.log("recuUrl url pdf oh");
             console.log($rootScope.recuUrl);
+
+            
 
             $state.go("facture-vente");
         };
