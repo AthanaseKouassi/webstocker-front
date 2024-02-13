@@ -312,6 +312,25 @@
             </div>
         </div>      
 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse18">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Chiffre d'affaire par mode de paiement</span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse18" class="panel-collapse collapse">
+                <div ng-include="chiffreAffaireParModePaiement"> </div>
+            </div>
+        </div> 
+
 
         <br/>
         

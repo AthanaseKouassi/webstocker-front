@@ -500,6 +500,41 @@
                                 return $translate.refresh();
                             }]
                     }
+                })
+                .state('chiffre-affaire-par-mode-paiement', {
+                    parent: 'app',
+                    url: '/chiffre-affaire-par-mode-paiement',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'chiffre-affaire-par-mode-paiement'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/chiffre-affaire-par-mode-paiement.html',
+                            controller: 'ChiffreAffaireParModePaiementController',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('magasin');
+                                $translatePartialLoader.addPart('global');
+                                return $translate.refresh();
+                            }]
+                    }
+                })
+                .state('chiffre-affaire-par-mode-paiement-pdf', {
+                    parent: 'app',
+                    url: '/chiffre-affaire-par-mode-paiement-pdf',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'chiffre-affaire-par-mode-paiement-pdf'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/chiffre-affaire-par-mode-paiement-pdf.html'                          
+                        }
+                    }
                 });
 //            .state('rapport-delegues', {
 //                parent: 'app',

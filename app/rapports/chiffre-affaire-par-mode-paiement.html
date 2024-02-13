@@ -1,0 +1,96 @@
+<div class="panel panel-body">
+    <form role="form" >
+<!--        <div class="row ">
+            <div class="col-sm-5 form-group">
+                <label class=" control-label">Antenne </label>
+                <div > 
+                    <select name="antenne" required="" ng-model="vm.rapportData.ville"
+                            ng-options="ville as ville.libelle for ville in vm.villes | orderBy : 'libelle' "
+                            class="form-control" >  
+                      
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-5 form-group">
+              
+            </div>
+                
+        </div>-->
+        <div class="row ">
+            <div class="col-sm-5 form-group">
+                <label class=" control-label">Mode paiement </label>                
+                    <select class="form-control" id="field_demandeur" name="demandeur" ng-model="vm.modePaiement" required=""> 
+                        <option value="CASH">CASH</option>                      
+                        <option value="CREDIT">CREDIT</option>      
+                    </select>
+               
+            </div>
+           <!--ng-show="produitVisible"-->
+            <div class="col-sm-5 form-group"  >             
+<!--                <label class=" control-label">Produit </label>
+                <div >
+                    <select name="client" ng-model="vm.rapportData.produit"
+                            ng-options="produit as produit.nomProduit for produit in vm.produits | orderBy : 'nomProduit' "
+                             class="form-control" >
+                        <option value=""></option>
+                    </select>
+                </div>-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 form-group">
+                <label class="control-label">Date début période </label>
+                <div  >
+                    <p class="input-group">
+                        <input type="text"  id="field_dateDebut" name="dateDebutMois" uib-datepicker-popup="dd MMMM yyyy"
+                               ng-model="vm.rapportData.dateDebutPeriode" is-open="vm.datePickerOpenStatus.dateDebutMois" class="form-control" required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebutMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                    <div ng-show="editForm.dateDebut.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div   class="col-sm-5 form-group" >
+                <label class=" control-label">Date fin période </label>
+                <div >
+                    <p class="input-group">
+                        <input type="text" id="field_dateFin" name="dateFinMois" uib-datepicker-popup="dd MMMM yyyy"
+                               ng-model="vm.rapportData.dateFinPeriode" is-open="vm.datePickerOpenStatus.dateFinMois" class="form-control" required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFinMois')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                    <div ng-show="editForm.dateFin.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class=" col-md-2 input-group">
+                <br/>
+                <button type="submit" ng-click="vm.imprimerRapportChiffreAffaireParModePaiement()" class="btn btn-info  btn-rounded" >
+                    <span><i class="glyphicon glyphicon-print"></i> Imprimer </span>                       
+                </button> 
+            </div> 
+        </div>
+
+    </form>
+
+</div>

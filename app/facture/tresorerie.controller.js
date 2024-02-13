@@ -77,7 +77,7 @@
             //         });
             // };
 
-            vm.totalPage = 5;
+            vm.totalPage = 0;
             vm.loadAllFacturesByPeriode = function () {
                 var dateDebut, dateFin = null;
                 if(vm.dateDebut!==null){
@@ -88,14 +88,14 @@
                 }
                 if (dateDebut && dateFin)
                     // FetchData.getData(API_URL + 'api/facture/factures-non-solde/?dateDebut=' + dateDebut + '&dateFin=' + dateFin)
-                    FetchData.getData(API_URL + 'api/facture/factures-non-solde-page/?dateDebut=' + dateDebut + '&dateFin=' + dateFin + '&page=' + vm.currentPage + '&size=' + vm.pageSize, vm.onSuccess)
-                    .then(function (response) {
-                        console.log(response);
+                    FetchData.getData(API_URL + 'api/facture/factures-non-solde-page/?dateDebut=' + dateDebut + '&dateFin=' + dateFin + '&page=' + vm.currentPage + '&size=' + vm.pageSize)
+                    .then(function (response, a, b) {
+                        console.log('RESPONSE:::: ', response, response.headers, response.headers());
                         vm.factures = response.data;
                         // vm.onSuccess(response.getAllResponseHeaders());
                         // vm.totalElements = response.data.totalElements;
                         // vm.totalPage = response.data.totalPages;
-                        // vm.totalPage = response.headers;
+                        vm.totalPage = response.headers('X-Total-Count');
 
                         console.log('nombre d\'élément @@@ ' + vm.totalElements);
                         console.log('nombre de page @@@ ' + vm.totalPage);
@@ -112,7 +112,7 @@
             vm.loadFactureByNumFacture = function () {
             
                 if (vm.numeroFacture)
-                    FetchData.getData(API_URL + 'api/facture/'+vm.numeroFacture+'/factures-non-solde')
+                    FetchData.getData(API_URL + 'api/facture/'+vm.numeroFacture+'/factures-non-solde', vm.onSuccess)
                     .then(function (response) {
                         console.log(response);
                         vm.factures = response.data;
@@ -145,18 +145,18 @@
             
 
             vm.onSuccess = function (data, status, headers, config) {
-                console.log("onSuccess @@@@@@@@", data, status, headers, config);
+                console.log("onSuccess @@@@@@@@ BOMM", data, status, headers, config);
                 console.log("onSuccess §§§§§§§", headers('X-Total-Count'));
                 // vm.links = ParseLinks.parse(headers('link'));
-                // vm.totalItems = headers('X-Total-Count');
-                // vm.queryCount = vm.totalItems;
-                // vm.page = vm.currentPage+1;
+                vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
+                vm.page = vm.currentPage+1;
 
-                // vm.totalElements = vm.totalItems;
+                vm.totalElements = vm.totalItems;
                 // // vm.totalPage = vm.totalItems;
 
-                // console.log('onSuccess nombre d\'élément ' + vm.totalElements);
-                // console.log('onSuccess nombre de page ' + vm.totalPage);
+                console.log('onSuccess nombre d\'élément BOMM ' + vm.totalElements);
+                console.log('onSuccess nombre de page  BOMM' + vm.totalPage);
             }
 
 
