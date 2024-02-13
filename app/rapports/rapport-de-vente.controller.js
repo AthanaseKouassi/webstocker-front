@@ -35,6 +35,8 @@
         vm.criteria = {};
         vm.pdfContent = null;
 
+        vm.modePaiement = '';
+
         vm.currentPage = 0;
         vm.pageSize = 10;
         
@@ -64,6 +66,7 @@
         $scope.perteParProduitMagasinUrl = 'rapports/perte-par-produit-magasin.html';
         $scope.chriffreAffaireParClientNouveauUrl = 'rapports/chiffre-affaire-par-client-nouveau.html';
         $scope.quantiteVendueParAgentUrl = 'rapports/quantite-vendue-par-agent.html';
+        $scope.chiffreAffaireParModePaiement = 'rapports/chiffre-affaire-par-mode-paiement.html';
 
         vm.clear = function () {
             // $uibModalInstance.dismiss('cancel');
@@ -123,6 +126,16 @@
             console.log('url finale ' + $rootScope.quantiteVenduCommercialUrl);
             $state.go('quantite-vendue-par-agent-pdf');
         };
+
+
+        vm.imprimerRapportChiffreAffaireParModePaiement = function() {
+            var dateDebut = '', datefin = '';
+           dateDebut = DateUtils.convertLocalDateToServer(vm.rapportData.dateDebutPeriode);
+           datefin = DateUtils.convertLocalDateToServer(vm.rapportData.dateFinPeriode);
+           $rootScope.chiffreAffaireParModePaiementUrl = API_URL + 'api/report/chiffre-affaire/chiffre-affaire-par-mode-paiement/' + vm.modePaiement + '/' + dateDebut + '/' + datefin;
+           console.log('url finale ' + $rootScope.chiffreAffaireParModePaiementUrl);
+           $state.go('chiffre-affaire-par-mode-paiement-pdf');
+       };
         
         
 
