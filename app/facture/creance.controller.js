@@ -5,9 +5,9 @@
             .module('app')
             .controller('CreanceController', CreanceController);
 
-    CreanceController.$inject = ['$scope', '$state', '$filter', 'AlertService', '$stateParams', 'API_URL', 'FetchData','BonDeSortie'];
+    CreanceController.$inject = ['$scope', '$rootScope', '$state', '$filter', 'AlertService', '$stateParams', 'API_URL', 'FetchData','BonDeSortie'];
 
-    function CreanceController($scope, $state,$filter,AlertService, $stateParams, API_URL, FetchData,BonDeSortie) {
+    function CreanceController($scope, $rootScope, $state,$filter,AlertService, $stateParams, API_URL, FetchData,BonDeSortie) {
         var vm = this;
          vm.bonDeSorties = {}; //BonDeSortie.query();
          vm.bonDeSortie = [];
@@ -105,6 +105,14 @@
             vm.sommeTotal = function() {
                 return vm.creances.map(cr => cr.resteApayer).reduce((a, b) => Number(a) + Number(b), 0);
             }
+
+                                
+        vm.imprimerParCategorie = function(){
+            $rootScope.imprimerParCategorieUrl = API_URL + 'api/report/categorie-creance/'+vm.categorieCreance;
+            console.log('url finale ' + $rootScope.imprimerParCategorieUrl);
+            $state.go('creance-pdf');
+        };
+ 
 
 
 

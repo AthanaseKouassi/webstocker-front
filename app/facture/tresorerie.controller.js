@@ -78,6 +78,7 @@
             // };
 
             vm.totalPage = 0;
+            
             vm.loadAllFacturesByPeriode = function () {
                 var dateDebut, dateFin = null;
                 if(vm.dateDebut!==null){
@@ -158,6 +159,8 @@
                 console.log('onSuccess nombre d\'élément BOMM ' + vm.totalElements);
                 console.log('onSuccess nombre de page  BOMM' + vm.totalPage);
             }
+
+
 
 
 

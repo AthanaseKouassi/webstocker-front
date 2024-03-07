@@ -1,0 +1,181 @@
+<div class="panel panel-body">
+    <form role="form" >
+        <div class="wrapper-md">
+
+            <div class="row">
+                <!-- <div class="panel-heading font-bold">Listes des créances</div> -->
+                <div class="col-md-12" >
+                    <div class="col-md-12" style="padding-top: 10px; padding-left: 30px; font-weight: bold;">
+                        Rechercher facture par
+                    </div>
+                    <div class="col-md-12">
+                        <div class="radio col-md-2">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="vm.typeRecherche" value="bynum" style="display: inline;">
+                                Numero facture
+                            </label>
+                            </div>
+                            <div class="radio col-md-2" style="    margin-top: 10px;">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="vm.typeRecherche" checked="{{ typeRecherche == 'bynum' }}" value="bydate" style="display: inline;">
+                                Période
+                            </label>
+                            </div>
+    
+    
+                    </div>
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6" ng-show="!vm.typeRecherche || vm.typeRecherche == 'bynum'">
+                            <label class="col-md-4 control-label">Numéro de facture</label>
+                            <div class="col-md-8" style="margin-bottom: 20px;">
+                                <div class="input-group">
+                                    <input type="text" name="numero" required=""  
+                                        ng-model="vm.numeroFacture" class="form-control text-u-c"/>
+                                    <span class="input-group-btn">
+                                        <!-- btn-rounded -->
+                                        <button type="submit" class="btn btn-info"
+                                                ng-click="vm.loadFactureByNumFacture()">
+                                            <i class="fa fa-search"> </i>
+                                        </button>
+                                    </span>
+    
+                                    <span ng-show="form.validateInput('numero', 'pattern')" class="text-danger">This field must contain only digits</span>
+                                </div>
+                            </div>
+    
+                                
+                 
+                        </div>
+    
+                        <div class="col-md-12" ng-show="vm.typeRecherche == 'bydate'">
+                            <label class="col-md-1 control-label" style="margin-bottom: 10px; width: 95px;">Date debut</label>
+                            <div class="col-md-4" style="margin-bottom: 10px;">
+                                <p class="input-group">
+                                    <input id="datePaiement" type="text" class="form-control" readonly
+                                           name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                           datepicker-options="vm.options"
+                                           ng-model="vm.dateDebut"
+                                           is-open="vm.datePickerOpenStatus.dateDebut"
+                                           required/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                                <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
+                           </div>
+    
+                            <label class="col-md-1 control-label text">Date fin</label>
+                            <div class="col-md-4">
+                                <p class="input-group">
+                                    <input id="datePaiement" type="text" class="form-control" readonly
+                                           name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                           datepicker-options="vm.options"
+                                           ng-model="vm.dateFin"
+                                           is-open="vm.datePickerOpenStatus.dateFin"
+                                           required/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                                <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
+                           </div>
+    
+                           <div class="col-md-2" style="display: flex; justify-content: flex-end;    width: 150px;">
+                            <button type="submit" class="btn btn-info btn-rounded"
+                                    ng-click="vm.loadAllFacturesByPeriode()" style="    width: 125px;">
+                                <i class="fa fa-search"> </i> Rechercher
+                            </button>
+                           </div>
+    
+                        </div>
+       
+                        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold" style="display: flex; justify-content: space-between;">
+                    <span>Listes des factures</span>
+               
+            </div>
+            <div class="col-md-12" >
+                <form class="form-validation form-horizontal">                
+
+
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr >
+                                    <!--<th ><span>ID</span> </th>-->
+                                    <th><span >Facture</span> </th>
+                                    <th ><span>Date</span> </th>
+
+                                    <th ><span >Commercial</span> </th>
+                                    <th ><span >Client</span> </th>
+                                    <!-- <th ><span >Magasin</span> </th> -->
+                                    <th ><span >Montant</span> </th>
+                                    <!--<th ><span >Client</span> </th>-->
+                                    <th ><span>Reste à payer</span> </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  ng-repeat="facture in vm.factures track by facture.id">
+                                    <td>{{ facture.numero }}</td>
+                                    <!-- <td>BS00001</td> -->
+                                    <td>{{ facture.dateFacture | date: 'dd MMM yyyy' }}</span></td>
+                                    <!-- <td>Magasin Centrale</td> -->
+                                    <td>{{ facture.nomCommercial.toUpperCase() }}</td>
+                                    <td>{{ facture.nomClient }}</td>
+                                    <td>{{ facture.montantTotal }}</td>
+                                    <td>{{ facture.resteApayer }}</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-info btn-sm"
+                                        ng-click="vm.imprimerDetailPaiementParFactureId(facture.id)">
+                                        <i class="fa fa-print"> </i>
+                                    </button>
+                                    </td>
+                                </tr>
+                             
+                            </tbody>
+                        </table>
+                       
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(0)">
+                            << 
+                        </button>
+                        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(vm.currentPage - 1)">
+                            < Précedent
+                        </button>
+                        {{vm.currentPage + 1}}/{{vm.totalPage}}
+                        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.currentPage + 1)">
+                            Suivant >
+                        </button>
+                        <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage >= vm.totalPage - 1" ng-click="vm.setPage(vm.totalPage - 1)">
+                            >>
+                        </button>
+
+                    </div>
+
+
+                    <div class="text-center">
+                        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+                        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                    </div>
+                   
+                </form>
+            </div>
+            </div>
+        
+        </div>
+
+    </form>
+
+</div>
