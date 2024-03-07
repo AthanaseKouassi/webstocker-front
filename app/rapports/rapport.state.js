@@ -535,7 +535,130 @@
                             templateUrl: 'rapports/chiffre-affaire-par-mode-paiement-pdf.html'                          
                         }
                     }
+                })
+                .state('detail-paiement-par-facture', {
+                    parent: 'app',
+                    url: '/detail-paiement-par-facture',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'detail-paiement-par-facture'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/detail-paiement-par-facture.html',
+                            controller: 'DetailPaiementParFactureController',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('magasin');
+                                $translatePartialLoader.addPart('global');
+                                return $translate.refresh();
+                            }]
+                    }
+                })
+                .state('detail-paiement-par-facture-pdf', {
+                    parent: 'app',
+                    url: '/detail-paiement-par-facture-pdf',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'detail-paiement-par-facture-pdf'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/detail-paiement-par-facture-pdf.html'                          
+                        }
+                    }
+                })
+                
+                .state('etat-creance-par-commercial', {
+                    parent: 'app',
+                    url: '/etat-creance-par-commercial',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'etat-creance-par-commercial'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/etat-creance-par-commercial.html',
+                            controller: 'EtatCreanceParCommercial',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('magasin');
+                                $translatePartialLoader.addPart('global');
+                                return $translate.refresh();
+                            }]
+                    }
+                })
+                .state('etat-creance-par-commercial-pdf', {
+                    parent: 'app',
+                    url: '/etat-creance-par-commercial-pdf',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'etat-creance-par-commercial'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/etat-creance-par-commercial-pdf.html'                          
+                        }
+                    }
+                })
+            
+                           
+                .state('liste-clients-commercial', {
+                    parent: 'app',
+                    url: '/liste-clients-commercial',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'liste-clients-commercial'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/liste-clients-commercial.html',
+                            controller: 'ListeClientsCommercial',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('magasin');
+                                $translatePartialLoader.addPart('global');
+                                return $translate.refresh();
+                            }]
+                    }
+                })
+                .state('liste-clients-commercial-pdf', {
+                    parent: 'app',
+                    url: '/liste-clients-commercial-pdf',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'liste-clients-commercial-pdf'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/liste-clients-commercial-pdf.html'                          
+                        }
+                    }
+                })
+
+                .state('creance-pdf', {
+                    parent: 'app',
+                    url: '/creance-pdf',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'creance-pdf'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/creance-pdf.html'                          
+                        }
+                    }
                 });
+                ;
 //            .state('rapport-delegues', {
 //                parent: 'app',
 //                url: '/rapport-delegues',

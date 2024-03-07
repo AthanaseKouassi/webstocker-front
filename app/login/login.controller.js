@@ -84,6 +84,8 @@
         $rootScope.creances1 = [];
         $rootScope.creances2 = [];
 
+
+        // NOTIFICATION HEADER
         setTimeout(function() {
             console.log("Notification creances");
             vm.allCreancesByCategorie2();
@@ -94,7 +96,9 @@
             console.log("Notification creances");
             vm.allCreancesByCategorie2();
             vm.allCreancesByCategorie3();
-        }, 60 * 1000);
+        }, 8 * 60 * 60 * 1000); // 8h
+        // }, 11 * 60 * 60 * 1000 + 30 * 60 * 1000); // 11H30
+        // /NOTIFICATION HEADER
 
         vm.allCreancesByCategorie2 = function () {
           
