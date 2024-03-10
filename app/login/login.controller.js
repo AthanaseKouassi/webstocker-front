@@ -96,7 +96,7 @@
             console.log("Notification creances");
             vm.allCreancesByCategorie2();
             vm.allCreancesByCategorie3();
-        }, 8 * 60 * 60 * 1000); // 8h
+        }, 1 * 60 * 60 * 1000); // 1h
         // }, 11 * 60 * 60 * 1000 + 30 * 60 * 1000); // 11H30
         // /NOTIFICATION HEADER
 

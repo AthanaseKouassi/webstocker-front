@@ -363,7 +363,7 @@
                        onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
                        data-toggle="collapse" data-parent="#accordion"  data-target="#collapse20">
                         <i class="fa fa-file-pdf-o"></i>
-                        <span>Etat des créances par commercial</span>
+                        <span>Créances par commercial</span>
                        
                     </a>
                 </h4>
@@ -393,6 +393,49 @@
             </div>
             <div id="collapse21" class="panel-collapse collapse">
                 <div ng-include="listeClientsCommercial"> </div>
+            </div>
+        </div> 
+
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse22">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Etat factures soldés / non soldés</span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse22" class="panel-collapse collapse">
+                <div ng-include="etatFacturesSoldesNonSoldes"> </div>
+            </div>
+        </div> 
+
+
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!--data-toggle="collapse" data-parent="#accordion"--> 
+                    <a href="" style="font-size: 1.3em; font-weight: bold" 
+                       onmouseover="this.style.color = 'blue'; this.style.textDecoration = 'underline'" 
+                       onmouseout="this.style.color = '';this.style.textDecoration = 'none'"
+                       data-toggle="collapse" data-parent="#accordion"  data-target="#collapse23">
+                        <i class="fa fa-file-pdf-o"></i>
+                        <span>Créance client par période</span>
+                       
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse23" class="panel-collapse collapse">
+                <div ng-include="creanceClientParPeriode"> </div>
             </div>
         </div> 
 
