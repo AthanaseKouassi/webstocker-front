@@ -51,25 +51,28 @@
                         </div>
     
                         <div class="col-md-12" ng-show="vm.typeRecherche == 'bydate'">
-                            <label class="col-md-1 control-label" style="margin-bottom: 10px; width: 95px;">Date debut</label>
-                            <div class="col-md-4" style="margin-bottom: 10px;">
-                                <p class="input-group">
-                                    <input id="datePaiement" type="text" class="form-control" readonly
-                                           name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
-                                           datepicker-options="vm.options"
-                                           ng-model="vm.dateDebut"
-                                           is-open="vm.datePickerOpenStatus.dateDebut"
-                                           required/>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i
-                                                class="glyphicon glyphicon-calendar"></i></button>
-                                    </span>
-                                </p>
-                                <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
-                           </div>
+                            <div class="col-md-5 form-group">
+                                <label class="control-label">Date debut</label>
+                                <div >
+                                    <p class="input-group">
+                                        <input id="datePaiement" type="text" class="form-control" readonly
+                                            name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                            datepicker-options="vm.options"
+                                            ng-model="vm.dateDebut"
+                                            is-open="vm.datePickerOpenStatus.dateDebut"
+                                            required/>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i
+                                                    class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                    <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
+                            </div>
+                            </div>
     
-                            <label class="col-md-1 control-label text">Date fin</label>
-                            <div class="col-md-4">
+                            <div class="col-md-5 form-group">
+                                <label class="control-label text">Date fin</label>
+                            <div class="">
                                 <p class="input-group">
                                     <input id="datePaiement" type="text" class="form-control" readonly
                                            name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
@@ -84,8 +87,10 @@
                                 </p>
                                 <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
                            </div>
+                            </div>
     
-                           <div class="col-md-2" style="display: flex; justify-content: flex-end;    width: 150px;">
+                           <div class="col-md-2  input-group">
+                            <br>
                             <button type="submit" class="btn btn-info btn-rounded"
                                     ng-click="vm.loadAllFacturesByPeriode()" style="    width: 125px;">
                                 <i class="fa fa-search"> </i> Rechercher
@@ -147,7 +152,7 @@
                         </table>
                        
                     </div>
-                    <div class="text-center">
+                    <!-- <div class="text-center">
                         <button class="btn btn-default btn-rounded " type="button" ng-disabled="vm.currentPage == 0" ng-click="vm.setPage(0)">
                             << 
                         </button>
@@ -162,13 +167,13 @@
                             >>
                         </button>
 
-                    </div>
+                    </div> -->
 
 
-                    <div class="text-center">
+                    <!-- <div class="text-center">
                         <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
                         <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-                    </div>
+                    </div> -->
                    
                 </form>
             </div>

@@ -14,7 +14,7 @@
          vm.factures = [];
 
         vm.currentPage = 0;
-        vm.pageSize = 2;
+        vm.pageSize = 999999999;
         vm.typeRecherche = 'bynum';
 
         vm.datePickerOpenStatus = {};
