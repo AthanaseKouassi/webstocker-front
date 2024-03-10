@@ -70,6 +70,8 @@
         $scope.detailPaiementParFacture = 'rapports/detail-paiement-par-facture.html';
         $scope.etatCreanceParCommercial = 'rapports/etat-creance-par-commercial.html';
         $scope.listeClientsCommercial = 'rapports/liste-clients-commercial.html';
+        $scope.etatFacturesSoldesNonSoldes = 'rapports/etat-factures-soldes-non-soldes.html';
+        $scope.creanceClientParPeriode = 'rapports/creance-client-par-periode.html';
 
         vm.clear = function () {
             // $uibModalInstance.dismiss('cancel');
@@ -175,14 +177,35 @@
 
 
        vm.imprimerListeClientCommercial = function() {
-        var dateDebut = '', datefin = '';
-       dateDebut = DateUtils.convertLocalDateToServer(vm.dateDebut);
-       datefin = DateUtils.convertLocalDateToServer(vm.dateFin);
-       $rootScope.etatCreanceParCommercialUrl = API_URL + 'api/report/client/commercial/' + vm.commercial.id + '/' + dateDebut + '/' + datefin;
-       console.log('url finale ' + $rootScope.etatCreanceParCommercialUrl);
-       $state.go('liste-clients-commercial-pdf');
-   };
-        
+            var dateDebut = '', datefin = '';
+            dateDebut = DateUtils.convertLocalDateToServer(vm.dateDebut);
+            datefin = DateUtils.convertLocalDateToServer(vm.dateFin);
+            $rootScope.etatCreanceParCommercialUrl = API_URL + 'api/report/client/commercial/' + vm.commercial.id + '/' + dateDebut + '/' + datefin;
+            console.log('url finale ' + $rootScope.etatCreanceParCommercialUrl);
+            $state.go('liste-clients-commercial-pdf');
+        };
+
+
+        vm.client = {};
+        vm.imprimerCreanceClientParPEriode = function() {
+            var dateDebut = '', datefin = '';
+            dateDebut = DateUtils.convertLocalDateToServer(vm.dateDebut);
+            datefin = DateUtils.convertLocalDateToServer(vm.dateFin);
+            $rootScope.creanceClientParPeriodeUrl = API_URL + 'api/report/facture/creance-client-period?idClient=' + vm.client.id + '&dateDebut=' + dateDebut + '&dateFin=' + datefin;
+            console.log('url finale ' + $rootScope.creanceClientParPeriodeUrl);
+            $state.go('creance-client-par-periode-pdf');
+        };
+
+        vm.typeFacture = '';
+        vm.imprimerEtatFacturesSoldesNonSoldes = function() {
+            var dateDebut = '', datefin = '';
+            dateDebut = DateUtils.convertLocalDateToServer(vm.dateDebut);
+            datefin = DateUtils.convertLocalDateToServer(vm.dateFin);
+            $rootScope.etatFacturesSoldesNonSoldesUrl = API_URL + 'api/report/facture/liste-factures-soldees-non-soldees/'+ vm.typeFacture + '/' + dateDebut + '/' + datefin;
+            console.log('url finale ' + $rootScope.etatFacturesSoldesNonSoldesUrl);
+            $state.go('etat-factures-soldes-non-soldes-pdf');
+        };
+                
         
 
 
@@ -609,7 +632,7 @@
             }
             if (dateDebut && dateFin)
                 // FetchData.getData(API_URL + 'api/facture/factures-non-solde/?dateDebut=' + dateDebut + '&dateFin=' + dateFin)
-                FetchData.getData(API_URL + 'api/facture/factures-non-solde-page/?dateDebut=' + dateDebut + '&dateFin=' + dateFin + '&page=' + vm.currentPage + '&size=' + vm.pageSize)
+                FetchData.getData(API_URL + 'api/facture/factures-all-page/?dateDebut=' + dateDebut + '&dateFin=' + dateFin + '&page=' + vm.currentPage + '&size=' + vm.pageSize)
                 .then(function (response, a, b) {
                     console.log('RESPONSE:::: ', response, response.headers, response.headers());
                     vm.factures = response.data;
@@ -647,6 +670,9 @@
                     console.log(error);
                 });
         };
+
+
+        
 
 
 

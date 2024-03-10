@@ -9,11 +9,12 @@
                         
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label class="col-md-2 control-label">Commercial</label>
+                            <label class="col-md-2 control-label">Type facture</label>
                             <div class="col-md-4 form-group">             
-                                    <select class="form-control" id="field_demandeur" name="demandeur" ng-model="vm.commercial" 
-                                            ng-options="user as user.lastName+' '+user.firstName for user in vm.users track by user.id" required="">                       
+                                    <select class="form-control" id="field_type_facture" name="type_facture" ng-model="vm.typeFacture"  required="">                       
                                 <option value=""></option>
+                                <option value="NON_SOLDE">Non soldé</option>
+                                <option value="SOLDE">soldé</option>
                             </select>
                                
                             </div>
@@ -33,7 +34,8 @@
                                            is-open="vm.datePickerOpenStatus.dateDebut"
                                            required/>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i
+                                        <button type="button" class="btn btn-default" 
+                                                ng-click="vm.openCalendar('dateDebut')"><i
                                                 class="glyphicon glyphicon-calendar"></i></button>
                                     </span>
                                 </p>
@@ -50,7 +52,8 @@
                                            is-open="vm.datePickerOpenStatus.dateFin"
                                            required/>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i
+                                        <button type="button" class="btn btn-default" 
+                                                ng-click="vm.openCalendar('dateFin')"><i
                                                 class="glyphicon glyphicon-calendar"></i></button>
                                     </span>
                                 </p>
@@ -63,7 +66,7 @@
 
                         <div class="col-md-12" style="display: flex; justify-content: center;">
                             <button type="submit" class="btn btn-info btn-rounded"
-                                    ng-click="vm.imprimerRapportEtatCreanceParCommercial()" style="    width: 125px;">
+                                    ng-click="vm.imprimerEtatFacturesSoldesNonSoldes()" style="    width: 125px;">
                                 <i class="fa fa-print"> </i> Imprimer
                             </button>
                            </div>

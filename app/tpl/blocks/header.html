@@ -60,7 +60,7 @@
                         <div ng-repeat="creance in creances1">
                             <a href class="list-group-item">
                                 <span class="clear block m-b-none">
-                                    {{ creance.nomClient }}, {{ creance.nomUser }}, {{ creance.numero }}, {{ creance.nomProduit }}, {{ creanceresteApayer }}                                  
+                                    {{ creance.nomClient }}, {{ creance.nomUser }}, {{ creance.numero }}, {{ creance.nomProduit }}, {{ (creance.resteApayer || '0').toLocaleString() }}                                  
                                     <!-- <span class="badge">{{Bons.length}}</span> -->
                                 </span>
                             </a>
@@ -99,7 +99,7 @@
                         <div ng-repeat="creance in creances2">
                             <a href class="list-group-item">
                                 <span class="clear block m-b-none">
-                                    {{ creance.nomClient }}, {{ creance.nomUser }}, {{ creance.numero }}, {{ creance.nomProduit }}, {{ creanceresteApayer }}                                  
+                                    {{ creance.nomClient }}, {{ creance.nomUser }}, {{ creance.numero }}, {{ creance.nomProduit }}, {{ (creance.resteApayer || '0').toLocaleString() }}                                  
                                     <!-- <span class="badge">{{Bons.length}}</span> -->
                                 </span>
                             </a>

@@ -645,6 +645,78 @@
                     }
                 })
 
+                .state('creance-client-par-periode', {
+                    parent: 'app',
+                    url: '/creance-client-par-periode',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'creance-client-par-periode'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/creance-client-par-periode.html',
+                            controller: 'CreanceClientParPeriode',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('magasin');
+                                $translatePartialLoader.addPart('global');
+                                return $translate.refresh();
+                            }]
+                    }
+                })
+                .state('creance-client-par-periode-pdf', {
+                    parent: 'app',
+                    url: '/creance-client-par-periode-pdf',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'creance-client-par-periode-pdf'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/creance-client-par-periode-pdf.html'                          
+                        }
+                    }
+                })
+                
+                .state('etat-factures-soldes-non-soldes', {
+                    parent: 'app',
+                    url: '/etat-factures-soldes-non-soldes',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'etat-factures-soldes-non-soldes'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/etat-factures-soldes-non-soldes.html',
+                            controller: 'EtatFacturesSoldesNonSoldes',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('magasin');
+                                $translatePartialLoader.addPart('global');
+                                return $translate.refresh();
+                            }]
+                    }
+                })
+                .state('etat-factures-soldes-non-soldes-pdf', {
+                    parent: 'app',
+                    url: '/etat-factures-soldes-non-soldes-pdf',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pagetitle: 'etat-factures-soldes-non-soldes-pdf'
+                    },
+                    views: {
+                        '@app': {
+                            templateUrl: 'rapports/etat-factures-soldes-non-soldes-pdf.html'                          
+                        }
+                    }
+                })
+
                 .state('creance-pdf', {
                     parent: 'app',
                     url: '/creance-pdf',
