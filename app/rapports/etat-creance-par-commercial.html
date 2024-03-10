@@ -9,22 +9,25 @@
                         
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label class="col-md-2 control-label">Commercial</label>
-                            <div class="col-md-4 form-group">             
-                                    <select class="form-control" id="field_demandeur" name="demandeur" ng-model="vm.commercial" 
-                                            ng-options="user as user.lastName+' '+user.firstName for user in vm.users track by user.id" required="">                       
-                                <option value=""></option>
-                            </select>
-                               
+                            <div class="col-md-5 form-group">
+                                <label class=" control-label">Commercial</label>
+                                <div class="">             
+                                        <select class="form-control" id="field_demandeur" name="demandeur" ng-model="vm.commercial" 
+                                                ng-options="user as user.lastName+' '+user.firstName for user in vm.users track by user.id" required="">                       
+                                    <option value=""></option>
+                                </select>
+                                   
+                                </div>
+        
+                                    
+                     
                             </div>
-    
-                                
-                 
                         </div>
     
                         <div class="col-md-12" >
-                            <label class="col-md-2 control-label">Date debut</label>
-                            <div class="col-md-4" style="margin-bottom: 10px;">
+                            <div class="col-md-5 form-group">
+                                <label class="control-label">Date debut</label>
+                            <div class="">
                                 <p class="input-group">
                                     <input id="datePaiement" type="text" class="form-control" readonly
                                            name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
@@ -39,34 +42,40 @@
                                 </p>
                                 <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
                            </div>
+                            </div>
     
-                            <label class="col-md-2 control-label text">Date fin</label>
-                            <div class="col-md-4">
-                                <p class="input-group">
-                                    <input id="datePaiement" type="text" class="form-control" readonly
-                                           name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
-                                           datepicker-options="vm.options"
-                                           ng-model="vm.dateFin"
-                                           is-open="vm.datePickerOpenStatus.dateFin"
-                                           required/>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i
-                                                class="glyphicon glyphicon-calendar"></i></button>
-                                    </span>
-                                </p>
-                                <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
-                           </div>
+                            <div class="col-md-5 form-group">
+
+                                <label class="control-label text">Date fin</label>
+                                <div class="">
+                                    <p class="input-group">
+                                        <input id="datePaiement" type="text" class="form-control" readonly
+                                            name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                            datepicker-options="vm.options"
+                                            ng-model="vm.dateFin"
+                                            is-open="vm.datePickerOpenStatus.dateFin"
+                                            required/>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i
+                                                    class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                    <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
+                                </div>
+
+                            </div>
     
-                          
+                            <div class="col-md-2 input-group">
+                                <br>
+                                <button type="submit" class="btn btn-info btn-rounded"
+                                        ng-click="vm.imprimerRapportEtatCreanceParCommercial()" style="    width: 125px;">
+                                    <i class="fa fa-print"> </i> Imprimer
+                                </button>
+                               </div>
     
                         </div>
 
-                        <div class="col-md-12" style="display: flex; justify-content: center;">
-                            <button type="submit" class="btn btn-info btn-rounded"
-                                    ng-click="vm.imprimerRapportEtatCreanceParCommercial()" style="    width: 125px;">
-                                <i class="fa fa-print"> </i> Imprimer
-                            </button>
-                           </div>
+                    
        
                         
                     </div>

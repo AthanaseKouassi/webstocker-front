@@ -14,7 +14,7 @@
          vm.creances = [];
 
         vm.currentPage = 0;
-        vm.pageSize = 20;
+        vm.pageSize = 999999999;
         vm.typeRecherche = 'bynum';
 
         vm.datePickerOpenStatus = {};
