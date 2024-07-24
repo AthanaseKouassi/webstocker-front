@@ -1,0 +1,92 @@
+<div>
+    <h2>Calendrier approvisionnement</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="calendrier-appro-form" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs" >
+                        Calendrier approvisionnement
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right col-xs-6" >
+                        <input type="month" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Rechercher">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <!-- <th><span>ID</span></th> -->
+                    <th><span >Date inventaire</span></th>
+                    <th><span>Produit</span></th>
+                    <th><span>Stock theorique</span></th>
+                    <th><span>Arrivage</span></th>
+                    <th><span>Vente</span></th>
+                    <th><span>Promo</span></th>
+                    <th><span>Perte/Abimé</span></th>
+                    <th><span>Stock réel magasin</span></th>
+                    <th><span>Stock réel antènne</span></th>
+                    <th><span>Stock réel delegués et commerciaux</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr ng-repeat="inventaire in vm.inventaires track by inventaire.id">
+                    <!-- <td><a ui-sref="lignefacture-detail({id:inventaire.id})">{{inventaire.id}}</a></td> -->
+                    <td>{{inventaire.dateInventaire}}</td>
+                    <td>
+                        <a ui-sref="lot-detail({id:inventaire.lot.id})">{{inventaire.produit.nomProduit}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="facture-detail({id:inventaire.facture.id})">{{inventaire.stockFinalTheorique}}</a>
+                    </td>
+                    <td>{{inventaire.arrivage}}</td>
+                    <td>{{inventaire.vente}}</td>
+                    <td>{{inventaire.promo}}</td>
+                    <td>{{inventaire.perteAbime}}</td>
+                    <td>{{inventaire.stockMagasinCentral}}</td>
+                    <td>{{inventaire.stockAntenne}}</td>
+                    <td>{{inventaire.stockAgent}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                     
+                            <button type="submit"
+                                    ui-sref="calendrier-appro-form({id:inventaire.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <!-- ui-sref="lignefacture-detail({id:inventaire.id})" -->
+                            <button type="button"  ng-click="vm.exportExcel(inventaire)"
+                               
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-print"></span>
+                                <span class="hidden-xs hidden-sm">Imprimer</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

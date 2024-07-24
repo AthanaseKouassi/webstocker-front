@@ -1,0 +1,268 @@
+<div>
+    <h2>Calendrier approvisionnement</h2>
+    <jhi-alert></jhi-alert>
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+
+                <div class="form-group">
+                
+
+                    <div class="col-md-12">
+                        <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Date</label>
+                        <div class="col-lg-3" style="margin-bottom: 10px;">
+                            <p class="input-group">
+                                <input id="datePaiement" type="text" class="form-control" readonly
+                                       name="datePaiement" uib-datepicker-popup="dd MMMM yyyy"
+                                       datepicker-options="vm.options"
+                                       ng-model="vm.inventaire.dateInventaire"
+                                       is-open="vm.datePickerOpenStatus.dateDebut"
+                                       required/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            <span ng-show="form.validateInput('datePaiement', 'required')" class="text-danger">This field is required</span>
+                       </div>
+
+                        <label class="col-lg-1 control-label text">Produit</label>
+                        <div class="col-lg-3" style="margin-bottom: 10px;">
+
+                            <select class="form-control" ng-change="vm.changeProduit()" id="field_produit" name="produit" ng-model="vm.produit" ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                                <option value=""></option>
+                            </select>
+                        </div>
+
+                        <label class="col-lg-1 control-label text">Bailleur</label>
+                        <div class="col-lg-3" style="margin-bottom: 10px;">
+                            <select class="form-control" id="field_bailleur" name="bailleur" ng-model="vm.bailleur" ng-options="bailleur as bailleur.nomBailleur for bailleur in vm.bailleurs track by bailleur.id">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                       
+                    </div>
+
+
+
+
+                    
+   
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading font-bold">Mouvement du stock</div>
+            <div class="panel-body">
+    
+    
+                    <div class="form-group">
+    
+    
+    
+    
+                        <div class="col-md-12">
+                            <label class="col-lg-2 control-label" style="margin-bottom: 10px;">Stock debut mois</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px;">
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                    ng-model="vm.inventaire.stockTheoDebut" disabled
+                                    required />
+                           </div>
+    
+                            <label class="col-lg-3 control-label text">Entrée en stock / arrivage</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px;">
+    
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                ng-model="vm.inventaire.arrivage" disabled
+                                required />
+                            </div>
+    
+            
+                           
+                        </div>
+
+
+    
+                        <div class="col-md-12 mt-4" style="margin-top: 20px;">
+                            <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Ventes</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px;">
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                    ng-model="vm.inventaire.vente" disabled
+                                    required />
+                           </div>
+    
+                            <label class="col-lg-1 control-label text">Promo</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px;">
+    
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                ng-model="vm.inventaire.promo" disabled
+                                required />
+                            </div>
+    
+                            <label class="col-lg-1 control-label text">Pertes / abimés</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px;">
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                ng-model="vm.inventaire.perteAbime" disabled
+                                required />
+                            </div>
+                           
+                        </div>
+    
+                        
+       
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            
+        <div class="panel panel-default">
+            <div class="panel-heading font-bold">Stock réel</div>
+            <div class="panel-body">
+    
+    
+                    <div class="form-group">
+    
+    
+
+
+
+    
+                        <div class="col-md-12 mt-4">
+
+                            <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Magasin central</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px;">
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                    ng-model="vm.inventaire.stockMagasinCentral"
+                                    required />
+                           </div>
+    
+                            <label class="col-lg-1 control-label text">Antennes</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px;">
+    
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                ng-model="vm.inventaire.stockAntenne"
+                                required />
+                            </div>
+    
+                            <label class="col-lg-1 control-label text">Délégués et commerciaux</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px;">
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                ng-model="vm.inventaire.stockAgent"
+                                required />
+                            </div>
+
+                           
+                        </div>
+
+                        
+                        <div class="col-md-12 mt-4">
+
+                            <label class="col-lg-1 control-label text" style="margin-bottom: 10px; margin-top: 20px;">Total final</label>
+                            <div class="col-lg-3" style="margin-bottom: 10px; margin-top: 20px;">
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                ng-model="vm.inventaire.stockFinalTheorique" disabled
+                                required />
+                            </div>
+                        </div>
+    
+                        
+       
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading font-bold">Résultat</div>
+                <div class="panel-body">
+        
+        
+                        <div class="form-group">
+        
+        
+    
+    
+                            <!-- #### {{vm.inventaire.stockTheoDebut}} && {{vm.inventaire.arrivage}} && {{vm.inventaire.vente}} && {{vm.inventaire.promo}} && {{vm.inventaire.perteAbime}} && {{vm.inventaire.stockMagasinCentral}} && {{vm.inventaire.stockAntenne}} && {{vm.inventaire.stockAgent}} -->
+        
+                            <div class="col-md-12 mt-4">
+                                <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Ajustement</label>
+                                <div class="col-lg-2" style="margin-bottom: 10px;">
+                                    <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                        ng-value="vm.inventaire.stockTheoDebut + vm.inventaire.arrivage - vm.inventaire.vente - vm.inventaire.promo - vm.inventaire.perteAbime - vm.inventaire.stockMagasinCentral - vm.inventaire.stockAntenne - vm.inventaire.stockAgent" disabled
+                                        required />
+                               </div>
+        
+                                <!-- <label class="col-lg-2 control-label text">Distribution moyenne mensuelle</label>
+                                <div class="col-lg-2" style="margin-bottom: 10px;">
+        
+                                    <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                    ng-model="vm.activite.nomActivite" disabled
+                                    required />
+                                </div>
+        
+                                <label class="col-lg-1 control-label text">Couverture stock</label>
+                                <div class="col-lg-2" style="margin-bottom: 10px;">
+                                    <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                    ng-model="vm.activite.nomActivite" disabled
+                                    required />
+                                </div>
+                                <label class="col-lg-1 control-label text">mois</label> -->
+                               
+                            </div>
+        
+                            
+           
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-xs-12 no-padding-left" style="display: flex; justify-content: right; margin-bottom: 30px;">
+                    <!-- <button class="btn btn-info" ui-sref="calendrier-appro-form">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="hidden-xs" >
+                            Exporter PDF
+                        </span>
+                    </button> -->
+
+                    <button class="btn btn-info" ui-sref="calendrier-appro-form"  style="margin-left: 40px; margin-right: 70px; " ng-click="vm.exportExcel()">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="hidden-xs" >
+                                Exporter Excel
+                        </span>
+                    </button>
+
+                    <button class="btn btn-default" ui-sref="calendrier-appro" >
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="hidden-xs" >
+                            Annuler
+                        </span>
+                    </button>
+                </div>
+
+
+    </div>
+
+
+</div>
