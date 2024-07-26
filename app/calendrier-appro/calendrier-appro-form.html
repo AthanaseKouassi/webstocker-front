@@ -1,5 +1,10 @@
+<div class="bg-light lter b-b wrapper-md" >
+    <h1 class="m-n font-thin h3">Calendrier approvisionnement</h1>
+    <!-- <small ng-show="vm.inventaire.dateInventaire || vm.produit.nomProduit">Inventaire à la date du : {{vm.inventaire.dateInventaire | date: 'dd/MM/yyyy'}} &nbsp;&nbsp;|&nbsp;&nbsp; Produit: {{vm.produit.nomProduit}}</small> -->
+</div>
+
 <div>
-    <h2>Calendrier approvisionnement</h2>
+
     <jhi-alert></jhi-alert>
     <div class="panel panel-default">
         <div class="panel-body">
@@ -17,6 +22,7 @@
                                        datepicker-options="vm.options"
                                        ng-model="vm.inventaire.dateInventaire"
                                        is-open="vm.datePickerOpenStatus.dateDebut"
+                                       ng-change="vm.changeProduit()"
                                        required/>
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i
@@ -29,7 +35,7 @@
                         <label class="col-lg-1 control-label text">Produit</label>
                         <div class="col-lg-3" style="margin-bottom: 10px;">
 
-                            <select class="form-control" ng-change="vm.changeProduit()" id="field_produit" name="produit" ng-model="vm.produit" ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                            <select ng-disabled="!vm.inventaire.dateInventaire" class="form-control" ng-change="vm.changeProduit()" id="field_produit" name="produit" ng-model="vm.produit" ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
                                 <option value=""></option>
                             </select>
                         </div>
@@ -201,11 +207,14 @@
     
                             <!-- #### {{vm.inventaire.stockTheoDebut}} && {{vm.inventaire.arrivage}} && {{vm.inventaire.vente}} && {{vm.inventaire.promo}} && {{vm.inventaire.perteAbime}} && {{vm.inventaire.stockMagasinCentral}} && {{vm.inventaire.stockAntenne}} && {{vm.inventaire.stockAgent}} -->
         
+                            
+                            <!-- ng-value="vm.inventaire.stockTheoDebut + vm.inventaire.arrivage - vm.inventaire.vente - vm.inventaire.promo - vm.inventaire.perteAbime - vm.inventaire.stockMagasinCentral - vm.inventaire.stockAntenne - vm.inventaire.stockAgent"  -->
                             <div class="col-md-12 mt-4">
                                 <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Ajustement</label>
                                 <div class="col-lg-2" style="margin-bottom: 10px;">
-                                    <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
-                                        ng-value="vm.inventaire.stockTheoDebut + vm.inventaire.arrivage - vm.inventaire.vente - vm.inventaire.promo - vm.inventaire.perteAbime - vm.inventaire.stockMagasinCentral - vm.inventaire.stockAntenne - vm.inventaire.stockAgent" disabled
+                                    <input type="text" class="form-control" name="ajustement" id="field_ajustement"
+                                        disabled
+                                        ng-model="vm.inventaire.ajustement"
                                         required />
                                </div>
         
@@ -239,6 +248,13 @@
 
 
                 <div class="col-xs-12 no-padding-left" style="display: flex; justify-content: right; margin-bottom: 30px;">
+
+                    <button class="btn btn-info btn-rounded" ng-click="vm.createInventaire()">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        <span class="hidden-xs" >
+                            Sauvegarder
+                        </span>
+                    </button>
                     <!-- <button class="btn btn-info" ui-sref="calendrier-appro-form">
                         <span class="glyphicon glyphicon-plus"></span>
                         <span class="hidden-xs" >
@@ -246,14 +262,14 @@
                         </span>
                     </button> -->
 
-                    <button class="btn btn-info" ui-sref="calendrier-appro-form"  style="margin-left: 40px; margin-right: 70px; " ng-click="vm.exportExcel()">
-                        <span class="glyphicon glyphicon-plus"></span>
+                    <button class="btn btn-success btn-rounded" ui-sref="calendrier-appro-form"  style="margin-left: 40px; margin-right: 70px; " ng-click="vm.exportExcel()" ng-disabled="!vm.inventaire.id">
+                        <span class="glyphicon glyphicon-file"></span>
                         <span class="hidden-xs" >
                                 Exporter Excel
                         </span>
                     </button>
 
-                    <button class="btn btn-default" ui-sref="calendrier-appro" >
+                    <button class="btn btn-default btn-rounded" ui-sref="calendrier-appro" >
                         <span class="glyphicon glyphicon-plus"></span>
                         <span class="hidden-xs" >
                             Annuler
