@@ -11,10 +11,134 @@
                     </span>
                 </button>
             </div>
-            <div class="col-xs-8 no-padding-right">
-                <form name="searchForm" class="form-inline">
-                    <div class="input-group pull-right col-xs-6" >
-                        <input type="month" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Rechercher">
+
+
+            <div class="col-md-8">
+                <div class="radio col-md-4">
+                    Rechercher par 
+                </div>
+
+                
+                <div class="radio col-md-4" style="    margin-top: 10px;">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="vm.typeRecherche" value="bymoisannee" style="display: inline;">
+                        Mois / Année
+                    </label>
+                    </div>
+
+                <div class="radio col-md-4" style="    margin-top: 10px;">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="vm.typeRecherche" value="byproddate" checked style="display: inline;">
+                        Produit et date
+                    </label>
+                    </div>
+
+
+            </div>
+
+
+
+            <div class="col-xs-12 no-padding-right" style="display: flex; justify-content: end;" ng-show="vm.typeRecherche === 'byproddate'">
+
+                <label class="col-lg-1 control-label text" style="margin-top: auto; margin-bottom: auto;">Produit</label>
+                <div class="col-lg-3" style="margin-bottom: 10px;">
+
+                    <select style="margin-top: 10px;" class="form-control" id="field_produit" name="produit" ng-model="vm.produit" ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                        <option value=""></option>
+                    </select>
+                </div>
+
+
+                <div class="input-group pull-right col-xs-3" >
+
+<!-- 
+                    <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dt" is-open="vm.popup.opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="vm.altInputFormats" readonly />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span> -->
+                        
+                    <!-- <div class="form-control"> -->
+                        <p class="input-group" style="margin-top: 10px;">
+                            <input id="datePaiement" type="text" class="form-control" readonly style="background-color: white;"
+                                   name="datePaiement" uib-datepicker-popup="yyyy"
+                                   datepicker-options="vm.options"
+                                   ng-model="vm.searchAnnee"
+                                   is-open="vm.datePickerOpenStatus.searchAnnee"
+                                   uib-datepicker-popup="yyyy"
+                                   alt-input-formats="['yyyy']"
+                                   required 
+                                   />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('searchAnnee')"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                        
+                   <!-- </div> -->
+
+                   <span  class="input-group-btn width-min" >
+                    <button class="btn btn-info" ng-click="vm.searchProduitAnnee()">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+                <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                    <button class="btn btn-info" ng-click="vm.clear()">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </span>
+
+
+                    <!-- <input type="month" c ng-model="vm.searchQuery" id="searchQuery" placeholder="Rechercher">
+                    <span  class="input-group-btn width-min" >
+                        <button class="btn btn-info" ng-click="vm.search()">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                    <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                        <button class="btn btn-info" ng-click="vm.clear()">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </span> -->
+                </div>
+            </div>
+
+
+
+
+            <div class="col-xs-12 no-padding-right" style="display: flex; justify-content: end;"  ng-show="vm.typeRecherche === 'bymoisannee'">
+    
+                    <div class="input-group pull-right col-xs-3" >
+
+                        
+                        <!-- <div class="form-control"> -->
+                            <p class="input-group" style="margin-top: 10px;">
+                                <input id="datePaiement" type="text" class="form-control" readonly style="background-color: white;"
+                                       name="datePaiement" uib-datepicker-popup="MMMM yyyy"
+                                       datepicker-options="vm.options2"
+                                       ng-model="vm.searchQuery"
+                                       is-open="vm.datePickerOpenStatus.searchDate"
+                                       required/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('searchDate')"><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                            
+                       <!-- </div> -->
+
+                       <span  class="input-group-btn width-min" >
+                        <button class="btn btn-info" ng-click="vm.search()">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                    <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                        <button class="btn btn-info" ng-click="vm.clear()">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </span>
+
+
+                        <!-- <input type="month" c ng-model="vm.searchQuery" id="searchQuery" placeholder="Rechercher">
                         <span  class="input-group-btn width-min" >
                             <button class="btn btn-info" ng-click="vm.search()">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -24,9 +148,9 @@
                             <button class="btn btn-info" ng-click="vm.clear()">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </button>
-                        </span>
+                        </span> -->
                     </div>
-                </form>
+            
             </div>
         </div>
     </div>
