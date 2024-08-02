@@ -12,6 +12,7 @@
 
         var vm = this;
         vm.produits = [];
+        vm.produit = {};
         vm.inventaires = [];
         vm.searchAnnee = '';
         vm.typeRecherche = 'bymoisannee'
@@ -61,30 +62,34 @@
 
         vm.searchQuery = '';
         vm.search = function () {
-            console.log("bouton cliqué", vm.searchQuery);
-            if (vm.searchQuery) {
-                var dateFormat = 'yyyy-MM-dd';
-                var searchQuery = $filter('date')(vm.searchQuery, dateFormat);
-                console.log(API_URL + 'api/_search/inventaire/'+searchQuery);
-                FetchData.getData(API_URL + 'api/_search/inventaire/'+searchQuery)
-                .then(function (response) {
-                    console.log(response);
-                    vm.inventaires = response.data;
-                    console.log(API_URL + 'api/_search/inventaire/ RESPONSE', response);
-                 
-                }, function (error) {
-                    console.log(error);
-                });
 
-            }
+      
+        console.log("bouton cliqué", vm.searchQuery);
+        if (vm.searchQuery) {
+            var dateFormat = 'yyyy-MM-dd';
+            var searchQuery = $filter('date')(vm.searchQuery, dateFormat);
+            console.log(API_URL + 'api/_search/inventaire/'+searchQuery);
+            FetchData.getData(API_URL + 'api/_search/inventaire/'+searchQuery)
+            .then(function (response) {
+                console.log(response);
+                vm.inventaires = response.data;
+                console.log(API_URL + 'api/_search/inventaire/ RESPONSE', response);
+                
+            }, function (error) {
+                console.log(error);
+            });
+
+        }
+
+
  
         };
 
         vm.searchProduitAnnee = function () {
-            console.log("bouton cliqué", vm.searchAnnee);
-            if (vm.searchAnnee && vm.produit.id) {
+            console.log("bouton cliqué", vm.searchQuery);
+            if (vm.searchQuery && vm.produit.id) {
                 var dateFormat = 'yyyy';
-                var searchAnnee = $filter('date')(vm.searchAnnee, dateFormat);
+                var searchAnnee = $filter('date')(vm.searchQuery, dateFormat);
                 console.log(API_URL + 'api/_search/'+searchAnnee+'/inventaire/'+vm.produit.id);
                 FetchData.getData(API_URL + 'api/_search/'+searchAnnee+'/inventaire/'+vm.produit.id)
                 .then(function (response) {
@@ -128,11 +133,16 @@
         vm.loadAll();
 
 
-        vm.exportExcel = function (inventaire) {
-            var url = API_URL + 'api/report/inventaires/calendrier-approvisionnement/'+inventaire.dateInventaire/* + '?access_token=' + authToken*/;
-            window.open(url);
+        vm.exportExcel = function () {
+                var dateFormat = 'yyyy-MM-dd';
+                var searchQuery = $filter('date')(new Date(), dateFormat);
+
+                var url = API_URL + 'api/report/inventaires/calendrier-approvisionnement/'+searchQuery/* + '?access_token=' + authToken*/;
+                location.assign(url);
         }
 
+
+        
 
 
 
@@ -144,6 +154,10 @@
             vm.datePickerOpenStatus[date] = true;
         };
         
+
+        vm.changeOptions = function() {
+            return vm.produit.id ? vm.options : vm.options2;
+        }
 
 
         
