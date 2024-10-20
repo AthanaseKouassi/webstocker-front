@@ -14,7 +14,7 @@
                 
 
                 <div class="form-group">
-                    <div class="col-md-7" style="padding-top: 10px; padding-left: 30px">
+                    <div class="col-md-6" style="padding-top: 10px; padding-left: 30px">
                         <label class="col-md-4 control-label" style="padding-top: 5px; width: 25%;">Catégorie créance: </label>
                         
                         <div class="col-md-8" style="margin-bottom: 20px;">
@@ -23,6 +23,24 @@
                                 <option value="1">Catégorie 1 ( Créances inférieures à 30 jours )</option>
                                 <option value="2">Catégorie 2 ( Créances entre 30 et 45 jours )</option>
                                 <option value="3">Catégorie 3 ( Créance supérieures à 45 jours )</option>
+                            </select>
+                            <span ng-show="form.validateInput('magasin', 'required')" class="text-danger">This field is required</span>
+                        
+                        </div>
+
+                            
+             
+                    </div>
+
+
+
+                    <div class="col-md-6" style="padding-top: 10px; padding-left: 30px">
+                        <label class="col-md-4 control-label" style="padding-top: 5px; width: 25%;">Produit: </label>
+                        
+                        <div class="col-md-8" style="margin-bottom: 20px;">
+                            <select  class="form-control select_option" id="field_produit" name="produit" ng-model="vm.produit"  ng-change="vm.allCreancesByCategorie()"
+                            ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                        <option value="" class="select_option"></option>
                             </select>
                             <span ng-show="form.validateInput('magasin', 'required')" class="text-danger">This field is required</span>
                         

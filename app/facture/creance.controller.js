@@ -22,6 +22,32 @@
         vm.dateDebut = "";
         vm.dateFin = "";
 
+        vm.produit = {};
+        vm.produits = [];
+
+
+        loadAll();
+
+        function loadAll() {
+ 
+
+           FetchData.getData(API_URL + 'api/produits')
+           .then(function (response) {
+               // console.log(response);
+               vm.produits = response.data;
+               // vm.totalElements = response.data.totalElements;
+               // vm.totalPage = response.data.totalPages;
+
+               // console.log('nombre d\'élément ' + vm.totalElements);
+               // console.log('nombre de page ' + vm.totalPage);
+               // console.log("OUUHHH "+vm.inventaires);
+           }, function (error) {
+               console.log(error);
+           });
+
+
+        };
+
         vm.load = function (id) {
             BonDeSortie.get({id: id}, function (result) {
                 vm.bonDeSortie = result;
@@ -29,6 +55,7 @@
                 console.log("le resultat de la date " + vm.bonDeSortie.daateCreation);
             });
         };
+        
         vm.loadAllPage = function () {
             FetchData.getData(API_URL + 'api/bon-de-sortie-transfert/transfert-encours?page=' + vm.currentPage + '&size=' + vm.pageSize)
                     .then(function (response) {
@@ -43,6 +70,9 @@
                     }, function (error) {
                         console.log(error);
                     });
+
+
+
         };
 
         vm.setPage = function (p) {
@@ -83,9 +113,11 @@
             vm.categorieCreance = null;
 
             vm.allCreancesByCategorie = function () {
+                
+                if (!vm.categorieCreance) return;
             
                 if (vm.categorieCreance)
-                    FetchData.getData(API_URL + 'api/facture/'+vm.categorieCreance+'/categorie-creance')
+                    FetchData.getData(API_URL + 'api/facture/'+vm.categorieCreance+'/categorie-creance?idProduit=' + (vm.produit && vm.produit.id ? vm.produit.id : 0))
                     .then(function (response) {
                         console.log(response);
                         vm.creances = response.data;
@@ -108,7 +140,8 @@
 
                                 
         vm.imprimerParCategorie = function(){
-            $rootScope.imprimerParCategorieUrl = API_URL + 'api/report/categorie-creance/'+vm.categorieCreance;
+            if (!vm.categorieCreance) return;
+            $rootScope.imprimerParCategorieUrl = API_URL + 'api/report/categorie-creance/'+vm.categorieCreance + '?idProduit=' + (vm.produit && vm.produit.id ? vm.produit.id : 0);
             console.log('url finale ' + $rootScope.imprimerParCategorieUrl);
             $state.go('creance-pdf');
         };

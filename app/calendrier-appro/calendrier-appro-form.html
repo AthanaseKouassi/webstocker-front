@@ -154,7 +154,7 @@
 
                             <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Magasin central</label>
                             <div class="col-lg-3" style="margin-bottom: 10px;">
-                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                <input type="number" class="form-control" name="nomActivite" id="field_nomActivite"
                                     ng-model="vm.inventaire.stockMagasinCentral"
                                     required />
                            </div>
@@ -169,7 +169,7 @@
     
                             <label class="col-lg-1 control-label text">Délégués et commerciaux</label>
                             <div class="col-lg-3" style="margin-bottom: 10px;">
-                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                <input type="number" class="form-control" name="nomActivite" id="field_nomActivite"
                                 ng-model="vm.inventaire.stockAgent"
                                 required />
                             </div>
@@ -183,7 +183,7 @@
 
                             <label class="col-lg-1 control-label text" style="margin-bottom: 10px; margin-top: 20px;">Total final</label>
                             <div class="col-lg-3" style="margin-bottom: 10px; margin-top: 20px;">
-                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                <input type="number" class="form-control" name="nomActivite" id="field_nomActivite"
                                 ng-value="vm.calculTotalFinal()" disabled
                                 required />
                             </div>
@@ -210,7 +210,7 @@
 
 
 
-            <div class="panel panel-default">
+            <div class="panel panel-default mb-0" style="margin-bottom: 0;">
                 <div class="panel-heading font-bold">Résultat</div>
                 <div class="panel-body">
         
@@ -237,32 +237,32 @@
                                </div>
                             
                             
-                            <div class="col-md-12 mt-4" ng-show="vm.inventaire.id">
-                                <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Ajustement</label>
-                                <div class="col-lg-2" style="margin-bottom: 10px;">
-                                    <input type="text" class="form-control" name="ajustement" id="field_ajustement"
-                                        disabled
-                                        ng-model="vm.inventaire.ajustement"
+                                <div class="col-md-12 mt-4" ng-show="vm.inventaire.id">
+                                    <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Ajustement</label>
+                                    <div class="col-lg-2" style="margin-bottom: 10px;">
+                                        <input type="text" class="form-control" name="ajustement" id="field_ajustement"
+                                            disabled
+                                            ng-model="vm.inventaire.ajustement"
+                                            required />
+                                </div>
+            
+                                    <!-- <label class="col-lg-2 control-label text">Distribution moyenne mensuelle</label>
+                                    <div class="col-lg-2" style="margin-bottom: 10px;">
+            
+                                        <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                        ng-model="vm.activite.nomActivite" disabled
                                         required />
-                               </div>
-        
-                                <!-- <label class="col-lg-2 control-label text">Distribution moyenne mensuelle</label>
-                                <div class="col-lg-2" style="margin-bottom: 10px;">
-        
-                                    <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
-                                    ng-model="vm.activite.nomActivite" disabled
-                                    required />
+                                    </div>
+            
+                                    <label class="col-lg-1 control-label text">Couverture stock</label>
+                                    <div class="col-lg-2" style="margin-bottom: 10px;">
+                                        <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
+                                        ng-model="vm.activite.nomActivite" disabled
+                                        required />
+                                    </div>
+                                    <label class="col-lg-1 control-label text">mois</label> -->
+                                
                                 </div>
-        
-                                <label class="col-lg-1 control-label text">Couverture stock</label>
-                                <div class="col-lg-2" style="margin-bottom: 10px;">
-                                    <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
-                                    ng-model="vm.activite.nomActivite" disabled
-                                    required />
-                                </div>
-                                <label class="col-lg-1 control-label text">mois</label> -->
-                               
-                            </div>
         
                             
            
@@ -274,43 +274,66 @@
 
 
 
-
-                <div class="col-xs-12 no-padding-left" style="display: flex; justify-content: right; margin-bottom: 30px;">
-
-
-                    <button class="btn btn-default btn-rounded" ui-sref="calendrier-appro" >
-                        <span class="glyphicon glyphicon-ban-circle"></span>
-                        <span class="hidden-xs" >
-                            Annuler
-                        </span>
-                    </button>
-
-                    
-                    <button class="btn btn-primary btn-rounded" ng-click="vm.createInventaire()" style="margin-left: 10px; margin-right: 10px; " >
-                        <span class="glyphicon glyphicon-save"></span>
-                        <span class="hidden-xs" >
-                            Sauvegarder
-                        </span>
-                    </button>
-                    <!-- <button class="btn btn-info" ui-sref="calendrier-appro-form">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="hidden-xs" >
-                            Exporter PDF
-                        </span>
-                    </button> -->
-
-            
+            </div>
+        </div>
 
 
-                    
-                    <button class="btn btn-success btn-rounded" ui-sref="calendrier-appro-form" ng-click="vm.exportExcel()" ng-disabled="!vm.inventaire.id">
-                        <span class="glyphicon glyphicon-file"></span>
-                        <span class="hidden-xs" >
-                                Exporter calendrier d'approvisionnement
-                        </span>
-                    </button>
+
+
+            <div class="panel panel-default" >
+                <div class="panel-body">
+
+
+                    <div class="col-xs-12 no-padding-left" style="display: flex; justify-content: right;">
+
+
+                        <button class="btn btn-default btn-rounded" ui-sref="calendrier-appro" >
+                            <span class="glyphicon glyphicon-ban-circle"></span>
+                            <span class="hidden-xs" >
+                                Annuler
+                            </span>
+                        </button>
+    
+                        
+                        <button class="btn btn-primary btn-rounded" ng-click="vm.createInventaire()" style="margin-left: 10px; margin-right: 10px; " >
+                            <span class="glyphicon glyphicon-save"></span>
+                            <span class="hidden-xs" >
+                                Sauvegarder
+                            </span>
+                        </button>
+                        <!-- <button class="btn btn-info" ui-sref="calendrier-appro-form">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <span class="hidden-xs" >
+                                Exporter PDF
+                            </span>
+                        </button> -->
+    
+                
+    
+    
+                        
+                        <!-- <button class="btn btn-success btn-rounded" ui-sref="calendrier-appro-form" ng-click="vm.exportExcel()" ng-disabled="!vm.inventaire.id">
+                            <span class="glyphicon glyphicon-file"></span>
+                            <span class="hidden-xs" >
+                                    Exporter calendrier d'approvisionnement
+                            </span>
+                        </button> -->
+    
+                    </div>
+
+
 
                 </div>
+            </div>
+        </div>
+
+
+
+
+           
+
+
+                
 
 
     </div>
