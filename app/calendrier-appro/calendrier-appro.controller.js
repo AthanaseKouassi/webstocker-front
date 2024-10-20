@@ -120,5 +120,9 @@
             startingDay: 1,
             showWeeks: false
         };
+        vm.formatDate = function (myDate) {
+            var dateFormat = 'dd MMM yyyy';
+            return $filter('date')(myDate, dateFormat);
+        }
     }
 })();

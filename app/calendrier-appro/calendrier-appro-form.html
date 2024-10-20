@@ -26,7 +26,6 @@
                                        datepicker-options="vm.options"
                                        ng-model="vm.inventaire.dateInventaire"
                                        is-open="vm.datePickerOpenStatus.dateDebut"
-                                       ng-change="vm.changeProduit()"
                                        required/>
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i
@@ -39,14 +38,15 @@
                         <label class="col-lg-1 control-label text">Produit</label>
                         <div class="col-lg-3" style="margin-bottom: 10px;">
 
-                            <select ng-disabled="!vm.inventaire.dateInventaire" class="form-control" ng-change="vm.changeProduit()" id="field_produit" name="produit" ng-model="vm.produit" ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id">
+                            <select ng-disabled="!vm.inventaire.dateInventaire || vm.inventaire.id" class="form-control" ng-change="vm.changeProduit()" id="field_produit" name="produit" ng-model="vm.produit" ng-options="produit as produit.nomProduit for produit in vm.produits track by produit.id" 
+                            >
                                 <option value=""></option>
                             </select>
                         </div>
 
                         <label class="col-lg-1 control-label text">Bailleur</label>
                         <div class="col-lg-3" style="margin-bottom: 10px;">
-                            <select class="form-control" id="field_bailleur" name="bailleur" ng-model="vm.bailleur" ng-options="bailleur as bailleur.nomBailleur for bailleur in vm.bailleurs track by bailleur.id">
+                            <select class="form-control" id="field_bailleur" name="bailleur" ng-model="vm.bailleur" ng-options="bailleur as bailleur.nomBailleur for bailleur in vm.bailleurs track by bailleur.id" ng-disabled="vm.inventaire.id">
                                 <option value=""></option>
                             </select>
                         </div>
@@ -154,7 +154,7 @@
 
                             <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Magasin central</label>
                             <div class="col-lg-3" style="margin-bottom: 10px;">
-                                <input type="number" class="form-control" name="nomActivite" id="field_nomActivite"
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
                                     ng-model="vm.inventaire.stockMagasinCentral"
                                     required />
                            </div>
@@ -169,7 +169,7 @@
     
                             <label class="col-lg-1 control-label text">Délégués et commerciaux</label>
                             <div class="col-lg-3" style="margin-bottom: 10px;">
-                                <input type="number" class="form-control" name="nomActivite" id="field_nomActivite"
+                                <input type="text" class="form-control" name="nomActivite" id="field_nomActivite"
                                 ng-model="vm.inventaire.stockAgent"
                                 required />
                             </div>
@@ -178,8 +178,8 @@
                         </div>
 
 
-
-                        <div class="col-md-12 mt-4" ng-show="!vm.inventaire.id">
+                        <!-- ng-show="!vm.inventaire.id" -->
+                        <div class="col-md-12 mt-4">
 
                             <label class="col-lg-1 control-label text" style="margin-bottom: 10px; margin-top: 20px;">Total final</label>
                             <div class="col-lg-3" style="margin-bottom: 10px; margin-top: 20px;">
@@ -189,7 +189,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-12 mt-4" ng-show="vm.inventaire.id">
+                        <!-- <div class="col-md-12 mt-4" ng-show="vm.inventaire.id">
 
                             <label class="col-lg-1 control-label text" style="margin-bottom: 10px; margin-top: 20px;">Total final</label>
                             <div class="col-lg-3" style="margin-bottom: 10px; margin-top: 20px;">
@@ -197,7 +197,7 @@
                                 ng-model="vm.inventaire.stockFinalTheorique" disabled
                                 required />
                             </div>
-                        </div>
+                        </div> -->
     
                         
        
@@ -226,25 +226,27 @@
                             <!-- ng-value="vm.inventaire.stockTheoDebut + vm.inventaire.arrivage - vm.inventaire.vente - vm.inventaire.promo - vm.inventaire.perteAbime - vm.inventaire.stockMagasinCentral - vm.inventaire.stockAntenne - vm.inventaire.stockAgent"  -->
                             
                             
-
-                            <div class="col-md-12 mt-4" ng-show="!vm.inventaire.id">
+                            <!-- ng-show="!vm.inventaire.id" -->
+                            <div class="col-md-12 mt-4">
                                 <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Ajustement</label>
                                 <div class="col-lg-2" style="margin-bottom: 10px;">
                                     <input type="text" class="form-control" name="ajustement" id="field_ajustement"
                                         disabled
                                         ng-value="vm.calculTotalAjutement()"
                                         required />
-                               </div>
-                            
-                            
-                                <div class="col-md-12 mt-4" ng-show="vm.inventaire.id">
-                                    <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Ajustement</label>
-                                    <div class="col-lg-2" style="margin-bottom: 10px;">
-                                        <input type="text" class="form-control" name="ajustement" id="field_ajustement"
-                                            disabled
-                                            ng-model="vm.inventaire.ajustement"
-                                            required />
                                 </div>
+                            </div>
+                            
+                            
+                            <!-- <div class="col-md-12 mt-4" ng-show="vm.inventaire.id">
+                                <label class="col-lg-1 control-label" style="margin-bottom: 10px; width: 95px;">Ajustement</label>
+                                <div class="col-lg-2" style="margin-bottom: 10px;">
+                                    <input type="text" class="form-control" name="ajustement" id="field_ajustement"
+                                        disabled
+                                        ng-model="vm.inventaire.ajustement"
+                                        required />
+                                </div>
+                            </div> -->
             
                                     <!-- <label class="col-lg-2 control-label text">Distribution moyenne mensuelle</label>
                                     <div class="col-lg-2" style="margin-bottom: 10px;">
