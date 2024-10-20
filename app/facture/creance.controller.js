@@ -9,7 +9,7 @@
 
     function CreanceController($scope, $rootScope, $state,$filter,AlertService, $stateParams, API_URL, FetchData,BonDeSortie) {
         var vm = this;
-         vm.bonDeSorties = {}; //BonDeSortie.query();
+         vm.bonDeSorties = {};
          vm.bonDeSortie = [];
          vm.creances = [];
 
@@ -33,14 +33,7 @@
 
            FetchData.getData(API_URL + 'api/produits')
            .then(function (response) {
-               // console.log(response);
                vm.produits = response.data;
-               // vm.totalElements = response.data.totalElements;
-               // vm.totalPage = response.data.totalPages;
-
-               // console.log('nombre d\'élément ' + vm.totalElements);
-               // console.log('nombre de page ' + vm.totalPage);
-               // console.log("OUUHHH "+vm.inventaires);
            }, function (error) {
                console.log(error);
            });
@@ -80,31 +73,9 @@
             vm.loadAllPage();
         };
 
-        // vm.loadAllPage();
-
-//        $scope.datePickerOpenStatus = {};
-//        $scope.datePickerOpenStatus.dateReception = false;
-//
         vm.openCalendar = function (date) {
            vm.datePickerOpenStatus[date] = true;
        };
-
-
-            // vm.loadAllPage = function () {
-            //     FetchData.getData(API_URL + 'api/bon-de-sortie-transfert/transfert-encours?page=' + vm.currentPage + '&size=' + vm.pageSize)
-            //         .then(function (response) {
-            //             console.log(response);
-            //             vm.bonDeSortie = response.data.content;
-            //             vm.totalElements = response.data.totalElements;
-            //             vm.totalPage = response.data.totalPages;
-
-            //             console.log('nombre d\'élément ' + vm.totalElements);
-            //             console.log('nombre de page ' + vm.totalPage);
-            //             console.log("OUUHHH "+vm.bonDeSortie.numero);
-            //         }, function (error) {
-            //             console.log(error);
-            //         });
-            // };
 
 
 
@@ -113,7 +84,7 @@
             vm.categorieCreance = null;
 
             vm.allCreancesByCategorie = function () {
-                
+
                 if (!vm.categorieCreance) return;
             
                 if (vm.categorieCreance)
