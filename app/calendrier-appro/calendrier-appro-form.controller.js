@@ -55,7 +55,22 @@
                     vm.bailleur = vm.inventaire.bailleur;
                     vm.produit = vm.inventaire.produit;
 
-                    vm.changeProduit();
+
+                    if (vm.inventaire.id) {
+                        FetchData.getData(API_URL + 'api/inventaires/'+ vm.inventaire.id+'/ajustement')
+                            .then(function (response) {
+                                // vm.inventaire.ajustement = response.data.ajustement;
+                                vm.inventaire = response.data;
+                                vm.inventaire.quantiteTheorique = vm.inventaire.stockTheoDebut;
+                                vm.inventaire.dateInventaire = DateUtils.convertLocalDateFromServer(vm.inventaire.dateInventaire)
+                                console.log("vm.inventaire.stockTheoDebut ===============>", vm.inventaire.stockTheoDebut, vm.inventaire.dateInventaire);
+                            }, function (error) {
+                                console.log(error);
+                            });
+                    } else {
+
+                        vm.changeProduit();
+                    }
                 }, function (error) {
                     console.log(error);
                 });

@@ -200,12 +200,12 @@
                 
                 <tr ng-repeat="inventaire in vm.inventaires track by inventaire.id">
                     <!-- <td><a ui-sref="lignefacture-detail({id:inventaire.id})">{{inventaire.id}}</a></td> -->
-                    <td>{{inventaire.dateInventaire}}</td>
+                    <td>{{vm.formatDate(inventaire.dateInventaire)}}</td>
                     <td>
                         <a ui-sref="lot-detail({id:inventaire.lot.id})">{{inventaire.produit.nomProduit}}</a>
                     </td>
                     <td>
-                        <a ui-sref="facture-detail({id:inventaire.facture.id})">{{inventaire.stockFinalTheorique}}</a>
+                        <a ui-sref="facture-detail({id:inventaire.facture.id})">{{inventaire.stockTheoDebut}}</a>
                     </td>
                     <td>{{inventaire.arrivage}}</td>
                     <td>{{inventaire.vente}}</td>
