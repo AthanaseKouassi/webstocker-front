@@ -140,12 +140,12 @@
                 for (var i = 0; i < result.length; i++) {
                     result[i].prixVente = vm.lignecommande.prixVente;
                     result[i].prixDeVente = Math.round((vm.lignecommande.prixDeVente * result[i].quantite)/vm.lignecommande.quantite);
-                    console.log("premier");
+                    console.log('ELSE DE LA CONDITION -- result[i].prixDeVente -- :: ', result[i].prixDeVente);
                 }
                     vm.montant = vm.montant + vm.lignecommande.prixDeVente;
                     console.log("OUH AHHAAA UURGGGG " + vm.montant);
                     console.log("LE PRODUIT ..." + vm.lignecommande.produit.nomProduit);
-                    console.log("le tableau d'élément ", result);
+                    console.log('le tableau d\'élément ', result.produit);
 
                 if (vm.sortieWrappers) {
                     console.log("deuxieme");
@@ -198,7 +198,7 @@
 
         $scope.$watch('vm.produitCommande', function (newValue) {
             console.log("nouveau produit commande");
-            console.log(newValue);
+            console.log('VAleur initiale :::: .... ',newValue);
             if (newValue !== null) {
                 StockOperation.getQuantiteDispoParMagasin({id: vm.produitCommande.id, magasinID: vm.bonDeSortie.magasin.id}, function (result) {
                     vm.quantiteStockProduit = result.quantiteStockProduit;

@@ -66,14 +66,13 @@
 
                 for (var i = 0; i < result.length; i++) {
                     result[i].prixVente = vm.lignecommande.prixVente;
-                    console.log("premier");
+                    console.log('J\'Affiche le prix :::.... ',vm.lignecommande.prixVente);
                 }
 
                 if (vm.sortieWrappers) {
-                    console.log("deuxieme");
-                    console.log(result);
+                    console.log('Resultat de getSortieWrapper ::....',result);
                     for (var i = 0; i < result.length; i++) {
-                        var resultat = result[i];
+                        var resultat = result[i]; 
                         var isIn = false;
                         for (var j = 0; j < vm.sortieWrappers.length; j++) {
                             var elt = vm.sortieWrappers[j];
@@ -91,10 +90,8 @@
                     }
                     console.log(vm.sortieWrappers);
                 } else {
-                    console.log("result");
                     vm.sortieWrappers = result;
-
-                    console.log(vm.sortieWrappers);
+                    console.log('sortieWrappers ::: ',vm.sortieWrappers);
                 }
 
                 // vm.sortieWrappers=result;
@@ -116,12 +113,11 @@
 
                 for (var i = 0; i < result.length; i++) {
                     result[i].prixVente = vm.lignecommande.prixVente;
-                    console.log("premier");
+                    console.log('LE prix OUHH : ::',vm.lignecommande.prixVente);                    
                 }
 
                 if (vm.sortieWrappers) {
-                    console.log("deuxieme");
-                    console.log(result);
+                    console.log('RESULTAT ==> IF ::::....',result);
                     for (var i = 0; i < result.length; i++) {
                         var resultat = result[i];
                         var isIn = false;
@@ -173,14 +169,43 @@
             if (newValue !== null) {
                 StockOperation.getQuantiteDispoParMagasin({id: vm.produitCommande.id, magasinID: vm.bonDeSortie.magasin.id}, function (result) {
                     vm.quantiteStockProduit = result.quantiteStockProduit;
-                    console.log(vm.quantiteStockProduit);
+                    console.log('IMPRIME --vm.quantiteStockProduit -- ::: ... ',vm.quantiteStockProduit);
                     $scope.maxStockProduit = vm.quantiteStockProduit;
                     $scope.qteStockProduitDisponiblePlaceholder = vm.qteStockProduitDisponibleText + " " + $scope.maxStockProduit;
-                });
-                console.log("valeur qte " + vm.quantiteStockProduit);
+                });              
+                console.log('Valeur de la quantité:::.... ' , $scope.maxStockProduit);
             }
         }, true);
 
+        ///************Ligne Ajouter le 06.11.2024 Correction de bug transfert************* */
+        vm.calculMaxQuantite = function () {
+
+            if (!vm.sortieWrappers) {
+                return;
+            }
+
+            vm.qteLignesCommande = 0;
+            vm.qteCommande = $scope.maxStockProduit;
+            for (var i = 0; i < vm.sortieWrappers.length; i++) {
+                vm.ligneCommandeTmp = vm.sortieWrappers[i];
+                if (vm.produitCommande.id === vm.ligneCommandeTmp.produit.id) {
+                    vm.qteLignesCommande = vm.qteLignesCommande + vm.ligneCommandeTmp.quantite;
+                }
+            }
+            return (vm.qteCommande - vm.qteLignesCommande);
+        };
+        
+         $scope.maxqte = vm.calculMaxQuantite();
+         
+         $scope.$watch('vm.sortieWrappers', function (newValue) {
+            console.log('OUPS....', newValue);          
+            if (newValue !== null) {
+                $scope.maxqte = vm.calculMaxQuantite();
+                $scope.qteStockProduitDisponiblePlaceholder = vm.qteStockProduitDisponibleText + " " + $scope.maxqte;
+            }
+        }, true);
+
+        ///************FIN Ligne Ajouter le 06.11.2024 ************* */
 
         vm.removeLigneCommande = function (item) {
             console.log(item);

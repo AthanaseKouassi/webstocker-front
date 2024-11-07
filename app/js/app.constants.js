@@ -17,7 +17,7 @@
 
             .constant("API_URL", "http://localhost:8080/")         
 
-//           .constant("API_URL", "http://83.166.138.228:8080/") 
+          // .constant("API_URL", "http://83.166.138.228:8080/") 
       
 
             ;
